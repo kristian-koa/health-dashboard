@@ -1,0 +1,633 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Health Dashboard — Whoop</title>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
+<style>
+  :root {
+    --bg:        #0f0f13;
+    --surface:   #1a1a24;
+    --surface2:  #22222f;
+    --orange:    #fc4c02;
+    --orange2:   #ff6a33;
+    --blue:      #4a9eff;
+    --green:     #2dd4a0;
+    --red:       #ff5c6a;
+    --yellow:    #f5c542;
+    --text:      #f0f0f5;
+    --muted:     #8888a0;
+    --border:    #2a2a3a;
+    --whoop-green:  #16a34a;
+    --whoop-yellow: #eab308;
+    --whoop-red:    #ef4444;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+    font-size: 14px;
+    line-height: 1.5;
+  }
+
+  /* ── Header ── */
+  header {
+    background: var(--surface);
+    border-bottom: 1px solid var(--border);
+    padding: 16px 32px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+  }
+  .logo { display: flex; align-items: center; gap: 12px; }
+  .logo-icon {
+    width: 36px; height: 36px;
+    background: var(--green);
+    border-radius: 8px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 18px; font-weight: 700;
+  }
+  .logo h1 { font-size: 18px; font-weight: 700; }
+  .logo span { color: var(--muted); font-size: 13px; }
+  .nav-links { display: flex; gap: 16px; }
+  .nav-links a {
+    color: var(--muted);
+    text-decoration: none;
+    font-size: 13px;
+    padding: 6px 14px;
+    border-radius: 20px;
+    border: 1px solid var(--border);
+    transition: all 0.15s;
+  }
+  .nav-links a:hover { color: var(--text); border-color: var(--muted); }
+  .nav-links a.active { background: var(--green); border-color: var(--green); color: #fff; }
+  #last-updated { color: var(--muted); font-size: 12px; }
+
+  /* ── Main layout ── */
+  main { padding: 28px 32px; max-width: 1400px; margin: 0 auto; }
+
+  /* ── Stat cards ── */
+  .stats-row {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+    gap: 16px;
+    margin-bottom: 28px;
+  }
+  .stat-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 20px;
+    position: relative;
+    overflow: hidden;
+  }
+  .stat-card::after {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 3px;
+    background: var(--accent, var(--green));
+    border-radius: 12px 12px 0 0;
+  }
+  .stat-label {
+    color: var(--muted);
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    margin-bottom: 8px;
+  }
+  .stat-value {
+    font-size: 28px;
+    font-weight: 700;
+    line-height: 1;
+  }
+  .stat-sub { color: var(--muted); font-size: 12px; margin-top: 4px; }
+
+  /* ── Charts grid ── */
+  .charts-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    margin-bottom: 28px;
+  }
+  .chart-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 24px;
+  }
+  .chart-card.wide { grid-column: span 2; }
+  .chart-title { font-size: 14px; font-weight: 600; margin-bottom: 4px; }
+  .chart-subtitle { color: var(--muted); font-size: 12px; margin-bottom: 20px; }
+  .chart-wrap { position: relative; height: 240px; }
+  .chart-wrap.tall { height: 300px; }
+
+  /* ── Recovery color coding ── */
+  .recovery-green { color: var(--whoop-green); }
+  .recovery-yellow { color: var(--whoop-yellow); }
+  .recovery-red { color: var(--whoop-red); }
+
+  /* ── Table ── */
+  .table-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 24px;
+    margin-bottom: 28px;
+    overflow-x: auto;
+  }
+  .table-card h2 { font-size: 14px; font-weight: 600; margin-bottom: 16px; }
+  table { width: 100%; border-collapse: collapse; }
+  thead th {
+    text-align: left;
+    color: var(--muted);
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    padding: 8px 12px;
+    border-bottom: 1px solid var(--border);
+  }
+  tbody td {
+    padding: 10px 12px;
+    border-bottom: 1px solid var(--border);
+    font-size: 13px;
+  }
+  tbody tr:hover { background: var(--surface2); }
+
+  /* ── Today card ── */
+  .today-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 28px;
+    margin-bottom: 28px;
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 28px;
+    align-items: center;
+  }
+  .recovery-ring {
+    width: 120px; height: 120px;
+    position: relative;
+  }
+  .recovery-ring canvas { width: 120px; height: 120px; }
+  .recovery-ring-label {
+    position: absolute;
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+  }
+  .recovery-ring-value { font-size: 32px; font-weight: 700; }
+  .recovery-ring-text { font-size: 11px; color: var(--muted); text-transform: uppercase; }
+  .today-metrics { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; }
+  .today-metric-label { font-size: 11px; color: var(--muted); text-transform: uppercase; letter-spacing: 0.05em; }
+  .today-metric-value { font-size: 22px; font-weight: 700; margin-top: 4px; }
+  .today-metric-unit { font-size: 12px; color: var(--muted); }
+
+  .empty-state {
+    text-align: center;
+    padding: 80px 20px;
+    color: var(--muted);
+  }
+  .empty-state h2 { font-size: 20px; color: var(--text); margin-bottom: 12px; }
+
+  @media (max-width: 900px) {
+    .charts-grid { grid-template-columns: 1fr; }
+    .chart-card.wide { grid-column: span 1; }
+    .today-card { grid-template-columns: 1fr; justify-items: center; }
+    .today-metrics { grid-template-columns: repeat(2, 1fr); }
+    header { flex-direction: column; gap: 12px; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="logo">
+    <div class="logo-icon">❤️</div>
+    <div>
+      <h1>Health Dashboard</h1>
+      <span id="last-updated">Loading...</span>
+    </div>
+  </div>
+  <div class="nav-links">
+    <a href="dashboard.html">Running</a>
+    <a href="strength.html">Strength</a>
+    <a href="whoop.html" class="active">Whoop</a>
+  </div>
+</header>
+
+<main id="main-content">
+  <div class="empty-state">
+    <h2>Loading Whoop data...</h2>
+    <p>If this persists, run <code>python whoop_fetch.py</code></p>
+  </div>
+</main>
+
+<script>
+const GREEN  = '#16a34a';
+const YELLOW = '#eab308';
+const RED    = '#ef4444';
+const MUTED  = '#8888a0';
+const SURFACE = '#1a1a24';
+
+function recoveryColor(score) {
+  if (score == null) return MUTED;
+  if (score >= 67) return GREEN;
+  if (score >= 34) return YELLOW;
+  return RED;
+}
+
+function recoveryClass(score) {
+  if (score == null) return '';
+  if (score >= 67) return 'recovery-green';
+  if (score >= 34) return 'recovery-yellow';
+  return 'recovery-red';
+}
+
+function msToHM(ms) {
+  if (!ms) return '—';
+  const h = Math.floor(ms / 3600000);
+  const m = Math.round((ms % 3600000) / 60000);
+  return h > 0 ? `${h}h ${m}m` : `${m}m`;
+}
+
+function dateStr(iso) {
+  if (!iso) return '—';
+  const d = new Date(iso);
+  return d.toLocaleDateString('en-GB', { day: 'numeric', month: 'short' });
+}
+
+function buildDashboard(data) {
+  const main = document.getElementById('main-content');
+
+  // Get latest recovery
+  const recs = data.recoveries.filter(r => r.recovery_score != null);
+  const latest = recs[0] || {};
+  const latestSleep = data.sleeps.filter(s => !s.nap)[0] || {};
+
+  // Today's card
+  const todayScore = latest.recovery_score;
+  const col = recoveryColor(todayScore);
+
+  let html = `
+    <div class="today-card">
+      <div class="recovery-ring">
+        <canvas id="ringCanvas" width="120" height="120"></canvas>
+        <div class="recovery-ring-label">
+          <div class="recovery-ring-value" style="color:${col}">${todayScore != null ? todayScore + '%' : '—'}</div>
+          <div class="recovery-ring-text">Recovery</div>
+        </div>
+      </div>
+      <div class="today-metrics">
+        <div>
+          <div class="today-metric-label">HRV</div>
+          <div class="today-metric-value">${latest.hrv_rmssd != null ? Math.round(latest.hrv_rmssd) : '—'}</div>
+          <div class="today-metric-unit">ms (RMSSD)</div>
+        </div>
+        <div>
+          <div class="today-metric-label">Resting HR</div>
+          <div class="today-metric-value">${latest.resting_heart_rate || '—'}</div>
+          <div class="today-metric-unit">bpm</div>
+        </div>
+        <div>
+          <div class="today-metric-label">SpO2</div>
+          <div class="today-metric-value">${latest.spo2_pct != null ? latest.spo2_pct + '%' : '—'}</div>
+          <div class="today-metric-unit">oxygen</div>
+        </div>
+        <div>
+          <div class="today-metric-label">Sleep</div>
+          <div class="today-metric-value">${msToHM(latestSleep.total_in_bed_ms)}</div>
+          <div class="today-metric-unit">in bed</div>
+        </div>
+      </div>
+    </div>
+  `;
+
+  // Summary stats
+  html += `
+    <div class="stats-row">
+      <div class="stat-card" style="--accent:${GREEN}">
+        <div class="stat-label">Avg Recovery</div>
+        <div class="stat-value">${data.summary.avg_recovery}%</div>
+        <div class="stat-sub">last ${data.summary.days} days</div>
+      </div>
+      <div class="stat-card" style="--accent:var(--blue)">
+        <div class="stat-label">Avg HRV</div>
+        <div class="stat-value">${data.summary.avg_hrv}</div>
+        <div class="stat-sub">ms RMSSD</div>
+      </div>
+      <div class="stat-card" style="--accent:var(--red)">
+        <div class="stat-label">Avg RHR</div>
+        <div class="stat-value">${data.summary.avg_rhr}</div>
+        <div class="stat-sub">bpm</div>
+      </div>
+      <div class="stat-card" style="--accent:var(--orange)">
+        <div class="stat-label">Workouts</div>
+        <div class="stat-value">${data.summary.total_workouts}</div>
+        <div class="stat-sub">last ${data.summary.days} days</div>
+      </div>
+    </div>
+  `;
+
+  // Charts
+  html += `
+    <div class="charts-grid">
+      <div class="chart-card wide">
+        <div class="chart-title">Recovery Score</div>
+        <div class="chart-subtitle">Daily recovery over time</div>
+        <div class="chart-wrap tall"><canvas id="recoveryChart"></canvas></div>
+      </div>
+      <div class="chart-card">
+        <div class="chart-title">HRV Trend</div>
+        <div class="chart-subtitle">Heart rate variability (RMSSD)</div>
+        <div class="chart-wrap"><canvas id="hrvChart"></canvas></div>
+      </div>
+      <div class="chart-card">
+        <div class="chart-title">Resting Heart Rate</div>
+        <div class="chart-subtitle">Daily resting HR</div>
+        <div class="chart-wrap"><canvas id="rhrChart"></canvas></div>
+      </div>
+      <div class="chart-card">
+        <div class="chart-title">Daily Strain</div>
+        <div class="chart-subtitle">Cardiovascular load (0–21)</div>
+        <div class="chart-wrap"><canvas id="strainChart"></canvas></div>
+      </div>
+      <div class="chart-card">
+        <div class="chart-title">Sleep Duration</div>
+        <div class="chart-subtitle">Hours per night (excluding naps)</div>
+        <div class="chart-wrap"><canvas id="sleepChart"></canvas></div>
+      </div>
+    </div>
+  `;
+
+  // Recent recoveries table
+  html += `
+    <div class="table-card">
+      <h2>Recent Days</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>Date</th>
+            <th>Recovery</th>
+            <th>HRV</th>
+            <th>RHR</th>
+            <th>SpO2</th>
+            <th>Strain</th>
+            <th>Sleep</th>
+          </tr>
+        </thead>
+        <tbody id="recoveryTable"></tbody>
+      </table>
+    </div>
+  `;
+
+  // Workouts table
+  html += `
+    <div class="table-card">
+      <h2>Recent Workouts</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>Date</th>
+            <th>Activity</th>
+            <th>Strain</th>
+            <th>Avg HR</th>
+            <th>Max HR</th>
+            <th>Calories</th>
+          </tr>
+        </thead>
+        <tbody id="workoutTable"></tbody>
+      </table>
+    </div>
+  `;
+
+  main.innerHTML = html;
+
+  // Draw recovery ring
+  drawRing(todayScore);
+
+  // Build charts
+  buildRecoveryChart(data.recoveries);
+  buildHRVChart(data.recoveries);
+  buildRHRChart(data.recoveries);
+  buildStrainChart(data.cycles);
+  buildSleepChart(data.sleeps);
+
+  // Fill tables
+  fillRecoveryTable(data);
+  fillWorkoutTable(data.workouts);
+}
+
+function drawRing(score) {
+  const canvas = document.getElementById('ringCanvas');
+  if (!canvas) return;
+  const ctx = canvas.getContext('2d');
+  const cx = 60, cy = 60, r = 50, lw = 8;
+  const pct = (score || 0) / 100;
+
+  // Background
+  ctx.beginPath();
+  ctx.arc(cx, cy, r, 0, Math.PI * 2);
+  ctx.strokeStyle = '#2a2a3a';
+  ctx.lineWidth = lw;
+  ctx.stroke();
+
+  // Score arc
+  ctx.beginPath();
+  ctx.arc(cx, cy, r, -Math.PI / 2, -Math.PI / 2 + Math.PI * 2 * pct);
+  ctx.strokeStyle = recoveryColor(score);
+  ctx.lineWidth = lw;
+  ctx.lineCap = 'round';
+  ctx.stroke();
+}
+
+const chartDefaults = {
+  responsive: true,
+  maintainAspectRatio: false,
+  plugins: { legend: { display: false } },
+  scales: {
+    x: { ticks: { color: MUTED, font: { size: 10 } }, grid: { color: '#1e1e2e' } },
+    y: { ticks: { color: MUTED, font: { size: 10 } }, grid: { color: '#1e1e2e' } },
+  },
+};
+
+function buildRecoveryChart(recoveries) {
+  const sorted = [...recoveries].filter(r => r.recovery_score != null).reverse();
+  const labels = sorted.map(r => dateStr(r.created_at));
+  const scores = sorted.map(r => r.recovery_score);
+  const colors = scores.map(s => recoveryColor(s));
+
+  new Chart(document.getElementById('recoveryChart'), {
+    type: 'bar',
+    data: {
+      labels,
+      datasets: [{
+        data: scores,
+        backgroundColor: colors.map(c => c + '88'),
+        borderColor: colors,
+        borderWidth: 1,
+        borderRadius: 3,
+      }]
+    },
+    options: {
+      ...chartDefaults,
+      scales: {
+        ...chartDefaults.scales,
+        y: { ...chartDefaults.scales.y, min: 0, max: 100 },
+      }
+    }
+  });
+}
+
+function buildHRVChart(recoveries) {
+  const sorted = [...recoveries].filter(r => r.hrv_rmssd != null).reverse();
+  new Chart(document.getElementById('hrvChart'), {
+    type: 'line',
+    data: {
+      labels: sorted.map(r => dateStr(r.created_at)),
+      datasets: [{
+        data: sorted.map(r => Math.round(r.hrv_rmssd)),
+        borderColor: '#4a9eff',
+        backgroundColor: '#4a9eff22',
+        fill: true,
+        tension: 0.3,
+        pointRadius: 2,
+      }]
+    },
+    options: chartDefaults,
+  });
+}
+
+function buildRHRChart(recoveries) {
+  const sorted = [...recoveries].filter(r => r.resting_heart_rate != null).reverse();
+  new Chart(document.getElementById('rhrChart'), {
+    type: 'line',
+    data: {
+      labels: sorted.map(r => dateStr(r.created_at)),
+      datasets: [{
+        data: sorted.map(r => r.resting_heart_rate),
+        borderColor: '#ff5c6a',
+        backgroundColor: '#ff5c6a22',
+        fill: true,
+        tension: 0.3,
+        pointRadius: 2,
+      }]
+    },
+    options: chartDefaults,
+  });
+}
+
+function buildStrainChart(cycles) {
+  const sorted = [...cycles].filter(c => c.strain != null).reverse();
+  new Chart(document.getElementById('strainChart'), {
+    type: 'bar',
+    data: {
+      labels: sorted.map(c => dateStr(c.start)),
+      datasets: [{
+        data: sorted.map(c => Math.round(c.strain * 10) / 10),
+        backgroundColor: '#fc4c0266',
+        borderColor: '#fc4c02',
+        borderWidth: 1,
+        borderRadius: 3,
+      }]
+    },
+    options: {
+      ...chartDefaults,
+      scales: {
+        ...chartDefaults.scales,
+        y: { ...chartDefaults.scales.y, min: 0, max: 21 },
+      }
+    }
+  });
+}
+
+function buildSleepChart(sleeps) {
+  const nights = [...sleeps].filter(s => !s.nap && s.total_in_bed_ms).reverse();
+  new Chart(document.getElementById('sleepChart'), {
+    type: 'bar',
+    data: {
+      labels: nights.map(s => dateStr(s.start)),
+      datasets: [{
+        data: nights.map(s => Math.round(s.total_in_bed_ms / 3600000 * 10) / 10),
+        backgroundColor: '#2dd4a066',
+        borderColor: '#2dd4a0',
+        borderWidth: 1,
+        borderRadius: 3,
+      }]
+    },
+    options: chartDefaults,
+  });
+}
+
+function fillRecoveryTable(data) {
+  const tbody = document.getElementById('recoveryTable');
+  const recMap = {};
+  data.recoveries.forEach(r => { if (r.cycle_id) recMap[r.cycle_id] = r; });
+
+  // Match cycles with recovery
+  const rows = data.cycles.slice(0, 30).map(c => {
+    const rec = recMap[c.id] || {};
+    const sleep = data.sleeps.find(s => !s.nap && s.start && c.start &&
+      new Date(s.start).toDateString() === new Date(c.start).toDateString());
+    return { ...c, ...rec, sleep_ms: sleep ? sleep.total_in_bed_ms : null };
+  });
+
+  tbody.innerHTML = rows.map(r => `
+    <tr>
+      <td>${dateStr(r.start)}</td>
+      <td class="${recoveryClass(r.recovery_score)}"><strong>${r.recovery_score != null ? r.recovery_score + '%' : '—'}</strong></td>
+      <td>${r.hrv_rmssd != null ? Math.round(r.hrv_rmssd) + ' ms' : '—'}</td>
+      <td>${r.resting_heart_rate || '—'}</td>
+      <td>${r.spo2_pct != null ? r.spo2_pct + '%' : '—'}</td>
+      <td>${r.strain != null ? (Math.round(r.strain * 10) / 10) : '—'}</td>
+      <td>${msToHM(r.sleep_ms)}</td>
+    </tr>
+  `).join('');
+}
+
+function fillWorkoutTable(workouts) {
+  const tbody = document.getElementById('workoutTable');
+  tbody.innerHTML = workouts.slice(0, 30).map(w => `
+    <tr>
+      <td>${dateStr(w.start)}</td>
+      <td>${w.sport_name || '—'}</td>
+      <td>${w.strain != null ? (Math.round(w.strain * 10) / 10) : '—'}</td>
+      <td>${w.avg_hr || '—'} bpm</td>
+      <td>${w.max_hr || '—'} bpm</td>
+      <td>${w.kilojoule != null ? Math.round(w.kilojoule * 0.239) + ' kcal' : '—'}</td>
+    </tr>
+  `).join('');
+}
+
+// Load data
+fetch('whoop_data.json')
+  .then(r => {
+    if (!r.ok) throw new Error('No data file');
+    return r.json();
+  })
+  .then(data => {
+    document.getElementById('last-updated').textContent =
+      'Updated ' + new Date(data.last_updated).toLocaleString();
+    buildDashboard(data);
+  })
+  .catch(() => {
+    document.getElementById('main-content').innerHTML = `
+      <div class="empty-state">
+        <h2>No Whoop data yet</h2>
+        <p style="margin-top:8px">Connect your Whoop account to get started.</p>
+        <p style="margin-top:24px">
+          <a href="/whoop_auth" style="display:inline-block;padding:12px 32px;background:var(--green);color:#fff;border-radius:8px;text-decoration:none;font-size:16px;font-weight:600;transition:opacity 0.15s" onmouseover="this.style.opacity='0.85'" onmouseout="this.style.opacity='1'">Connect Whoop</a>
+        </p>
+        <p style="margin-top:16px;color:var(--muted);font-size:13px">After connecting, run <code style="color:var(--green)">python whoop_fetch.py</code> to download your data.</p>
+      </div>
+    `;
+  });
+</script>
+</body>
+</html>

@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Running trends — last 9 months</title>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.0/chart.umd.min.js"></script>
+<style>
+  body { font-family: -apple-system, Segoe UI, Helvetica, Arial, sans-serif; max-width: 960px; margin: 32px auto; padding: 0 20px; color: #222; line-height: 1.55; }
+  h1 { margin-bottom: 4px; }
+  .sub { color: #666; margin-bottom: 28px; }
+  .chart-wrap { background: #fafafa; border: 1px solid #eee; border-radius: 10px; padding: 18px; margin-bottom: 24px; }
+  h2 { font-size: 18px; margin: 0 0 10px; }
+  .stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin: 20px 0 28px; }
+  .stat { background: #f4f6f8; border-radius: 8px; padding: 12px 14px; }
+  .stat .v { font-size: 22px; font-weight: 600; }
+  .stat .l { font-size: 12px; color: #666; text-transform: uppercase; letter-spacing: .4px; }
+  .commentary { background: #fffdf5; border-left: 4px solid #f0a500; padding: 16px 20px; border-radius: 4px; margin-top: 8px; }
+  .commentary h3 { margin-top: 0; }
+  canvas { max-height: 320px; }
+</style>
+</head>
+<body>
+
+<h1>Running trends — last 9 months</h1>
+<div class="sub">July 2025 – April 2026 &middot; 133 runs analysed</div>
+
+<div class="stats">
+  <div class="stat"><div class="v">1,004 km</div><div class="l">Total distance</div></div>
+  <div class="stat"><div class="v">96 h</div><div class="l">Moving time</div></div>
+  <div class="stat"><div class="v">6,563 m</div><div class="l">Elevation gain</div></div>
+  <div class="stat"><div class="v">7.55 km</div><div class="l">Avg per run</div></div>
+</div>
+
+<div class="chart-wrap">
+  <h2>Monthly volume (km) &amp; number of runs</h2>
+  <canvas id="volChart"></canvas>
+</div>
+
+<div class="chart-wrap">
+  <h2>Average pace by month (min/km) — lower is faster</h2>
+  <canvas id="paceChart"></canvas>
+</div>
+
+<div class="chart-wrap">
+  <h2>Average heart rate by month (bpm)</h2>
+  <canvas id="hrChart"></canvas>
+</div>
+
+<div class="commentary">
+<h3>What the numbers are telling us</h3>
+
+<p>The nine months from July 2025 through early April 2026 paint a clear picture of a solid autumn build followed by a rough winter. From July through November you were remarkably consistent — 18 to 19 runs almost every month and a peak of 176 km in August. That August block also contained your longest run of the period, a 21.1 km hilly progressive long run, so you were clearly training with intent.</p>
+
+<p>The pace curve is the most encouraging line on the page. It drops steadily from 6:02 min/km in July down to 5:33 min/km in December, while your average heart rate stays flat in the high 150s to low 160s. Running faster at the same effort is the textbook signature of improving aerobic fitness, and that also lines up with your fastest effort of the window — a 5 km treadmill run at 4:37 min/km on 9 November.</p>
+
+<p>Then something changes at the turn of the year. January drops to only 10 runs and 64 km, March collapses to 5 runs and 36 km, and April is tracking slowly so far. At the same time the pace climbs back toward 6:00 min/km and heart rate actually ticks up in March to 167 bpm — faster heart rate for slower pace is usually a sign of detraining, illness, or just not enough mileage in the legs. The elevation gain tells the same story: the big hill months were July and August (1,500+ m), and from December onward you've barely climbed anything, suggesting the runs have moved indoors or onto flat routes.</p>
+
+<p>The good news is that the fitness you built between July and November doesn't disappear overnight. The template is right there in the data — roughly 18 runs and 120–140 km per month, with a mix of hills and a weekly hard effort — so the path back is to rebuild volume gradually before chasing pace again. If you can get April back to 12–15 runs at an easy effort, May should start to feel normal again.</p>
+</div>
+
+<script>
+const months = ['Jul 25','Aug 25','Sep 25','Oct 25','Nov 25','Dec 25','Jan 26','Feb 26','Mar 26','Apr 26'];
+const dist   = [117.1, 176.5, 118.7, 116.2, 142.1, 116.6, 64.1, 95.4, 36.3, 21.5];
+const runs   = [12, 19, 18, 18, 18, 15, 10, 15, 5, 3];
+const pace   = [6.03, 5.75, 5.82, 5.67, 5.57, 5.53, 5.63, 5.76, 6.01, 5.72];
+const hr     = [157, 158, 163, 160, 160, 164, 162, 153, 167, 164];
+
+new Chart(document.getElementById('volChart'), {
+  data: {
+    labels: months,
+    datasets: [
+      { type:'bar', label:'Distance (km)', data:dist, backgroundColor:'#4c9aff', yAxisID:'y' },
+      { type:'line', label:'Runs', data:runs, borderColor:'#ff6b6b', backgroundColor:'#ff6b6b', tension:.3, yAxisID:'y1' }
+    ]
+  },
+  options: {
+    responsive:true,
+    scales: {
+      y:  { position:'left',  title:{display:true,text:'km'} },
+      y1: { position:'right', title:{display:true,text:'runs'}, grid:{drawOnChartArea:false} }
+    }
+  }
+});
+
+new Chart(document.getElementById('paceChart'), {
+  type:'line',
+  data: { labels: months, datasets: [{ label:'Avg pace (min/km)', data:pace, borderColor:'#2ecc71', backgroundColor:'rgba(46,204,113,.15)', tension:.3, fill:true }] },
+  options: { responsive:true, scales:{ y:{ reverse:true, title:{display:true,text:'min/km (lower = faster)'} } } }
+});
+
+new Chart(document.getElementById('hrChart'), {
+  type:'line',
+  data: { labels: months, datasets: [{ label:'Avg HR (bpm)', data:hr, borderColor:'#e74c3c', backgroundColor:'rgba(231,76,60,.15)', tension:.3, fill:true }] },
+  options: { responsive:true, scales:{ y:{ title:{display:true,text:'bpm'} } } }
+});
+</script>
+</body>
+</html>

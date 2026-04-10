@@ -1,0 +1,11 @@
+# API credentials and tokens — NEVER commit these
+strava_config.json
+whoop_config.json
+
+# Python cache
+__pycache__/
+*.pyc
+
+# OS files
+.DS_Store
+Thumbs.db

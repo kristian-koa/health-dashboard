@@ -1,0 +1,12 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(python whoop_fetch.py)",
+      "Bash(echo \"EXIT_CODE=$?\")",
+      "WebSearch",
+      "WebFetch(domain:developer.whoop.com)",
+      "WebFetch(domain:raw.githubusercontent.com)",
+      "WebFetch(domain:github.com)"
+    ]
+  }
+}
