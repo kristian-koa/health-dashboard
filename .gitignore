@@ -1,6 +1,8 @@
 # API credentials and tokens — NEVER commit these
 strava_config.json
 whoop_config.json
+garmin_config.json
+.garmin_tokens/
 
 # Python cache
 __pycache__/
