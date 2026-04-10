@@ -29,9 +29,24 @@ def load_config():
 
 
 def connect(config):
-    """Create a Garmin client and log in using saved tokens."""
+    """Create a Garmin client and authenticate using tokens from garmin_setup.py.
+
+    Tokens are saved by garmin_setup.py to .garmin_tokens/garmin_tokens.json
+    and are valid for ~1 year. The library auto-refreshes them as needed
+    on each call, so this function doesn't need to do anything special —
+    it just loads from disk and hands off to the library.
+
+    Raises with a clear hint if no valid tokens exist.
+    """
+    token_dir = config.get("token_dir", TOKEN_DIR)
     garmin = Garmin(email=config.get("email", ""))
-    garmin.login(tokenstore=config.get("token_dir", TOKEN_DIR))
+    try:
+        garmin.login(tokenstore=token_dir)
+    except Exception as e:
+        raise RuntimeError(
+            f"Garmin authentication failed: {e}\n"
+            f"Run 'python garmin_setup.py' to (re)authenticate."
+        ) from e
     return garmin
 
 

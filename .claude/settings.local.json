@@ -6,7 +6,14 @@
       "WebSearch",
       "WebFetch(domain:developer.whoop.com)",
       "WebFetch(domain:raw.githubusercontent.com)",
-      "WebFetch(domain:github.com)"
+      "WebFetch(domain:github.com)",
+      "Bash(python -c \"import garminconnect; print\\(garminconnect.__version__\\)\")",
+      "Bash(pip show:*)",
+      "Bash(python -c \"from garminconnect import Garmin; import inspect; print\\('Garmin.__init__ signature:', inspect.signature\\(Garmin.__init__\\)\\); print\\('Garmin.login signature:', inspect.signature\\(Garmin.login\\)\\)\")",
+      "Bash(python -c \"import garth; print\\(garth.__file__\\)\")",
+      "Bash(python -c \"import garminconnect; print\\(garminconnect.__file__\\)\")",
+      "Bash(python -c \"import playwright; print\\('playwright version:', playwright.__version__ if hasattr\\(playwright, '__version__'\\) else 'installed'\\)\")",
+      "Bash(python -c \"import browser_cookie3; print\\(browser_cookie3.__version__\\)\")"
     ]
   }
 }

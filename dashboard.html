@@ -177,6 +177,73 @@
   .pace-med  { color: var(--orange); }
   .pace-slow { color: var(--red); }
 
+  /* ── Newest Activity card ── */
+  .newest-activity {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 24px;
+    margin-bottom: 28px;
+    display: flex;
+    gap: 32px;
+    align-items: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .newest-activity::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; bottom: 0;
+    width: 4px;
+    background: var(--orange);
+    border-radius: 12px 0 0 12px;
+  }
+  .newest-activity .na-header {
+    color: var(--muted);
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    margin-bottom: 6px;
+  }
+  .newest-activity .na-name {
+    font-size: 20px;
+    font-weight: 700;
+    margin-bottom: 4px;
+  }
+  .newest-activity .na-date {
+    color: var(--muted);
+    font-size: 12px;
+  }
+  .newest-activity .na-stats {
+    display: flex;
+    gap: 28px;
+    flex-wrap: wrap;
+  }
+  .newest-activity .na-stat-label {
+    color: var(--muted);
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+  }
+  .newest-activity .na-stat-value {
+    font-size: 18px;
+    font-weight: 700;
+    line-height: 1.2;
+  }
+  .newest-activity .na-stat-unit {
+    color: var(--muted);
+    font-size: 11px;
+  }
+  .newest-activity .na-kudos {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    color: #e74c8b;
+    font-size: 13px;
+    font-weight: 600;
+    margin-top: 6px;
+  }
+
   /* ── No data message ── */
   .no-data {
     text-align: center;
@@ -245,6 +312,9 @@
 </div>
 
 <main id="app" style="display:none">
+
+  <!-- Newest Activity -->
+  <div id="newest-activity"></div>
 
   <!-- Stat cards -->
   <div class="stats-row" id="stat-cards"></div>
@@ -413,6 +483,9 @@ function renderStats(runs) {
     return `${m}:${String(s).padStart(2,'0')}`;
   }
 
+  const totalKudos = runs.reduce((s, r) => s + (r.kudos_count || 0), 0);
+  const avgKudos   = runs.length ? (totalKudos / runs.length).toFixed(1) : '0';
+
   const cards = [
     { label:'Total Distance', value: totalKm.toFixed(1), unit:'km',     accent:'var(--orange)', icon:'🏃' },
     { label:'Runs',           value: runs.length,        unit:'runs',    accent:'var(--blue)',   icon:'📊' },
@@ -422,6 +495,7 @@ function renderStats(runs) {
     { label:'Total Elevation',value: Math.round(totalElev).toLocaleString(), unit:'m', accent:'#f39c12', icon:'⛰️' },
     { label:'Total Time',     value: fmtDuration(totalTime), unit:'',   accent:'var(--muted)',  icon:'⏱️' },
     { label:'Longest Run',    value: longestRun.toFixed(1), unit:'km',  accent:'var(--orange2)', icon:'📏' },
+    { label:'Total Kudos',    value: totalKudos,           unit:`avg ${avgKudos}/run`, accent:'#e74c8b', icon:'👏' },
   ];
 
   document.getElementById('stat-cards').innerHTML = cards.map(c => `
@@ -714,6 +788,46 @@ function renderElevChart(runs) {
   });
 }
 
+function renderNewestActivity(allActs) {
+  const container = document.getElementById('newest-activity');
+  // Find the most recent activity (any type)
+  const newest = allActs.length ? allActs[0] : null;
+  if (!newest) { container.innerHTML = ''; return; }
+
+  const typeLabel = newest.sport_type || newest.type || 'Activity';
+  const paceStr = newest.pace_str || '–';
+  const dist = newest.distance_km ? newest.distance_km.toFixed(2) + ' km' : '–';
+  const dur = fmtDuration(newest.moving_time_s);
+  const hr = newest.avg_heartrate ? Math.round(newest.avg_heartrate) + ' bpm' : '–';
+  const elev = newest.elevation_gain ? newest.elevation_gain + ' m' : '–';
+  const kudos = newest.kudos_count || 0;
+  const ago = (() => {
+    const diff = Date.now() - new Date(newest.datetime || newest.date).getTime();
+    const days = Math.floor(diff / 86400000);
+    if (days === 0) return 'Today';
+    if (days === 1) return 'Yesterday';
+    return `${days} days ago`;
+  })();
+
+  container.innerHTML = `
+    <div class="newest-activity">
+      <div style="flex:1;min-width:180px">
+        <div class="na-header">🆕 Newest Activity</div>
+        <div class="na-name">${newest.name || typeLabel}</div>
+        <div class="na-date">${fmtDate(newest.date)} · ${ago} · <span class="badge ${badgeClass(typeLabel)}">${typeLabel}</span></div>
+        ${kudos > 0 ? `<div class="na-kudos">👏 ${kudos} kudos</div>` : ''}
+      </div>
+      <div class="na-stats">
+        <div><div class="na-stat-label">Distance</div><div class="na-stat-value">${dist}</div></div>
+        <div><div class="na-stat-label">Duration</div><div class="na-stat-value">${dur}</div></div>
+        <div><div class="na-stat-label">Pace</div><div class="na-stat-value">${paceStr}</div><div class="na-stat-unit">/km</div></div>
+        <div><div class="na-stat-label">Heart Rate</div><div class="na-stat-value">${hr}</div></div>
+        <div><div class="na-stat-label">Elevation</div><div class="na-stat-value">${elev}</div></div>
+      </div>
+    </div>
+  `;
+}
+
 function renderTable(runs) {
   const tbody = document.getElementById('activity-table');
   const recent = runs.slice(0, 50);
@@ -744,6 +858,7 @@ let currentRange  = 'all';
 function renderAll(range) {
   currentRange = range;
   const runs = filterActivities(allActivities, range);
+  renderNewestActivity(allActivities);
   renderStats(runs);
   renderWeeklyChart(runs);
   renderPaceChart(runs);
