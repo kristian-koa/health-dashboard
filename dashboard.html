@@ -93,10 +93,14 @@
   .ov-meta { color: var(--muted); font-size: 13px; margin-bottom: 12px; }
   .ov-stats { display: flex; gap: 24px; flex-wrap: wrap; }
   .ov-stat-label { color: var(--muted); font-size: 11px; text-transform: uppercase; letter-spacing: 0.06em; }
-  .ov-stat-value { font-size: 18px; font-weight: 700; line-height: 1.3; }
+  .ov-stat-value { font-size: 18px; font-weight: 700; line-height: 1.3; white-space: nowrap; }
   .ov-stat-unit { color: var(--muted); font-size: 11px; }
+  .weekly-top { display: flex; align-items: center; justify-content: space-between; }
   .weekly-big { font-size: 36px; font-weight: 800; line-height: 1; }
   .weekly-unit { color: var(--muted); font-size: 14px; font-weight: 400; margin-left: 4px; }
+  .weekly-vs { text-align: right; font-size: 11px; line-height: 1.8; color: var(--muted); white-space: nowrap; flex-shrink: 0; }
+  .weekly-vs .wv-label { font-size: 9px; text-transform: uppercase; letter-spacing: 0.03em; }
+  .weekly-vs .wv-value { font-weight: 700; color: var(--text); font-size: 13px; }
   .weekly-delta { font-size: 13px; font-weight: 600; margin-top: 6px; display: flex; align-items: center; gap: 4px; }
   .weekly-delta.up { color: var(--green); }
   .weekly-delta.down { color: var(--red); }
@@ -277,6 +281,9 @@
     pointer-events: none;
     border-radius: 0 0 9px 9px;
   }
+  .strain-legend { display: flex; gap: 10px; font-size: 9px; color: var(--muted); position: relative; z-index: 1; margin-top: 2px; }
+  .strain-legend span { display: flex; align-items: center; gap: 4px; }
+  .strain-legend .dot { width: 7px; height: 7px; border-radius: 50%; }
   .strain-sub {
     font-size: 11px;
     color: var(--muted);
@@ -993,7 +1000,7 @@ function renderActivityCard(container) {
           '<div class="ov-stats">' +
             '<div><div class="ov-stat-label">Dist</div><div class="ov-stat-value">' + dist + '</div></div>' +
             '<div><div class="ov-stat-label">Time</div><div class="ov-stat-value">' + dur + '</div></div>' +
-            '<div><div class="ov-stat-label">Pace</div><div class="ov-stat-value">' + paceStr + '</div><div class="ov-stat-unit">/km</div></div>' +
+            '<div><div class="ov-stat-label">Pace</div><div class="ov-stat-value">' + paceStr + ' <span class="ov-stat-unit">/km</span></div></div>' +
             '<div><div class="ov-stat-label">HR</div><div class="ov-stat-value">' + hr + '</div></div>' +
           '</div>' +
         '</div>' +
@@ -1048,7 +1055,13 @@ function renderActivityCard(container) {
 
   let rightHtml = '<div class="overview-card accent-blue">' +
     '<div class="ov-label">This Week Running</div>' +
-    '<div class="weekly-big">' + thisWeekSoFar.toFixed(1) + '<span class="weekly-unit">km</span></div>' +
+    '<div class="weekly-top">' +
+      '<div class="weekly-big">' + thisWeekSoFar.toFixed(1) + '<span class="weekly-unit">km</span></div>' +
+      '<div class="weekly-vs">' +
+        '<div><span class="wv-label">This wk </span><span class="wv-value">' + thisWeekSoFar.toFixed(1) + '</span></div>' +
+        '<div><span class="wv-label">Last wk </span><span class="wv-value">' + lastWeekKm.toFixed(1) + '</span></div>' +
+      '</div>' +
+    '</div>' +
     '<div class="weekly-delta ' + pacingClass + '">' + pacingArrow + ' ' + pacingText + '</div>' +
     '<div class="weekly-legend"><span><span class="dot" style="background:' + BLUE + '"></span>This week</span><span><span class="dot" style="background:' + MUTED + '"></span>Last week</span></div>' +
     '<div class="weekly-chart"><canvas id="weeklyCompareCanvas" height="80"></canvas><div class="weekly-tooltip"></div></div>' +
@@ -1232,6 +1245,7 @@ function renderHealthOverview(data) {
     '</div>' +
     (latestKcal ? '<div class="strain-sub">' + latestKcal.toLocaleString() + ' kcal</div>' : '') +
     deltaHTML(latestCycle.strain, prevCycle.strain, '', true) +
+    '<div class="strain-legend"><span><span class="dot" style="background:#4a9eff;opacity:0.55"></span>Activity</span><span><span class="dot" style="background:#2a3a5a;opacity:0.45"></span>Rest</span></div>' +
   '</div>';
 
   // ── Health Monitor card ──
@@ -1290,7 +1304,9 @@ function renderHealthOverview(data) {
   );
   // Draw strain ring + background bars
   drawStrainRing(strainVal, strainCol);
-  drawStrainBg(strain10);
+  // Build set of dates that have activities
+  const activityDates = new Set(allActivities.map(a => a.date));
+  drawStrainBg(strain10, activityDates);
 }
 
 // ══════════════════════════════════════════════════════════════════════════════
@@ -1417,7 +1433,7 @@ function drawStrainRing(strain, color) {
   }
 }
 
-function drawStrainBg(strain10) {
+function drawStrainBg(strain10, activityDates) {
   const canvas = document.getElementById('strainBgBars');
   if (!canvas || !strain10.length) return;
   const dpr = 2;
@@ -1441,8 +1457,11 @@ function drawStrainBg(strain10) {
     const x = padSide + i * (barW + gap);
     const y = h - barH;
     const r = Math.min(2, barW / 3);
-    ctx.fillStyle = '#4a9eff';
-    ctx.globalAlpha = i === n - 1 ? 0.7 : 0.35;
+    // Check if this day had an activity
+    const dayStr = c.start ? c.start.substring(0, 10) : '';
+    const hadActivity = activityDates && activityDates.has(dayStr);
+    ctx.fillStyle = hadActivity ? '#4a9eff' : '#2a3a5a';
+    ctx.globalAlpha = i === n - 1 ? 0.8 : (hadActivity ? 0.55 : 0.45);
     ctx.beginPath();
     ctx.moveTo(x, y + barH);
     ctx.lineTo(x, y + r);
