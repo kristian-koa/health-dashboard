@@ -281,7 +281,7 @@
     pointer-events: none;
     border-radius: 0 0 9px 9px;
   }
-  .strain-legend { display: flex; gap: 10px; font-size: 9px; color: var(--muted); position: relative; z-index: 1; margin-top: 2px; }
+  .strain-legend { display: flex; gap: 8px; font-size: 9px; color: var(--muted); position: relative; z-index: 1; margin-bottom: 4px; }
   .strain-legend span { display: flex; align-items: center; gap: 4px; }
   .strain-legend .dot { width: 7px; height: 7px; border-radius: 50%; }
   .strain-sub {
@@ -1239,13 +1239,13 @@ function renderHealthOverview(data) {
   // ── Strain card with ring + faded bar background ──
   const strainHTML = '<div class="health-mini strain-ring-card" style="--accent:' + strainCol + '">' +
     '<div class="hm-label">Day Strain</div>' +
+    '<div class="strain-legend"><span><span class="dot" style="background:#4a9eff;opacity:0.55"></span>Activity</span><span><span class="dot" style="background:#2a3a5a;opacity:0.45"></span>Rest</span></div>' +
     '<canvas id="strainBgBars" class="strain-bg-canvas"></canvas>' +
     '<div class="strain-ring-wrap"><canvas id="strainRingCanvas" width="90" height="90"></canvas>' +
       '<div class="strain-ring-value">' + strainDisplay + '</div>' +
     '</div>' +
     (latestKcal ? '<div class="strain-sub">' + latestKcal.toLocaleString() + ' kcal</div>' : '') +
     deltaHTML(latestCycle.strain, prevCycle.strain, '', true) +
-    '<div class="strain-legend"><span><span class="dot" style="background:#4a9eff;opacity:0.55"></span>Activity</span><span><span class="dot" style="background:#2a3a5a;opacity:0.45"></span>Rest</span></div>' +
   '</div>';
 
   // ── Health Monitor card ──
