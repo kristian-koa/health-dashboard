@@ -214,11 +214,11 @@
   .activity-select:focus { outline: none; border-color: var(--orange); }
 
   /* ── Activity card body: text left, route right ── */
-  .activity-body { display: flex; gap: 16px; flex: 1; min-height: 0; }
+  .activity-body { display: flex; gap: 16px; flex: 1; min-height: 0; position: relative; }
   .activity-info { flex: 0 0 auto; min-width: 0; }
-  /* ── Route map ── */
-  .route-map { flex: 1 1 0; min-width: 180px; display: flex; align-items: center; justify-content: center; }
-  .route-map canvas { display: block; width: 100%; height: auto; }
+  /* ── Route map: fills remaining width, height clamped to the info column ── */
+  .route-map { flex: 1 1 0; min-width: 140px; display: flex; align-items: flex-start; justify-content: center; align-self: stretch; overflow: hidden; }
+  .route-map canvas { display: block; max-height: 100%; object-fit: contain; }
 
   /* ── 10-day label ── */
   .overview-sublabel {
@@ -997,7 +997,7 @@ function renderActivityCard(container) {
             '<div><div class="ov-stat-label">HR</div><div class="ov-stat-value">' + hr + '</div></div>' +
           '</div>' +
         '</div>' +
-        (hasMap ? '<div class="route-map"><canvas id="routeCanvas" width="200" height="170"></canvas></div>' : '') +
+        (hasMap ? '<div class="route-map"><canvas id="routeCanvas"></canvas></div>' : '') +
       '</div>' +
     '</div>';
   } else {
@@ -1096,8 +1096,9 @@ function drawRouteMap(polyline) {
   const points = decodePolyline(polyline);
   if (points.length < 2) return;
   const dpr = 2;
-  const w = canvas.offsetWidth || 200;
-  const h = canvas.offsetHeight || 170;
+  const container = canvas.parentElement;
+  const w = container.clientWidth || 200;
+  const h = container.clientHeight || 120;
   canvas.style.width = w + 'px';
   canvas.style.height = h + 'px';
   canvas.width = w * dpr;
