@@ -56,28 +56,84 @@
   .logo h1 { font-size: 18px; font-weight: 700; }
   .logo span { color: var(--muted); font-size: 13px; }
 
-  /* ── Section nav ── */
-  .section-nav {
-    display: flex;
-    gap: 8px;
+  /* ── Overview row ── */
+  .overview-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    margin-bottom: 20px;
   }
-  .section-nav a {
-    padding: 6px 16px;
-    border-radius: 20px;
+  .overview-card {
+    background: var(--surface);
     border: 1px solid var(--border);
-    background: transparent;
-    color: var(--muted);
-    text-decoration: none;
-    font-size: 13px;
-    transition: all 0.15s;
+    border-radius: 12px;
+    padding: 20px 24px;
+    position: relative;
+    overflow: hidden;
   }
-  .section-nav a:hover { color: var(--text); border-color: var(--muted); }
-  .section-nav a[data-section="running"]:hover,
-  .section-nav a[data-section="running"].active { background: var(--orange); border-color: var(--orange); color: #fff; }
-  .section-nav a[data-section="strength"]:hover,
-  .section-nav a[data-section="strength"].active { background: var(--purple); border-color: var(--purple); color: #fff; }
-  .section-nav a[data-section="health"]:hover,
-  .section-nav a[data-section="health"].active { background: var(--green); border-color: var(--green); color: #fff; }
+  .overview-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; bottom: 0;
+    width: 3px;
+    border-radius: 12px 0 0 12px;
+  }
+  .overview-card.accent-orange::before { background: var(--orange); }
+  .overview-card.accent-blue::before { background: var(--blue); }
+  .ov-label {
+    color: var(--muted);
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    margin-bottom: 6px;
+  }
+  .ov-title { font-size: 16px; font-weight: 700; margin-bottom: 2px; }
+  .ov-meta { color: var(--muted); font-size: 12px; margin-bottom: 10px; }
+  .ov-stats { display: flex; gap: 20px; flex-wrap: wrap; }
+  .ov-stat-label { color: var(--muted); font-size: 10px; text-transform: uppercase; letter-spacing: 0.06em; }
+  .ov-stat-value { font-size: 15px; font-weight: 700; line-height: 1.3; }
+  .ov-stat-unit { color: var(--muted); font-size: 10px; }
+  .weekly-big { font-size: 36px; font-weight: 800; line-height: 1; }
+  .weekly-unit { color: var(--muted); font-size: 14px; font-weight: 400; margin-left: 4px; }
+  .weekly-delta { font-size: 13px; font-weight: 600; margin-top: 6px; display: flex; align-items: center; gap: 4px; }
+  .weekly-delta.up { color: var(--green); }
+  .weekly-delta.down { color: var(--red); }
+  .weekly-delta.flat { color: var(--muted); }
+  .weekly-sparkline { margin-top: 10px; }
+  .weekly-sparkline canvas { width: 100%; height: 48px; display: block; }
+
+  /* ── Health overview cards ── */
+  .health-overview-row {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 12px;
+    margin-bottom: 28px;
+  }
+  .health-mini {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 16px;
+    position: relative;
+    overflow: hidden;
+  }
+  .health-mini::after {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 2px;
+    background: var(--accent, var(--green));
+    border-radius: 10px 10px 0 0;
+  }
+  .hm-label { color: var(--muted); font-size: 10px; text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 4px; }
+  .hm-value { font-size: 24px; font-weight: 700; line-height: 1; }
+  .hm-unit { color: var(--muted); font-size: 11px; }
+  .hm-delta { font-size: 11px; font-weight: 600; margin-top: 4px; display: flex; align-items: center; gap: 3px; }
+  .hm-delta.better { color: var(--green); }
+  .hm-delta.worse { color: var(--red); }
+  .hm-delta.neutral { color: var(--muted); }
+  .hm-spark { margin-top: 8px; }
+  .hm-spark canvas { width: 100%; height: 32px; display: block; }
 
   /* ── Main layout ── */
   main { padding: 28px 32px; max-width: 1400px; margin: 0 auto; }
@@ -404,6 +460,8 @@
   @media (max-width: 900px) {
     main { padding: 16px; }
     header { padding: 12px 16px; flex-wrap: wrap; gap: 8px; }
+    .overview-row { grid-template-columns: 1fr; }
+    .health-overview-row { grid-template-columns: repeat(2, 1fr); }
     .charts-grid { grid-template-columns: 1fr; }
     .chart-card.wide { grid-column: 1; }
     .today-card { grid-template-columns: 1fr; justify-items: center; }
@@ -428,17 +486,15 @@
       <span id="last-updated">-</span>
     </div>
   </div>
-  <div class="section-nav">
-    <a href="#section-running" data-section="running">Running</a>
-    <a href="#section-strength" data-section="strength">Strength</a>
-    <a href="#section-health" data-section="health">Health</a>
-  </div>
 </header>
 
 <main id="app" style="display:none">
 
-  <!-- ════════ NEWEST ACTIVITY ════════ -->
-  <div id="newest-activity"></div>
+  <!-- ════════ OVERVIEW ROW ════════ -->
+  <div class="overview-row" id="overview-row"></div>
+
+  <!-- ════════ HEALTH OVERVIEW CARDS ════════ -->
+  <div class="health-overview-row" id="health-overview-row"></div>
 
   <!-- ════════ RUNNING (Strava) ════════ -->
   <div class="section-header" id="section-running">
@@ -733,41 +789,221 @@ let setCount = 0;
 let currentRange = 'all';
 
 // ══════════════════════════════════════════════════════════════════════════════
-// NEWEST ACTIVITY (any type from Strava)
+// OVERVIEW ROW (compact newest activity + weekly km)
 // ══════════════════════════════════════════════════════════════════════════════
-function renderNewestActivity() {
-  const container = document.getElementById('newest-activity');
+function renderOverviewRow() {
+  const container = document.getElementById('overview-row');
   const newest = allActivities.length ? allActivities[0] : null;
-  if (!newest) { container.innerHTML = ''; return; }
-  const typeLabel = newest.sport_type || newest.type || 'Activity';
-  const paceStr = newest.pace_str || '-';
-  const dist = newest.distance_km ? newest.distance_km.toFixed(2) + ' km' : '-';
-  const dur = fmtDuration(newest.moving_time_s);
-  const hr = newest.avg_heartrate ? Math.round(newest.avg_heartrate) + ' bpm' : '-';
-  const elev = newest.elevation_gain ? newest.elevation_gain + ' m' : '-';
-  const kudos = newest.kudos_count || 0;
-  const ago = (() => {
-    const diff = Date.now() - new Date(newest.datetime || newest.date).getTime();
-    const days = Math.floor(diff / 86400000);
-    if (days === 0) return 'Today';
-    if (days === 1) return 'Yesterday';
-    return days + ' days ago';
-  })();
-  container.innerHTML = '<div class="newest-activity">' +
-    '<div style="flex:1;min-width:180px">' +
-      '<div class="na-header">Newest Activity</div>' +
-      '<div class="na-name">' + (newest.name || typeLabel) + '</div>' +
-      '<div class="na-date">' + fmtDate(newest.date) + ' &middot; ' + ago + ' &middot; <span class="badge ' + badgeClass(typeLabel) + '">' + typeLabel + '</span></div>' +
-      (kudos > 0 ? '<div class="na-kudos">&#128079; ' + kudos + ' kudos</div>' : '') +
-    '</div>' +
-    '<div class="na-stats">' +
-      '<div><div class="na-stat-label">Distance</div><div class="na-stat-value">' + dist + '</div></div>' +
-      '<div><div class="na-stat-label">Duration</div><div class="na-stat-value">' + dur + '</div></div>' +
-      '<div><div class="na-stat-label">Pace</div><div class="na-stat-value">' + paceStr + '</div><div class="na-stat-unit">/km</div></div>' +
-      '<div><div class="na-stat-label">Heart Rate</div><div class="na-stat-value">' + hr + '</div></div>' +
-      '<div><div class="na-stat-label">Elevation</div><div class="na-stat-value">' + elev + '</div></div>' +
-    '</div>' +
+
+  // ── Left card: newest activity (compact) ──
+  let leftHtml = '';
+  if (newest) {
+    const typeLabel = newest.sport_type || newest.type || 'Activity';
+    const dist = newest.distance_km ? newest.distance_km.toFixed(1) + ' km' : '-';
+    const dur = fmtDuration(newest.moving_time_s);
+    const paceStr = newest.pace_str || '-';
+    const hr = newest.avg_heartrate ? Math.round(newest.avg_heartrate) + ' bpm' : '-';
+    const kudos = newest.kudos_count || 0;
+    const ago = (() => {
+      const diff = Date.now() - new Date(newest.datetime || newest.date).getTime();
+      const days = Math.floor(diff / 86400000);
+      if (days === 0) return 'Today';
+      if (days === 1) return 'Yesterday';
+      return days + ' days ago';
+    })();
+    leftHtml = '<div class="overview-card accent-orange">' +
+      '<div class="ov-label">Latest Activity</div>' +
+      '<div class="ov-title">' + (newest.name || typeLabel) + '</div>' +
+      '<div class="ov-meta">' + fmtDate(newest.date) + ' &middot; ' + ago +
+        (kudos > 0 ? ' &middot; &#128079; ' + kudos : '') +
+        ' &middot; <span class="badge ' + badgeClass(typeLabel) + '" style="font-size:10px">' + typeLabel + '</span></div>' +
+      '<div class="ov-stats">' +
+        '<div><div class="ov-stat-label">Dist</div><div class="ov-stat-value">' + dist + '</div></div>' +
+        '<div><div class="ov-stat-label">Time</div><div class="ov-stat-value">' + dur + '</div></div>' +
+        '<div><div class="ov-stat-label">Pace</div><div class="ov-stat-value">' + paceStr + '</div><div class="ov-stat-unit">/km</div></div>' +
+        '<div><div class="ov-stat-label">HR</div><div class="ov-stat-value">' + hr + '</div></div>' +
+      '</div></div>';
+  } else {
+    leftHtml = '<div class="overview-card accent-orange"><div class="ov-label">Latest Activity</div><div style="color:var(--muted);padding:12px 0">No activities yet</div></div>';
+  }
+
+  // ── Right card: weekly km with comparison ──
+  const runs = allActivities.filter(isRun);
+  const now = new Date();
+  const thisMonday = new Date(now);
+  thisMonday.setDate(now.getDate() - (now.getDay() === 0 ? 6 : now.getDay() - 1));
+  thisMonday.setHours(0,0,0,0);
+  const lastMonday = new Date(thisMonday);
+  lastMonday.setDate(lastMonday.getDate() - 7);
+
+  let thisWeekKm = 0, lastWeekKm = 0;
+  const weeklyBuckets = {};
+  runs.forEach(r => {
+    const d = new Date(r.date);
+    if (d >= thisMonday) thisWeekKm += (r.distance_km || 0);
+    else if (d >= lastMonday && d < thisMonday) lastWeekKm += (r.distance_km || 0);
+    const wk = weekLabel(r.date);
+    weeklyBuckets[wk] = (weeklyBuckets[wk] || 0) + (r.distance_km || 0);
+  });
+  const delta = thisWeekKm - lastWeekKm;
+  const deltaAbs = Math.abs(delta).toFixed(1);
+  const deltaClass = delta > 0.5 ? 'up' : delta < -0.5 ? 'down' : 'flat';
+  const deltaArrow = delta > 0.5 ? '&#9650;' : delta < -0.5 ? '&#9660;' : '&#8212;';
+  const deltaText = delta > 0.5 ? '+' + deltaAbs + ' km vs last week' : delta < -0.5 ? '-' + deltaAbs + ' km vs last week' : 'Same as last week';
+
+  // Last 8 weeks for sparkline
+  const recentWeeks = Object.entries(weeklyBuckets).sort((a,b)=>a[0].localeCompare(b[0])).slice(-8);
+
+  let rightHtml = '<div class="overview-card accent-blue">' +
+    '<div class="ov-label">This Week Running</div>' +
+    '<div class="weekly-big">' + thisWeekKm.toFixed(1) + '<span class="weekly-unit">km</span></div>' +
+    '<div class="weekly-delta ' + deltaClass + '">' + deltaArrow + ' ' + deltaText + '</div>' +
+    '<div class="weekly-sparkline"><canvas id="weeklySparkline" height="48"></canvas></div>' +
   '</div>';
+
+  container.innerHTML = leftHtml + rightHtml;
+
+  // Draw sparkline
+  if (recentWeeks.length >= 2) {
+    drawSparkline('weeklySparkline', recentWeeks.map(([,v]) => v), BLUE, 'rgba(74,158,255,0.15)');
+  }
+}
+
+// ══════════════════════════════════════════════════════════════════════════════
+// HEALTH OVERVIEW CARDS (Whoop data)
+// ══════════════════════════════════════════════════════════════════════════════
+let whoopDataGlobal = null;
+
+function renderHealthOverview(data) {
+  whoopDataGlobal = data;
+  const container = document.getElementById('health-overview-row');
+  const recs = data.recoveries.filter(r => r.recovery_score != null);
+  const sleeps = data.sleeps.filter(s => !s.nap && s.total_in_bed_ms);
+  const cycles = data.cycles.filter(c => c.strain != null);
+
+  if (!recs.length) { container.innerHTML = ''; return; }
+
+  const latest = recs[0] || {};
+  const prev = recs[1] || {};
+  const latestSleep = sleeps[0] || {};
+  const prevSleep = sleeps[1] || {};
+  const latestCycle = cycles[0] || {};
+  const prevCycle = cycles[1] || {};
+
+  // Helpers
+  function deltaHTML(curr, prev, unit, higherIsBetter) {
+    if (curr == null || prev == null) return '<span class="hm-delta neutral">--</span>';
+    const diff = curr - prev;
+    const absDiff = Math.abs(diff).toFixed(diff > 10 ? 0 : 1);
+    const isBetter = higherIsBetter ? diff > 0 : diff < 0;
+    const cls = Math.abs(diff) < 0.5 ? 'neutral' : isBetter ? 'better' : 'worse';
+    const arrow = diff > 0.5 ? '&#9650;' : diff < -0.5 ? '&#9660;' : '&#8212;';
+    return '<div class="hm-delta ' + cls + '">' + arrow + ' ' + absDiff + ' ' + unit + ' vs yesterday</div>';
+  }
+
+  const sleepHrs = latestSleep.total_in_bed_ms ? (latestSleep.total_in_bed_ms / 3600000) : null;
+  const prevSleepHrs = prevSleep.total_in_bed_ms ? (prevSleep.total_in_bed_ms / 3600000) : null;
+  const sleepEff = latestSleep.sleep_efficiency_pct ? Math.round(latestSleep.sleep_efficiency_pct) : null;
+
+  const cards = [
+    {
+      label: 'Recovery',
+      value: latest.recovery_score != null ? Math.round(latest.recovery_score) + '%' : '-',
+      unit: '',
+      delta: deltaHTML(latest.recovery_score, prev.recovery_score, '%', true),
+      accent: recoveryColor(latest.recovery_score),
+      sparkData: recs.slice(0, 14).reverse().map(r => r.recovery_score),
+      sparkColor: recoveryColor(latest.recovery_score),
+    },
+    {
+      label: 'Sleep',
+      value: sleepHrs ? sleepHrs.toFixed(1) + 'h' : '-',
+      unit: sleepEff ? sleepEff + '% eff.' : '',
+      delta: deltaHTML(sleepHrs, prevSleepHrs, 'h', true),
+      accent: '#2dd4a0',
+      sparkData: sleeps.slice(0, 14).reverse().map(s => s.total_in_bed_ms / 3600000),
+      sparkColor: '#2dd4a0',
+    },
+    {
+      label: 'Resting HR',
+      value: latest.resting_heart_rate ? Math.round(latest.resting_heart_rate) : '-',
+      unit: 'bpm',
+      delta: deltaHTML(latest.resting_heart_rate, prev.resting_heart_rate, 'bpm', false),
+      accent: '#ff5c6a',
+      sparkData: recs.slice(0, 14).reverse().map(r => r.resting_heart_rate).filter(v => v),
+      sparkColor: '#ff5c6a',
+    },
+    {
+      label: 'Day Strain',
+      value: latestCycle.strain != null ? (Math.round(latestCycle.strain * 10) / 10).toFixed(1) : '-',
+      unit: '/ 21',
+      delta: deltaHTML(latestCycle.strain, prevCycle.strain, '', true),
+      accent: '#fc4c02',
+      sparkData: cycles.slice(0, 14).reverse().map(c => c.strain),
+      sparkColor: '#fc4c02',
+    },
+  ];
+
+  container.innerHTML = cards.map((c, i) =>
+    '<div class="health-mini" style="--accent:' + c.accent + '">' +
+      '<div class="hm-label">' + c.label + '</div>' +
+      '<div class="hm-value" style="color:' + c.accent + '">' + c.value + '</div>' +
+      '<div class="hm-unit">' + c.unit + '</div>' +
+      c.delta +
+      '<div class="hm-spark"><canvas id="hmSpark' + i + '" height="32"></canvas></div>' +
+    '</div>'
+  ).join('');
+
+  // Draw sparklines
+  cards.forEach((c, i) => {
+    if (c.sparkData && c.sparkData.length >= 2) {
+      drawSparkline('hmSpark' + i, c.sparkData, c.sparkColor, c.sparkColor + '22');
+    }
+  });
+}
+
+// ══════════════════════════════════════════════════════════════════════════════
+// SPARKLINE HELPER
+// ══════════════════════════════════════════════════════════════════════════════
+function drawSparkline(canvasId, values, strokeColor, fillColor) {
+  const canvas = document.getElementById(canvasId);
+  if (!canvas || !values.length) return;
+  const ctx = canvas.getContext('2d');
+  const w = canvas.offsetWidth || canvas.width;
+  const h = canvas.offsetHeight || canvas.height;
+  canvas.width = w * 2;
+  canvas.height = h * 2;
+  ctx.scale(2, 2);
+  const pad = 2;
+  const min = Math.min(...values), max = Math.max(...values);
+  const range = max - min || 1;
+  const step = (w - pad * 2) / (values.length - 1);
+
+  ctx.beginPath();
+  values.forEach((v, i) => {
+    const x = pad + i * step;
+    const y = h - pad - ((v - min) / range) * (h - pad * 2);
+    if (i === 0) ctx.moveTo(x, y); else ctx.lineTo(x, y);
+  });
+  ctx.strokeStyle = strokeColor;
+  ctx.lineWidth = 1.5;
+  ctx.lineJoin = 'round';
+  ctx.stroke();
+
+  // Fill area
+  const lastX = pad + (values.length - 1) * step;
+  ctx.lineTo(lastX, h);
+  ctx.lineTo(pad, h);
+  ctx.closePath();
+  ctx.fillStyle = fillColor;
+  ctx.fill();
+
+  // Dot on last value
+  const lastY = h - pad - ((values[values.length - 1] - min) / range) * (h - pad * 2);
+  ctx.beginPath();
+  ctx.arc(lastX, lastY, 2.5, 0, Math.PI * 2);
+  ctx.fillStyle = strokeColor;
+  ctx.fill();
 }
 
 // ══════════════════════════════════════════════════════════════════════════════
@@ -1284,8 +1520,8 @@ async function loadData() {
     document.getElementById('loading').style.display = 'none';
     document.getElementById('app').style.display = 'block';
 
-    // Render Strava sections
-    renderNewestActivity();
+    // Render overview and Strava sections
+    renderOverviewRow();
     renderRunSection('all');
     renderStrSection();
 
@@ -1294,6 +1530,7 @@ async function loadData() {
       const whoopRes = await fetch('whoop_data.json?t=' + Date.now());
       if (!whoopRes.ok) throw new Error('No whoop data');
       const whoopData = await whoopRes.json();
+      renderHealthOverview(whoopData);
       buildWhoopSection(whoopData);
     } catch(e) {
       document.getElementById('whoop-content').innerHTML =
@@ -1325,19 +1562,6 @@ document.querySelectorAll('.filter-btn').forEach(btn => {
   });
 });
 
-// Section nav active highlighting on scroll
-const sectionIds = ['section-running', 'section-strength', 'section-health'];
-const navLinks = document.querySelectorAll('.section-nav a');
-window.addEventListener('scroll', () => {
-  let current = sectionIds[0];
-  for (const id of sectionIds) {
-    const el = document.getElementById(id);
-    if (el && el.getBoundingClientRect().top <= 120) current = id;
-  }
-  navLinks.forEach(a => {
-    a.classList.toggle('active', a.getAttribute('href') === '#' + current);
-  });
-}, { passive: true });
 
 loadData();
 </script>
