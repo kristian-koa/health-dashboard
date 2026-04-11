@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-04-11T17:48:54.693022+00:00",
+  "last_updated": "2026-04-11T19:04:05.574818+00:00",
   "profile": {
     "first_name": "Kristian Oliversson",
     "last_name": "Andreasen",
@@ -15,7 +15,7 @@
     "avg_recovery": 56.5,
     "avg_hrv": 62.1,
     "avg_rhr": 56.8,
-    "total_workouts": 51
+    "total_workouts": 52
   },
   "recoveries": [
     {
@@ -2643,10 +2643,10 @@
       "id": 1424689443,
       "start": "2026-04-10T23:52:32.580Z",
       "end": null,
-      "strain": 2.4935198,
-      "kilojoule": 6072.08,
-      "avg_hr": 62,
-      "max_hr": 124
+      "strain": 10.220437,
+      "kilojoule": 8044.104,
+      "avg_hr": 66,
+      "max_hr": 179
     },
     {
       "id": 1422451242,
@@ -3461,15 +3461,28 @@
   ],
   "workouts": [
     {
-      "id": "e776cf00-3c3e-4836-9550-deacf820af67",
-      "start": "2026-04-10T15:58:30.900Z",
-      "end": "2026-04-10T17:01:29.990Z",
+      "id": "70c14ae4-12e7-4640-b554-c6b5c1829131",
+      "start": "2026-04-11T17:52:44.000Z",
+      "end": "2026-04-11T18:21:46.544Z",
       "sport_id": 0,
       "sport_name": "Running",
-      "strain": 15.873849,
-      "avg_hr": 166,
+      "strain": 9.723735,
+      "avg_hr": 154,
+      "max_hr": 179,
+      "kilojoule": 1515.1073,
+      "distance_meter": null,
+      "zone_durations": {}
+    },
+    {
+      "id": "e776cf00-3c3e-4836-9550-deacf820af67",
+      "start": "2026-04-10T15:58:12.000Z",
+      "end": "2026-04-10T16:53:59.551Z",
+      "sport_id": 0,
+      "sport_name": "Running",
+      "strain": 15.736766,
+      "avg_hr": 171,
       "max_hr": 195,
-      "kilojoule": 3947.1042,
+      "kilojoule": 3705.9502,
       "distance_meter": null,
       "zone_durations": {}
     },
