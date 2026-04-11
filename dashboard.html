@@ -67,7 +67,7 @@
     background: var(--surface);
     border: 1px solid var(--border);
     border-radius: 12px;
-    padding: 20px 24px;
+    padding: 24px 28px;
     position: relative;
     overflow: hidden;
   }
@@ -82,17 +82,17 @@
   .overview-card.accent-blue::before { background: var(--blue); }
   .ov-label {
     color: var(--muted);
-    font-size: 10px;
+    font-size: 11px;
     text-transform: uppercase;
     letter-spacing: 0.08em;
-    margin-bottom: 6px;
+    margin-bottom: 8px;
   }
-  .ov-title { font-size: 16px; font-weight: 700; margin-bottom: 2px; }
-  .ov-meta { color: var(--muted); font-size: 12px; margin-bottom: 10px; }
-  .ov-stats { display: flex; gap: 20px; flex-wrap: wrap; }
-  .ov-stat-label { color: var(--muted); font-size: 10px; text-transform: uppercase; letter-spacing: 0.06em; }
-  .ov-stat-value { font-size: 15px; font-weight: 700; line-height: 1.3; }
-  .ov-stat-unit { color: var(--muted); font-size: 10px; }
+  .ov-title { font-size: 20px; font-weight: 700; margin-bottom: 4px; }
+  .ov-meta { color: var(--muted); font-size: 13px; margin-bottom: 12px; }
+  .ov-stats { display: flex; gap: 24px; flex-wrap: wrap; }
+  .ov-stat-label { color: var(--muted); font-size: 11px; text-transform: uppercase; letter-spacing: 0.06em; }
+  .ov-stat-value { font-size: 18px; font-weight: 700; line-height: 1.3; }
+  .ov-stat-unit { color: var(--muted); font-size: 11px; }
   .weekly-big { font-size: 36px; font-weight: 800; line-height: 1; }
   .weekly-unit { color: var(--muted); font-size: 14px; font-weight: 400; margin-left: 4px; }
   .weekly-delta { font-size: 13px; font-weight: 600; margin-top: 6px; display: flex; align-items: center; gap: 4px; }
@@ -134,6 +134,36 @@
   .hm-delta.neutral { color: var(--muted); }
   .hm-spark { margin-top: 8px; }
   .hm-spark canvas { width: 100%; height: 32px; display: block; }
+
+  /* ── Strain ring card ── */
+  .strain-ring-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 20px 16px 16px;
+  }
+  .strain-ring-wrap {
+    position: relative;
+    width: 90px;
+    height: 90px;
+    margin-bottom: 6px;
+  }
+  .strain-ring-wrap canvas { width: 90px; height: 90px; }
+  .strain-ring-value {
+    position: absolute;
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 24px;
+    font-weight: 700;
+    color: var(--text);
+  }
+  .strain-sub {
+    font-size: 11px;
+    color: var(--muted);
+    text-align: center;
+    margin-top: 2px;
+  }
 
   /* ── Main layout ── */
   main { padding: 28px 32px; max-width: 1400px; margin: 0 auto; }
@@ -904,6 +934,11 @@ function renderHealthOverview(data) {
   const sleepHrs = latestSleep.total_in_bed_ms ? (latestSleep.total_in_bed_ms / 3600000) : null;
   const prevSleepHrs = prevSleep.total_in_bed_ms ? (prevSleep.total_in_bed_ms / 3600000) : null;
   const sleepEff = latestSleep.sleep_efficiency_pct ? Math.round(latestSleep.sleep_efficiency_pct) : null;
+  const sleepCons = latestSleep.sleep_consistency_pct ? Math.round(latestSleep.sleep_consistency_pct) : null;
+
+  // Calories from cycles (kilojoule → kcal)
+  const latestKcal = latestCycle.kilojoule ? Math.round(latestCycle.kilojoule / 4.184) : null;
+  const prevKcal = prevCycle.kilojoule ? Math.round(prevCycle.kilojoule / 4.184) : null;
 
   const cards = [
     {
@@ -918,7 +953,7 @@ function renderHealthOverview(data) {
     {
       label: 'Sleep',
       value: sleepHrs ? sleepHrs.toFixed(1) + 'h' : '-',
-      unit: sleepEff ? sleepEff + '% eff.' : '',
+      unit: (sleepEff ? sleepEff + '% eff.' : '') + (sleepCons ? ' &middot; ' + sleepCons + '% consistency' : ''),
       delta: deltaHTML(sleepHrs, prevSleepHrs, 'h', true),
       accent: '#2dd4a0',
       sparkData: sleeps.slice(0, 14).reverse().map(s => s.total_in_bed_ms / 3600000),
@@ -933,16 +968,23 @@ function renderHealthOverview(data) {
       sparkData: recs.slice(0, 14).reverse().map(r => r.resting_heart_rate).filter(v => v),
       sparkColor: '#ff5c6a',
     },
-    {
-      label: 'Day Strain',
-      value: latestCycle.strain != null ? (Math.round(latestCycle.strain * 10) / 10).toFixed(1) : '-',
-      unit: '/ 21',
-      delta: deltaHTML(latestCycle.strain, prevCycle.strain, '', true),
-      accent: '#fc4c02',
-      sparkData: cycles.slice(0, 14).reverse().map(c => c.strain),
-      sparkColor: '#fc4c02',
-    },
   ];
+
+  // Strain ring card (separate from standard cards)
+  const strainVal = latestCycle.strain != null ? (Math.round(latestCycle.strain * 10) / 10) : null;
+  const strainDisplay = strainVal != null ? strainVal.toFixed(1) : '-';
+
+  // Strain color: blue gradient like Whoop (light blue → bright blue based on intensity)
+  function strainColor(s) {
+    if (s == null) return '#3a3a4a';
+    if (s >= 18) return '#00b4ff';
+    if (s >= 14) return '#0098e0';
+    if (s >= 10) return '#0080cc';
+    if (s >= 6) return '#0068b0';
+    return '#4a7fa8';
+  }
+
+  const strainCol = strainColor(strainVal);
 
   container.innerHTML = cards.map((c, i) =>
     '<div class="health-mini" style="--accent:' + c.accent + '">' +
@@ -952,14 +994,25 @@ function renderHealthOverview(data) {
       c.delta +
       '<div class="hm-spark"><canvas id="hmSpark' + i + '" height="32"></canvas></div>' +
     '</div>'
-  ).join('');
+  ).join('') +
+  '<div class="health-mini strain-ring-card" style="--accent:' + strainCol + '">' +
+    '<div class="hm-label">Day Strain</div>' +
+    '<div class="strain-ring-wrap"><canvas id="strainRingCanvas" width="90" height="90"></canvas>' +
+      '<div class="strain-ring-value">' + strainDisplay + '</div>' +
+    '</div>' +
+    (latestKcal ? '<div class="strain-sub">' + latestKcal.toLocaleString() + ' kcal</div>' : '') +
+    deltaHTML(latestCycle.strain, prevCycle.strain, '', true) +
+  '</div>';
 
-  // Draw sparklines
+  // Draw sparklines for standard cards
   cards.forEach((c, i) => {
     if (c.sparkData && c.sparkData.length >= 2) {
       drawSparkline('hmSpark' + i, c.sparkData, c.sparkColor, c.sparkColor + '22');
     }
   });
+
+  // Draw strain ring
+  drawStrainRing(strainVal, strainCol);
 }
 
 // ══════════════════════════════════════════════════════════════════════════════
@@ -1004,6 +1057,33 @@ function drawSparkline(canvasId, values, strokeColor, fillColor) {
   ctx.arc(lastX, lastY, 2.5, 0, Math.PI * 2);
   ctx.fillStyle = strokeColor;
   ctx.fill();
+}
+
+function drawStrainRing(strain, color) {
+  const canvas = document.getElementById('strainRingCanvas');
+  if (!canvas) return;
+  const ctx = canvas.getContext('2d');
+  const dpr = 2;
+  canvas.width = 90 * dpr;
+  canvas.height = 90 * dpr;
+  ctx.scale(dpr, dpr);
+  const cx = 45, cy = 45, r = 36, lw = 6;
+  const pct = Math.min((strain || 0) / 21, 1);
+  // Background track
+  ctx.beginPath();
+  ctx.arc(cx, cy, r, 0, Math.PI * 2);
+  ctx.strokeStyle = '#2a2a3a';
+  ctx.lineWidth = lw;
+  ctx.stroke();
+  // Strain arc (starts at top, goes clockwise)
+  if (pct > 0) {
+    ctx.beginPath();
+    ctx.arc(cx, cy, r, -Math.PI / 2, -Math.PI / 2 + Math.PI * 2 * pct);
+    ctx.strokeStyle = color;
+    ctx.lineWidth = lw;
+    ctx.lineCap = 'round';
+    ctx.stroke();
+  }
 }
 
 // ══════════════════════════════════════════════════════════════════════════════
