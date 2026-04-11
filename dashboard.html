@@ -182,6 +182,23 @@
   .sleep-hours { font-size: 14px; color: var(--muted); text-align: center; margin-top: 0; }
   .sleep-hours strong { color: var(--text); font-weight: 600; }
 
+  /* ── Health Monitor card ── */
+  .health-monitor-card { justify-content: flex-start; }
+  .hm-vitals-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 6px 16px;
+    flex: 1;
+    align-content: center;
+  }
+  .hm-vital { }
+  .hm-vital-label { font-size: 9px; color: var(--muted); text-transform: uppercase; letter-spacing: 0.06em; }
+  .hm-vital-val { font-size: 18px; font-weight: 700; line-height: 1.3; color: var(--text); display: flex; align-items: baseline; gap: 4px; }
+  .hm-vital-unit { font-size: 10px; color: var(--muted); font-weight: 400; }
+  .hm-vital-delta { font-size: 9px; margin-left: 2px; }
+  .hm-vital-delta.better { color: var(--green); }
+  .hm-vital-delta.worse { color: var(--red); }
+
   /* ── Activity selector ── */
   .activity-select-wrap { position: absolute; top: 16px; right: 16px; z-index: 2; }
   .activity-select {
@@ -196,8 +213,11 @@
   }
   .activity-select:focus { outline: none; border-color: var(--orange); }
 
+  /* ── Activity card body: text left, route right ── */
+  .activity-body { display: flex; gap: 16px; flex: 1; min-height: 0; }
+  .activity-info { flex: 1; min-width: 0; }
   /* ── Route map ── */
-  .route-map { margin-top: auto; padding-top: 8px; }
+  .route-map { width: 160px; flex-shrink: 0; display: flex; align-items: center; justify-content: center; }
   .route-map canvas { display: block; }
 
   /* ── 10-day label ── */
@@ -964,17 +984,21 @@ function renderActivityCard(container) {
     leftHtml = '<div class="overview-card accent-orange" style="position:relative">' +
       '<div class="activity-select-wrap"><select class="activity-select" id="activitySelect">' + selectOpts + '</select></div>' +
       '<div class="ov-label">Activity</div>' +
-      '<div class="ov-title">' + (act.name || typeLabel) + '</div>' +
-      '<div class="ov-meta">' + fmtDate(act.date) + ' &middot; ' + ago +
-        (kudos > 0 ? ' &middot; &#128079; ' + kudos : '') +
-        ' &middot; <span class="badge ' + badgeClass(typeLabel) + '" style="font-size:10px">' + typeLabel + '</span></div>' +
-      '<div class="ov-stats">' +
-        '<div><div class="ov-stat-label">Dist</div><div class="ov-stat-value">' + dist + '</div></div>' +
-        '<div><div class="ov-stat-label">Time</div><div class="ov-stat-value">' + dur + '</div></div>' +
-        '<div><div class="ov-stat-label">Pace</div><div class="ov-stat-value">' + paceStr + '</div><div class="ov-stat-unit">/km</div></div>' +
-        '<div><div class="ov-stat-label">HR</div><div class="ov-stat-value">' + hr + '</div></div>' +
+      '<div class="activity-body">' +
+        '<div class="activity-info">' +
+          '<div class="ov-title">' + (act.name || typeLabel) + '</div>' +
+          '<div class="ov-meta">' + fmtDate(act.date) + ' &middot; ' + ago +
+            (kudos > 0 ? ' &middot; &#128079; ' + kudos : '') +
+            ' &middot; <span class="badge ' + badgeClass(typeLabel) + '" style="font-size:10px">' + typeLabel + '</span></div>' +
+          '<div class="ov-stats">' +
+            '<div><div class="ov-stat-label">Dist</div><div class="ov-stat-value">' + dist + '</div></div>' +
+            '<div><div class="ov-stat-label">Time</div><div class="ov-stat-value">' + dur + '</div></div>' +
+            '<div><div class="ov-stat-label">Pace</div><div class="ov-stat-value">' + paceStr + '</div><div class="ov-stat-unit">/km</div></div>' +
+            '<div><div class="ov-stat-label">HR</div><div class="ov-stat-value">' + hr + '</div></div>' +
+          '</div>' +
+        '</div>' +
+        (hasMap ? '<div class="route-map"><canvas id="routeCanvas" width="140" height="120"></canvas></div>' : '') +
       '</div>' +
-      (hasMap ? '<div class="route-map"><canvas id="routeCanvas" width="260" height="80"></canvas></div>' : '') +
     '</div>';
   } else {
     leftHtml = '<div class="overview-card accent-orange"><div class="ov-label">Activity</div><div style="color:var(--muted);padding:12px 0">No activities yet</div></div>';
@@ -1072,8 +1096,8 @@ function drawRouteMap(polyline) {
   const points = decodePolyline(polyline);
   if (points.length < 2) return;
   const dpr = 2;
-  const w = canvas.offsetWidth || 260;
-  const h = canvas.offsetHeight || 80;
+  const w = canvas.offsetWidth || 140;
+  const h = canvas.offsetHeight || 120;
   canvas.style.width = w + 'px';
   canvas.style.height = h + 'px';
   canvas.width = w * dpr;
@@ -1169,7 +1193,6 @@ function renderHealthOverview(data) {
   // 10-day data slices (reversed = oldest first for charts)
   const rec10 = recs.slice(0, 10).reverse();
   const sleep10 = sleeps.slice(0, 10).reverse();
-  const rhr10 = recs.filter(r => r.resting_heart_rate).slice(0, 10).reverse();
   const strain10 = cycles.slice(0, 10).reverse();
 
   // ── Recovery card ──
@@ -1199,15 +1222,6 @@ function renderHealthOverview(data) {
     '<div class="hm-spark"><canvas id="hmSleep" height="80"></canvas><div class="hm-tooltip"></div></div>' +
   '</div>';
 
-  // ── Resting HR card ──
-  const rhrHTML = '<div class="health-mini" style="--accent:#ff5c6a">' +
-    '<div class="hm-label">Resting HR</div>' +
-    '<div class="hm-value" style="color:#ff5c6a">' + (latest.resting_heart_rate ? Math.round(latest.resting_heart_rate) : '-') + '</div>' +
-    '<div class="hm-unit">bpm</div>' +
-    deltaHTML(latest.resting_heart_rate, prev.resting_heart_rate, 'bpm', false) +
-    '<div class="hm-spark"><canvas id="hmRHR" height="80"></canvas><div class="hm-tooltip"></div></div>' +
-  '</div>';
-
   // ── Strain card with ring + faded bar background ──
   const strainHTML = '<div class="health-mini strain-ring-card" style="--accent:' + strainCol + '">' +
     '<div class="hm-label">Day Strain</div>' +
@@ -1219,7 +1233,42 @@ function renderHealthOverview(data) {
     deltaHTML(latestCycle.strain, prevCycle.strain, '', true) +
   '</div>';
 
-  container.innerHTML = recoveryHTML + sleepHTML + rhrHTML + strainHTML;
+  // ── Health Monitor card ──
+  const respRate = latestSleep.respiratory_rate ? latestSleep.respiratory_rate.toFixed(1) : '-';
+  const spo2 = latest.spo2_pct ? latest.spo2_pct.toFixed(1) : '-';
+  const rhr = latest.resting_heart_rate ? Math.round(latest.resting_heart_rate) : '-';
+  const hrv = latest.hrv_rmssd ? latest.hrv_rmssd.toFixed(0) : '-';
+  const skinTemp = latest.skin_temp_celsius ? latest.skin_temp_celsius.toFixed(1) : '-';
+  const avgHr = latestCycle.avg_hr ? Math.round(latestCycle.avg_hr) : '-';
+
+  const prevResp = (sleeps[1] || {}).respiratory_rate;
+  const prevSpo2 = prev.spo2_pct;
+  const prevHrv = prev.hrv_rmssd;
+  const prevSkin = prev.skin_temp_celsius;
+  const prevAvgHr = (cycles[1] || {}).avg_hr;
+
+  function miniDelta(curr, prev, higherBetter) {
+    if (curr == null || prev == null || curr === '-' || prev === '-') return '';
+    var d = (typeof curr === 'string' ? parseFloat(curr) : curr) - prev;
+    if (Math.abs(d) < 0.1) return '';
+    var cls = (higherBetter ? d > 0 : d < 0) ? 'better' : 'worse';
+    var arrow = d > 0 ? '&#9650;' : '&#9660;';
+    return '<span class="hm-vital-delta ' + cls + '">' + arrow + '</span>';
+  }
+
+  const healthMonHTML = '<div class="health-mini health-monitor-card" style="--accent:#a78bfa">' +
+    '<div class="hm-label">Health Monitor</div>' +
+    '<div class="hm-vitals-grid">' +
+      '<div class="hm-vital"><div class="hm-vital-label">Resp Rate</div><div class="hm-vital-val">' + respRate + miniDelta(latestSleep.respiratory_rate, prevResp, false) + '<span class="hm-vital-unit">rpm</span></div></div>' +
+      '<div class="hm-vital"><div class="hm-vital-label">SpO2</div><div class="hm-vital-val">' + spo2 + miniDelta(latest.spo2_pct, prevSpo2, true) + '<span class="hm-vital-unit">%</span></div></div>' +
+      '<div class="hm-vital"><div class="hm-vital-label">Resting HR</div><div class="hm-vital-val">' + rhr + miniDelta(latest.resting_heart_rate, prev.resting_heart_rate, false) + '<span class="hm-vital-unit">bpm</span></div></div>' +
+      '<div class="hm-vital"><div class="hm-vital-label">HRV</div><div class="hm-vital-val">' + hrv + miniDelta(latest.hrv_rmssd, prevHrv, true) + '<span class="hm-vital-unit">ms</span></div></div>' +
+      '<div class="hm-vital"><div class="hm-vital-label">Avg HR</div><div class="hm-vital-val">' + avgHr + miniDelta(latestCycle.avg_hr, prevAvgHr, false) + '<span class="hm-vital-unit">bpm</span></div></div>' +
+      '<div class="hm-vital"><div class="hm-vital-label">Skin Temp</div><div class="hm-vital-val">' + skinTemp + miniDelta(latest.skin_temp_celsius, prevSkin, false) + '<span class="hm-vital-unit">&deg;C</span></div></div>' +
+    '</div>' +
+  '</div>';
+
+  container.innerHTML = recoveryHTML + sleepHTML + strainHTML + healthMonHTML;
 
   // ── Draw bar charts ──
   drawBarChart('hmRecovery',
@@ -1238,12 +1287,6 @@ function renderHealthOverview(data) {
     sleep10.map(s => dateShort(s.start)),
     function(v) { return v >= 85 ? '#2dd4a0' : v >= 70 ? '#eab308' : '#ff5c6a'; }
   );
-  drawBarChart('hmRHR',
-    rhr10.map(r => r.resting_heart_rate),
-    '#ff5c6a',
-    rhr10.map(r => dateShort(r.created_at))
-  );
-
   // Draw strain ring + background bars
   drawStrainRing(strainVal, strainCol);
   drawStrainBg(strain10);
