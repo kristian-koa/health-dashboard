@@ -1,0 +1,2069 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Health Dashboard</title>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
+<script>
+const _embeddedActivities = [];
+const _embeddedWhoop = {"last_updated": "2026-04-11T07:46:07.439705+00:00", "profile": {"first_name": "Kristian Oliversson", "last_name": "Andreasen", "email": "koa1996@gmail.com"}, "body": {"height_meter": 1.79, "weight_kg": 87.342, "max_heart_rate": 210}, "summary": {"days": 91, "avg_recovery": 56.7, "avg_hrv": 62.2, "avg_rhr": 56.7, "total_workouts": 51}, "recoveries": [{"cycle_id": 1424689443, "created_at": "2026-04-11T07:02:00.285Z", "updated_at": "2026-04-11T07:02:00.285Z", "recovery_score": 62.0, "resting_heart_rate": 54.0, "hrv_rmssd": 62.536045, "spo2_pct": 97.5625, "skin_temp_celsius": 34.121334}, {"cycle_id": 1422451242, "created_at": "2026-04-10T05:40:24.201Z", "updated_at": "2026-04-10T05:40:24.201Z", "recovery_score": 74.0, "resting_heart_rate": 55.0, "hrv_rmssd": 65.16606, "spo2_pct": 97.09091, "skin_temp_celsius": 33.754826}, {"cycle_id": 1420385826, "created_at": "2026-04-09T05:48:55.666Z", "updated_at": "2026-04-09T05:48:55.666Z", "recovery_score": 42.0, "resting_heart_rate": 56.0, "hrv_rmssd": 57.10441, "spo2_pct": 97.55556, "skin_temp_celsius": 34.100666}, {"cycle_id": 1418460280, "created_at": "2026-04-08T07:07:31.490Z", "updated_at": "2026-04-08T07:07:31.490Z", "recovery_score": 74.0, "resting_heart_rate": 55.0, "hrv_rmssd": 62.730564, "spo2_pct": 96.5, "skin_temp_celsius": 34.036667}, {"cycle_id": 1416144050, "created_at": "2026-04-07T05:45:54.901Z", "updated_at": "2026-04-07T05:45:54.901Z", "recovery_score": 70.0, "resting_heart_rate": 56.0, "hrv_rmssd": 60.876087, "spo2_pct": 97.15385, "skin_temp_celsius": 34.003666}, {"cycle_id": 1414093395, "created_at": "2026-04-06T06:44:28.748Z", "updated_at": "2026-04-06T06:44:28.748Z", "recovery_score": 45.0, "resting_heart_rate": 57.0, "hrv_rmssd": 53.65428, "spo2_pct": 97.566666, "skin_temp_celsius": 33.880165}, {"cycle_id": 1412348126, "created_at": "2026-04-05T10:03:11.137Z", "updated_at": "2026-04-05T10:03:11.137Z", "recovery_score": 37.0, "resting_heart_rate": 58.0, "hrv_rmssd": 47.997307, "spo2_pct": 97.5, "skin_temp_celsius": 33.88759}, {"cycle_id": 1409915515, "created_at": "2026-04-04T06:51:28.375Z", "updated_at": "2026-04-04T10:51:44.528Z", "recovery_score": 43.0, "resting_heart_rate": 60.0, "hrv_rmssd": 55.14738, "spo2_pct": 96.77778, "skin_temp_celsius": 33.757168}, {"cycle_id": 1408017927, "created_at": "2026-04-03T07:57:26.581Z", "updated_at": "2026-04-03T07:57:26.581Z", "recovery_score": 53.0, "resting_heart_rate": 56.0, "hrv_rmssd": 58.714924, "spo2_pct": 96.07692, "skin_temp_celsius": 34.034332}, {"cycle_id": 1405980199, "created_at": "2026-04-02T07:58:35.091Z", "updated_at": "2026-04-02T10:46:38.071Z", "recovery_score": 59.0, "resting_heart_rate": 57.0, "hrv_rmssd": 62.08308, "spo2_pct": 96.416664, "skin_temp_celsius": 33.823334}, {"cycle_id": 1403659556, "created_at": "2026-04-01T06:06:55.489Z", "updated_at": "2026-04-01T06:06:55.489Z", "recovery_score": 58.0, "resting_heart_rate": 57.0, "hrv_rmssd": 62.925972, "spo2_pct": 97.066666, "skin_temp_celsius": 33.938168}, {"cycle_id": 1401676307, "created_at": "2026-03-31T06:58:20.643Z", "updated_at": "2026-03-31T06:58:20.643Z", "recovery_score": 72.0, "resting_heart_rate": 54.0, "hrv_rmssd": 66.74449, "spo2_pct": 96.02778, "skin_temp_celsius": 33.718666}, {"cycle_id": 1399545018, "created_at": "2026-03-30T06:44:02.072Z", "updated_at": "2026-03-30T06:44:02.072Z", "recovery_score": 68.0, "resting_heart_rate": 57.0, "hrv_rmssd": 62.28644, "spo2_pct": 97.63158, "skin_temp_celsius": 33.742332}, {"cycle_id": 1397602418, "created_at": "2026-03-29T08:52:57.312Z", "updated_at": "2026-03-29T08:52:57.312Z", "recovery_score": 87.0, "resting_heart_rate": 56.0, "hrv_rmssd": 70.75811, "spo2_pct": 97.416664, "skin_temp_celsius": 33.943886}, {"cycle_id": 1395427771, "created_at": "2026-03-28T07:59:38.667Z", "updated_at": "2026-03-28T07:59:38.667Z", "recovery_score": 81.0, "resting_heart_rate": 56.0, "hrv_rmssd": 67.56813, "spo2_pct": 96.0, "skin_temp_celsius": 34.027664}, {"cycle_id": 1393331631, "created_at": "2026-03-27T07:09:30.618Z", "updated_at": "2026-03-27T07:09:30.618Z", "recovery_score": 45.0, "resting_heart_rate": 56.0, "hrv_rmssd": 53.122593, "spo2_pct": 96.181816, "skin_temp_celsius": 33.873333}, {"cycle_id": 1391411479, "created_at": "2026-03-26T08:08:08.033Z", "updated_at": "2026-03-26T08:08:08.033Z", "recovery_score": 62.0, "resting_heart_rate": 54.0, "hrv_rmssd": 75.31951, "spo2_pct": 96.71429, "skin_temp_celsius": 33.623665}, {"cycle_id": 1389152799, "created_at": "2026-03-25T06:56:29.438Z", "updated_at": "2026-03-25T07:36:32.217Z", "recovery_score": 48.0, "resting_heart_rate": 58.0, "hrv_rmssd": 53.889137, "spo2_pct": 96.55556, "skin_temp_celsius": 33.73}, {"cycle_id": 1387128540, "created_at": "2026-03-24T07:15:00.003Z", "updated_at": "2026-03-24T07:24:13.336Z", "recovery_score": 35.0, "resting_heart_rate": 62.0, "hrv_rmssd": 49.44979, "spo2_pct": 93.1, "skin_temp_celsius": 34.051167}, {"cycle_id": 1385041257, "created_at": "2026-03-23T07:21:33.564Z", "updated_at": "2026-03-23T07:21:33.564Z", "recovery_score": 57.0, "resting_heart_rate": 59.0, "hrv_rmssd": 55.20358, "spo2_pct": 97.111115, "skin_temp_celsius": 34.124}, {"cycle_id": 1382959050, "created_at": "2026-03-22T08:02:01.963Z", "updated_at": "2026-03-22T08:02:01.963Z", "recovery_score": 43.0, "resting_heart_rate": 59.0, "hrv_rmssd": 52.1899, "spo2_pct": 97.05556, "skin_temp_celsius": 34.237667}, {"cycle_id": 1380848719, "created_at": "2026-03-21T07:10:24.804Z", "updated_at": "2026-03-21T07:10:24.804Z", "recovery_score": 75.0, "resting_heart_rate": 57.0, "hrv_rmssd": 64.16696, "spo2_pct": 97.92308, "skin_temp_celsius": 34.134335}, {"cycle_id": 1378383089, "created_at": "2026-03-20T02:54:27.535Z", "updated_at": "2026-03-20T17:33:36.399Z", "recovery_score": 67.0, "resting_heart_rate": 59.0, "hrv_rmssd": 61.602295, "spo2_pct": 96.875, "skin_temp_celsius": 33.91033}, {"cycle_id": 1376748554, "created_at": "2026-03-19T06:43:12.052Z", "updated_at": "2026-03-19T06:43:12.052Z", "recovery_score": 77.0, "resting_heart_rate": 57.0, "hrv_rmssd": 65.25802, "spo2_pct": 96.82353, "skin_temp_celsius": 33.630836}, {"cycle_id": 1374172572, "created_at": "2026-03-18T06:04:20.928Z", "updated_at": "2026-03-18T06:04:20.928Z", "recovery_score": 23.0, "resting_heart_rate": 63.0, "hrv_rmssd": 51.681534, "spo2_pct": 97.111115, "skin_temp_celsius": 33.88}, {"cycle_id": 1372197700, "created_at": "2026-03-17T07:10:12.975Z", "updated_at": "2026-03-17T07:10:12.975Z", "recovery_score": 40.0, "resting_heart_rate": 58.0, "hrv_rmssd": 50.730427, "spo2_pct": 97.5, "skin_temp_celsius": 33.71583}, {"cycle_id": 1369835418, "created_at": "2026-03-16T05:18:34.552Z", "updated_at": "2026-03-16T07:38:42.131Z", "recovery_score": 42.0, "resting_heart_rate": 63.0, "hrv_rmssd": 52.860428, "spo2_pct": 96.38461, "skin_temp_celsius": 34.01621}, {"cycle_id": 1367907672, "created_at": "2026-03-15T06:37:07.685Z", "updated_at": "2026-03-15T06:37:07.685Z", "recovery_score": 81.0, "resting_heart_rate": 57.0, "hrv_rmssd": 76.73953, "spo2_pct": 96.57692, "skin_temp_celsius": 33.9105}, {"cycle_id": 1366148763, "created_at": "2026-03-14T08:05:44.446Z", "updated_at": "2026-03-14T10:15:46.836Z", "recovery_score": 36.0, "resting_heart_rate": 64.0, "hrv_rmssd": 52.15749, "spo2_pct": 95.818184, "skin_temp_celsius": 34.143}, {"cycle_id": 1364189452, "created_at": "2026-03-13T07:51:38.535Z", "updated_at": "2026-03-13T07:51:38.535Z", "recovery_score": 61.0, "resting_heart_rate": 61.0, "hrv_rmssd": 65.420296, "spo2_pct": 97.3125, "skin_temp_celsius": 33.735}, {"cycle_id": 1361886037, "created_at": "2026-03-12T06:02:31.283Z", "updated_at": "2026-03-12T06:42:33.394Z", "recovery_score": 69.0, "resting_heart_rate": 59.0, "hrv_rmssd": 77.12505, "spo2_pct": 95.3, "skin_temp_celsius": 33.776337}, {"cycle_id": 1360160731, "created_at": "2026-03-11T08:02:10.184Z", "updated_at": "2026-03-11T08:02:10.184Z", "recovery_score": 73.0, "resting_heart_rate": 58.0, "hrv_rmssd": 70.408264, "spo2_pct": 96.5625, "skin_temp_celsius": 33.736336}, {"cycle_id": 1358039725, "created_at": "2026-03-10T07:19:35.667Z", "updated_at": "2026-03-10T08:11:23.954Z", "recovery_score": 54.0, "resting_heart_rate": 62.0, "hrv_rmssd": 63.497154, "spo2_pct": 96.3125, "skin_temp_celsius": 33.849667}, {"cycle_id": 1356000495, "created_at": "2026-03-09T07:23:35.934Z", "updated_at": "2026-03-09T07:23:35.934Z", "recovery_score": 20.0, "resting_heart_rate": 68.0, "hrv_rmssd": 43.000774, "spo2_pct": 98.933334, "skin_temp_celsius": 33.946335}, {"cycle_id": 1353923186, "created_at": "2026-03-08T07:46:56.147Z", "updated_at": "2026-03-08T10:56:48.946Z", "recovery_score": 1.0, "resting_heart_rate": 78.0, "hrv_rmssd": 28.262093, "spo2_pct": 95.85294, "skin_temp_celsius": 35.154667}, {"cycle_id": 1351920717, "created_at": "2026-03-07T07:33:56.026Z", "updated_at": "2026-03-07T07:33:56.026Z", "recovery_score": 18.0, "resting_heart_rate": 63.0, "hrv_rmssd": 48.269093, "spo2_pct": 95.888885, "skin_temp_celsius": 34.726665}, {"cycle_id": 1349937969, "created_at": "2026-03-06T07:03:51.159Z", "updated_at": "2026-03-06T07:03:51.159Z", "recovery_score": 61.0, "resting_heart_rate": 54.0, "hrv_rmssd": 68.97925, "spo2_pct": 97.23333, "skin_temp_celsius": 33.725}, {"cycle_id": 1347718045, "created_at": "2026-03-05T05:41:57.744Z", "updated_at": "2026-03-05T09:12:28.460Z", "recovery_score": 67.0, "resting_heart_rate": 53.0, "hrv_rmssd": 72.21714, "spo2_pct": 97.166664, "skin_temp_celsius": 33.598003}, {"cycle_id": 1346034139, "created_at": "2026-03-04T07:50:54.124Z", "updated_at": "2026-03-04T07:50:54.124Z", "recovery_score": 49.0, "resting_heart_rate": 55.0, "hrv_rmssd": 62.094147, "spo2_pct": 96.02778, "skin_temp_celsius": 33.6375}, {"cycle_id": 1344080122, "created_at": "2026-03-03T08:18:58.036Z", "updated_at": "2026-03-03T08:18:58.036Z", "recovery_score": 93.0, "resting_heart_rate": 51.0, "hrv_rmssd": 87.33783, "spo2_pct": 95.5625, "skin_temp_celsius": 33.273167}, {"cycle_id": 1341450687, "created_at": "2026-03-02T03:37:05.480Z", "updated_at": "2026-03-02T07:19:00.725Z", "recovery_score": 91.0, "resting_heart_rate": 55.0, "hrv_rmssd": 79.26102, "spo2_pct": 95.39286, "skin_temp_celsius": 33.616665}, {"cycle_id": 1340160068, "created_at": "2026-03-01T09:55:57.628Z", "updated_at": "2026-03-01T09:55:57.628Z", "recovery_score": 52.0, "resting_heart_rate": 59.0, "hrv_rmssd": 59.30097, "spo2_pct": 97.318184, "skin_temp_celsius": 34.040333}, {"cycle_id": 1337659437, "created_at": "2026-02-28T05:34:10.872Z", "updated_at": "2026-02-28T08:28:44.492Z", "recovery_score": 78.0, "resting_heart_rate": 56.0, "hrv_rmssd": 74.56708, "spo2_pct": 98.125, "skin_temp_celsius": 33.195004}, {"cycle_id": 1336996214, "created_at": "2026-02-27T14:43:13.805Z", "updated_at": "2026-02-27T14:43:13.805Z", "recovery_score": 79.0, "resting_heart_rate": 58.0, "hrv_rmssd": 76.961296, "spo2_pct": 96.57692, "skin_temp_celsius": 33.75567}, {"cycle_id": 1333683067, "created_at": "2026-02-26T05:01:08.331Z", "updated_at": "2026-02-26T09:01:23.855Z", "recovery_score": 30.0, "resting_heart_rate": 64.0, "hrv_rmssd": 51.209473, "spo2_pct": 96.4, "skin_temp_celsius": 34.794834}, {"cycle_id": 1332099897, "created_at": "2026-02-25T07:43:13.650Z", "updated_at": "2026-02-25T08:05:58.579Z", "recovery_score": 54.0, "resting_heart_rate": 60.0, "hrv_rmssd": 61.510994, "spo2_pct": 96.454544, "skin_temp_celsius": 33.347668}, {"cycle_id": 1329496551, "created_at": "2026-02-24T02:37:58.650Z", "updated_at": "2026-02-24T02:37:58.650Z", "recovery_score": 1.0, "resting_heart_rate": 76.0, "hrv_rmssd": 20.004604, "spo2_pct": 97.0, "skin_temp_celsius": 36.116833}, {"cycle_id": 1327584988, "created_at": "2026-02-23T01:16:16.756Z", "updated_at": "2026-02-23T03:36:25.301Z", "recovery_score": 17.0, "resting_heart_rate": 66.0, "hrv_rmssd": 51.52101, "spo2_pct": 97.583336, "skin_temp_celsius": 35.661335}, {"cycle_id": 1326068718, "created_at": "2026-02-22T07:55:11.768Z", "updated_at": "2026-02-22T10:58:24.040Z", "recovery_score": 21.0, "resting_heart_rate": 61.0, "hrv_rmssd": 49.158176, "spo2_pct": 95.888885, "skin_temp_celsius": 35.120667}, {"cycle_id": 1324398731, "created_at": "2026-02-21T09:56:39.054Z", "updated_at": "2026-02-21T09:56:39.054Z", "recovery_score": 30.0, "resting_heart_rate": 59.0, "hrv_rmssd": 47.41351, "spo2_pct": 95.96429, "skin_temp_celsius": 34.20933}, {"cycle_id": 1322275737, "created_at": "2026-02-20T07:32:14.957Z", "updated_at": "2026-02-20T07:32:14.957Z", "recovery_score": 61.0, "resting_heart_rate": 51.0, "hrv_rmssd": 68.358376, "spo2_pct": 97.291664, "skin_temp_celsius": 34.217}, {"cycle_id": 1319916372, "created_at": "2026-02-19T04:26:06.513Z", "updated_at": "2026-02-19T07:51:05.331Z", "recovery_score": 80.0, "resting_heart_rate": 50.0, "hrv_rmssd": 76.27668, "spo2_pct": 96.86667, "skin_temp_celsius": 33.478}, {"cycle_id": 1318530742, "created_at": "2026-02-18T08:24:50.258Z", "updated_at": "2026-02-18T08:24:50.258Z", "recovery_score": 50.0, "resting_heart_rate": 52.0, "hrv_rmssd": 61.286274, "spo2_pct": 97.15, "skin_temp_celsius": 33.874}, {"cycle_id": 1316640557, "created_at": "2026-02-17T08:43:21.494Z", "updated_at": "2026-02-17T08:43:21.494Z", "recovery_score": 68.0, "resting_heart_rate": 51.0, "hrv_rmssd": 71.50186, "spo2_pct": 97.0, "skin_temp_celsius": 33.44367}, {"cycle_id": 1314595892, "created_at": "2026-02-16T07:31:48.137Z", "updated_at": "2026-02-16T07:31:48.137Z", "recovery_score": 79.0, "resting_heart_rate": 50.0, "hrv_rmssd": 75.719734, "spo2_pct": 95.97059, "skin_temp_celsius": 33.625336}, {"cycle_id": 1312777356, "created_at": "2026-02-15T09:10:20.317Z", "updated_at": "2026-02-15T09:10:20.317Z", "recovery_score": 89.0, "resting_heart_rate": 51.0, "hrv_rmssd": 81.20452, "spo2_pct": 94.333336, "skin_temp_celsius": 33.932}, {"cycle_id": 1310793193, "created_at": "2026-02-14T08:08:44.804Z", "updated_at": "2026-02-14T08:08:44.804Z", "recovery_score": 41.0, "resting_heart_rate": 54.0, "hrv_rmssd": 53.50768, "spo2_pct": 96.066666, "skin_temp_celsius": 33.87}, {"cycle_id": 1308845061, "created_at": "2026-02-13T07:07:30.616Z", "updated_at": "2026-02-13T07:07:30.616Z", "recovery_score": 68.0, "resting_heart_rate": 51.0, "hrv_rmssd": 70.1941, "spo2_pct": 98.63636, "skin_temp_celsius": 33.941833}, {"cycle_id": 1307060725, "created_at": "2026-02-12T07:46:02.181Z", "updated_at": "2026-02-12T07:46:02.181Z", "recovery_score": 58.0, "resting_heart_rate": 53.0, "hrv_rmssd": 65.37513, "spo2_pct": 96.833336, "skin_temp_celsius": 33.948}, {"cycle_id": 1305159274, "created_at": "2026-02-11T07:44:30.067Z", "updated_at": "2026-02-11T08:51:14.324Z", "recovery_score": 83.0, "resting_heart_rate": 50.0, "hrv_rmssd": 78.176384, "spo2_pct": 96.59375, "skin_temp_celsius": 34.165333}, {"cycle_id": 1303308481, "created_at": "2026-02-10T08:22:42.284Z", "updated_at": "2026-02-10T08:22:42.284Z", "recovery_score": 63.0, "resting_heart_rate": 51.0, "hrv_rmssd": 68.23916, "spo2_pct": 96.7619, "skin_temp_celsius": 34.211334}, {"cycle_id": 1301393288, "created_at": "2026-02-09T08:31:08.888Z", "updated_at": "2026-02-09T08:31:08.888Z", "recovery_score": 69.0, "resting_heart_rate": 51.0, "hrv_rmssd": 74.50719, "spo2_pct": 95.666664, "skin_temp_celsius": 34.17}, {"cycle_id": 1299551978, "created_at": "2026-02-08T09:49:43.651Z", "updated_at": "2026-02-08T09:49:43.651Z", "recovery_score": 40.0, "resting_heart_rate": 57.0, "hrv_rmssd": 51.134712, "spo2_pct": 96.1579, "skin_temp_celsius": 34.149}, {"cycle_id": 1297523419, "created_at": "2026-02-07T08:08:03.691Z", "updated_at": "2026-02-07T08:08:03.691Z", "recovery_score": 86.0, "resting_heart_rate": 50.0, "hrv_rmssd": 80.83833, "spo2_pct": 95.97059, "skin_temp_celsius": 33.537666}, {"cycle_id": 1295865838, "created_at": "2026-02-06T09:36:40.136Z", "updated_at": "2026-02-06T09:36:40.136Z", "recovery_score": 62.0, "resting_heart_rate": 51.0, "hrv_rmssd": 68.76963, "spo2_pct": 95.583336, "skin_temp_celsius": 33.366665}, {"cycle_id": 1293803242, "created_at": "2026-02-05T07:29:43.474Z", "updated_at": "2026-02-05T07:29:43.474Z", "recovery_score": 65.0, "resting_heart_rate": 52.0, "hrv_rmssd": 69.46794, "spo2_pct": 96.46667, "skin_temp_celsius": 33.559}, {"cycle_id": 1291956004, "created_at": "2026-02-04T07:49:03.473Z", "updated_at": "2026-02-04T07:49:03.473Z", "recovery_score": 67.0, "resting_heart_rate": 51.0, "hrv_rmssd": 68.50958, "spo2_pct": 97.55556, "skin_temp_celsius": 33.406334}, {"cycle_id": 1290123499, "created_at": "2026-02-03T08:20:15.277Z", "updated_at": "2026-02-03T08:20:15.277Z", "recovery_score": 46.0, "resting_heart_rate": 55.0, "hrv_rmssd": 55.391594, "spo2_pct": 97.25, "skin_temp_celsius": 33.72167}, {"cycle_id": 1288104648, "created_at": "2026-02-02T07:22:26.166Z", "updated_at": "2026-02-02T07:22:26.166Z", "recovery_score": 93.0, "resting_heart_rate": 50.0, "hrv_rmssd": 87.321594, "spo2_pct": 97.55, "skin_temp_celsius": 33.787}, {"cycle_id": 1286117120, "created_at": "2026-02-01T07:26:48.231Z", "updated_at": "2026-02-01T07:26:48.231Z", "recovery_score": 81.0, "resting_heart_rate": 52.0, "hrv_rmssd": 80.036606, "spo2_pct": 97.53846, "skin_temp_celsius": 33.502666}, {"cycle_id": 1284485794, "created_at": "2026-01-31T08:53:35.909Z", "updated_at": "2026-01-31T08:53:35.909Z", "recovery_score": 65.0, "resting_heart_rate": 55.0, "hrv_rmssd": 67.764114, "spo2_pct": 97.166664, "skin_temp_celsius": 33.585835}, {"cycle_id": 1282514716, "created_at": "2026-01-30T07:11:34.051Z", "updated_at": "2026-01-30T09:04:17.576Z", "recovery_score": 32.0, "resting_heart_rate": 65.0, "hrv_rmssd": 44.205517, "spo2_pct": 96.23529, "skin_temp_celsius": 34.416332}, {"cycle_id": 1280754016, "created_at": "2026-01-29T07:40:18.835Z", "updated_at": "2026-01-29T07:41:40.580Z", "recovery_score": 74.0, "resting_heart_rate": 52.0, "hrv_rmssd": 68.42111, "spo2_pct": 95.75, "skin_temp_celsius": 33.773834}, {"cycle_id": 1278830644, "created_at": "2026-01-28T07:05:16.360Z", "updated_at": "2026-01-28T07:05:16.360Z", "recovery_score": 66.0, "resting_heart_rate": 54.0, "hrv_rmssd": 63.294426, "spo2_pct": 96.5, "skin_temp_celsius": 33.9585}, {"cycle_id": 1276875505, "created_at": "2026-01-27T06:19:30.892Z", "updated_at": "2026-01-27T06:27:06.224Z", "recovery_score": 59.0, "resting_heart_rate": 56.0, "hrv_rmssd": 59.499184, "spo2_pct": 95.933334, "skin_temp_celsius": 33.6605}, {"cycle_id": 1275097018, "created_at": "2026-01-26T06:56:52.155Z", "updated_at": "2026-01-26T06:56:52.155Z", "recovery_score": 74.0, "resting_heart_rate": 53.0, "hrv_rmssd": 67.533455, "spo2_pct": 97.382355, "skin_temp_celsius": 33.84667}, {"cycle_id": 1273978079, "created_at": "2026-01-25T14:17:04.362Z", "updated_at": "2026-01-25T14:17:04.362Z", "recovery_score": 16.0, "resting_heart_rate": 75.0, "hrv_rmssd": 24.977093, "spo2_pct": 95.4, "skin_temp_celsius": 34.608334}, {"cycle_id": 1271401955, "created_at": "2026-01-24T07:29:41.849Z", "updated_at": "2026-01-24T09:00:36.222Z", "recovery_score": 42.0, "resting_heart_rate": 58.0, "hrv_rmssd": 48.18595, "spo2_pct": 96.23077, "skin_temp_celsius": 34.165}, {"cycle_id": 1269791438, "created_at": "2026-01-23T08:32:21.953Z", "updated_at": "2026-01-23T08:32:21.953Z", "recovery_score": 51.0, "resting_heart_rate": 53.0, "hrv_rmssd": 58.536236, "spo2_pct": 96.1579, "skin_temp_celsius": 34.475834}, {"cycle_id": 1267800597, "created_at": "2026-01-22T06:59:21.287Z", "updated_at": "2026-01-22T08:22:09.992Z", "recovery_score": 53.0, "resting_heart_rate": 53.0, "hrv_rmssd": 61.664917, "spo2_pct": 95.454544, "skin_temp_celsius": 34.031208}, {"cycle_id": 1265949133, "created_at": "2026-01-21T06:48:42.131Z", "updated_at": "2026-01-21T07:54:46.287Z", "recovery_score": 45.0, "resting_heart_rate": 54.0, "hrv_rmssd": 53.42967, "spo2_pct": 95.90625, "skin_temp_celsius": 33.795334}, {"cycle_id": 1264154381, "created_at": "2026-01-20T07:03:08.497Z", "updated_at": "2026-01-20T07:03:08.497Z", "recovery_score": 87.0, "resting_heart_rate": 48.0, "hrv_rmssd": 90.36169, "spo2_pct": 96.60526, "skin_temp_celsius": 33.782757}, {"cycle_id": 1262277132, "created_at": "2026-01-19T06:43:27.864Z", "updated_at": "2026-01-19T08:10:09.239Z", "recovery_score": 71.0, "resting_heart_rate": 52.0, "hrv_rmssd": 72.860275, "spo2_pct": 97.0, "skin_temp_celsius": 33.69533}, {"cycle_id": 1260642403, "created_at": "2026-01-18T09:13:33.409Z", "updated_at": "2026-01-18T10:32:11.876Z", "recovery_score": 75.0, "resting_heart_rate": 52.0, "hrv_rmssd": 74.81752, "spo2_pct": 98.10714, "skin_temp_celsius": 33.77283}, {"cycle_id": 1259103718, "created_at": "2026-01-17T11:44:51.184Z", "updated_at": "2026-01-17T11:44:51.184Z", "recovery_score": 11.0, "resting_heart_rate": 69.0, "hrv_rmssd": 25.227322, "spo2_pct": 95.72727, "skin_temp_celsius": 34.350666}, {"cycle_id": 1256988457, "created_at": "2026-01-16T07:47:53.498Z", "updated_at": "2026-01-16T07:47:53.498Z", "recovery_score": 72.0, "resting_heart_rate": 51.0, "hrv_rmssd": 72.39634, "spo2_pct": 94.52778, "skin_temp_celsius": 33.733}, {"cycle_id": 1255034361, "created_at": "2026-01-15T06:33:54.060Z", "updated_at": "2026-01-15T07:21:29.636Z", "recovery_score": 58.0, "resting_heart_rate": 53.0, "hrv_rmssd": 66.80363, "spo2_pct": 96.57143, "skin_temp_celsius": 34.013332}, {"cycle_id": 1253337201, "created_at": "2026-01-14T07:18:08.623Z", "updated_at": "2026-01-14T07:18:08.623Z", "recovery_score": 90.0, "resting_heart_rate": 48.0, "hrv_rmssd": 87.36523, "spo2_pct": 96.6, "skin_temp_celsius": 33.256}, {"cycle_id": 1251511331, "created_at": "2026-01-13T07:07:28.600Z", "updated_at": "2026-01-13T13:29:26.114Z", "recovery_score": 17.0, "resting_heart_rate": 63.0, "hrv_rmssd": 50.96512, "spo2_pct": 95.0, "skin_temp_celsius": 34.808}, {"cycle_id": 1249749697, "created_at": "2026-01-12T07:27:15.427Z", "updated_at": "2026-01-12T10:27:01.989Z", "recovery_score": 6.0, "resting_heart_rate": 65.0, "hrv_rmssd": 34.023487, "spo2_pct": 94.583336, "skin_temp_celsius": 34.105}, {"cycle_id": 1247847926, "created_at": "2026-01-11T07:43:21.735Z", "updated_at": "2026-01-11T09:45:31.682Z", "recovery_score": 76.0, "resting_heart_rate": 51.0, "hrv_rmssd": 74.87746, "spo2_pct": 96.05, "skin_temp_celsius": 33.8015}], "sleeps": [{"id": "3d4a0771-547e-4bf6-bd28-6aadc31c81c3", "start": "2026-04-10T23:52:32.580Z", "end": "2026-04-11T06:32:49.130Z", "nap": false, "performance_pct": 87, "sleep_efficiency_pct": 92.00489, "sleep_consistency_pct": 80.0, "respiratory_rate": 15.78125, "total_in_bed_ms": 24016550, "total_awake_ms": 1920150, "total_light_ms": 10275620, "total_slow_wave_ms": 6660420, "total_rem_ms": 5160360, "sleep_needed_ms": 27564066, "sleep_debt_ms": null}, {"id": "829bfd3e-0dae-4c22-a428-663e00eb8408", "start": "2026-04-09T22:50:12.670Z", "end": "2026-04-10T05:26:38.140Z", "nap": false, "performance_pct": 86, "sleep_efficiency_pct": 92.64867, "sleep_consistency_pct": 79.0, "respiratory_rate": 15.761719, "total_in_bed_ms": 23785470, "total_awake_ms": 1854160, "total_light_ms": 9360530, "total_slow_wave_ms": 6990380, "total_rem_ms": 5580400, "sleep_needed_ms": 27564279, "sleep_debt_ms": null}, {"id": "3df257c9-ec48-4f17-8cb3-2f1e2b795061", "start": "2026-04-08T23:44:10.200Z", "end": "2026-04-09T05:16:01.130Z", "nap": false, "performance_pct": 72, "sleep_efficiency_pct": 89.39904, "sleep_consistency_pct": 71.0, "respiratory_rate": 15.996094, "total_in_bed_ms": 19910930, "total_awake_ms": 2960050, "total_light_ms": 9360540, "total_slow_wave_ms": 4440160, "total_rem_ms": 3150180, "sleep_needed_ms": 27564493, "sleep_debt_ms": null}, {"id": "7cdf4940-d585-4c77-9639-7f9d788597ea", "start": "2026-04-07T23:39:37.430Z", "end": "2026-04-08T06:50:53.960Z", "nap": false, "performance_pct": 94, "sleep_efficiency_pct": 95.130646, "sleep_consistency_pct": 64.0, "respiratory_rate": 15.9375, "total_in_bed_ms": 25876530, "total_awake_ms": 1260020, "total_light_ms": 15105940, "total_slow_wave_ms": 4170220, "total_rem_ms": 5340350, "sleep_needed_ms": 27564707, "sleep_debt_ms": null}, {"id": "c5d42f32-dab4-4dc7-8701-f969649128a4", "start": "2026-04-06T22:18:29.070Z", "end": "2026-04-07T05:40:30.830Z", "nap": false, "performance_pct": 96, "sleep_efficiency_pct": 95.676186, "sleep_consistency_pct": 37.0, "respiratory_rate": 16.640625, "total_in_bed_ms": 26521760, "total_awake_ms": 1292170, "total_light_ms": 10828500, "total_slow_wave_ms": 8040590, "total_rem_ms": 6360500, "sleep_needed_ms": 27564921, "sleep_debt_ms": null}, {"id": "9238e6b3-a4ba-4a0f-9a1a-4959c39f3f7c", "start": "2026-04-05T23:49:26.410Z", "end": "2026-04-06T06:31:51.950Z", "nap": false, "performance_pct": 88, "sleep_efficiency_pct": 98.50867, "sleep_consistency_pct": 49.0, "respiratory_rate": 16.230469, "total_in_bed_ms": 24145540, "total_awake_ms": 360090, "total_light_ms": 13014840, "total_slow_wave_ms": 5220200, "total_rem_ms": 5550410, "sleep_needed_ms": 27565136, "sleep_debt_ms": null}, {"id": "0869b9f5-7e85-4e32-a68d-88cb0766d876", "start": "2026-04-05T01:57:53.490Z", "end": "2026-04-05T09:50:17.170Z", "nap": false, "performance_pct": 103, "sleep_efficiency_pct": 95.76248, "sleep_consistency_pct": 73.0, "respiratory_rate": 15.825195, "total_in_bed_ms": 28343680, "total_awake_ms": 1201070, "total_light_ms": 15171890, "total_slow_wave_ms": 5880300, "total_rem_ms": 6090420, "sleep_needed_ms": 27565136, "sleep_debt_ms": null}, {"id": "7bf12843-5798-4adb-94f1-77be66451722", "start": "2026-04-04T02:06:50.820Z", "end": "2026-04-04T10:44:38.350Z", "nap": false, "performance_pct": 113, "sleep_efficiency_pct": 77.78983, "sleep_consistency_pct": 54.0, "respiratory_rate": 16.054688, "total_in_bed_ms": 31067530, "total_awake_ms": 6900150, "total_light_ms": 14536780, "total_slow_wave_ms": 5580330, "total_rem_ms": 4050270, "sleep_needed_ms": 27565350, "sleep_debt_ms": null}, {"id": "f1178932-f0f8-4fdc-a568-d2a242ab0bf2", "start": "2026-04-02T18:50:00.000Z", "end": "2026-04-02T19:30:00.000Z", "nap": true, "performance_pct": 9, "sleep_efficiency_pct": 94.784996, "sleep_consistency_pct": 35.0, "respiratory_rate": 16.582031, "total_in_bed_ms": 2400000, "total_awake_ms": 125160, "total_light_ms": 594810, "total_slow_wave_ms": 1680030, "total_rem_ms": 0, "sleep_needed_ms": 27565778, "sleep_debt_ms": null}, {"id": "79a847fb-098d-4a39-96d9-46a6d58bf913", "start": "2026-04-03T01:16:47.390Z", "end": "2026-04-03T07:48:56.740Z", "nap": false, "performance_pct": 85, "sleep_efficiency_pct": 94.007355, "sleep_consistency_pct": 62.0, "respiratory_rate": 15.9375, "total_in_bed_ms": 23529350, "total_awake_ms": 1410030, "total_light_ms": 10808620, "total_slow_wave_ms": 6480390, "total_rem_ms": 4830310, "sleep_needed_ms": 27565564, "sleep_debt_ms": null}, {"id": "15d7ed5b-71ce-4b92-9535-fe474dfdfc10", "start": "2026-04-02T01:32:44.030Z", "end": "2026-04-02T10:27:52.020Z", "nap": false, "performance_pct": 116, "sleep_efficiency_pct": 94.36094, "sleep_consistency_pct": 38.0, "respiratory_rate": 16.582031, "total_in_bed_ms": 32107990, "total_awake_ms": 1986090, "total_light_ms": 18151260, "total_slow_wave_ms": 6300290, "total_rem_ms": 5670350, "sleep_needed_ms": 27565778, "sleep_debt_ms": null}, {"id": "5ef33f2e-1906-46ec-9bf4-df29b356f856", "start": "2026-03-31T22:52:11.020Z", "end": "2026-04-01T05:59:42.600Z", "nap": false, "performance_pct": 93, "sleep_efficiency_pct": 93.88933, "sleep_consistency_pct": 79.0, "respiratory_rate": 15.917969, "total_in_bed_ms": 25651580, "total_awake_ms": 1682020, "total_light_ms": 15329140, "total_slow_wave_ms": 3960130, "total_rem_ms": 4680290, "sleep_needed_ms": 27566207, "sleep_debt_ms": null}, {"id": "407e8ea1-e312-4cb5-b44a-f3190b3bed87", "start": "2026-03-30T22:58:07.680Z", "end": "2026-03-31T06:51:17.530Z", "nap": false, "performance_pct": 103, "sleep_efficiency_pct": 94.716354, "sleep_consistency_pct": 80.0, "respiratory_rate": 15.9375, "total_in_bed_ms": 28389850, "total_awake_ms": 1500020, "total_light_ms": 16089160, "total_slow_wave_ms": 5910340, "total_rem_ms": 4890330, "sleep_needed_ms": 27566421, "sleep_debt_ms": null}, {"id": "6f754e27-814f-4693-a3a3-4aba6c9f1825", "start": "2026-03-29T23:23:00.910Z", "end": "2026-03-30T06:34:35.770Z", "nap": false, "performance_pct": 94, "sleep_efficiency_pct": 95.365875, "sleep_consistency_pct": 72.0, "respiratory_rate": 16.062012, "total_in_bed_ms": 25894860, "total_awake_ms": 1200000, "total_light_ms": 16444230, "total_slow_wave_ms": 3180230, "total_rem_ms": 5070400, "sleep_needed_ms": 27566636, "sleep_debt_ms": null}, {"id": "50f9a1d5-4f48-4e75-b96c-5b076d18ef8c", "start": "2026-03-28T23:36:27.590Z", "end": "2026-03-29T08:46:59.750Z", "nap": false, "performance_pct": 120, "sleep_efficiency_pct": 95.25829, "sleep_consistency_pct": 70.0, "respiratory_rate": 15.732422, "total_in_bed_ms": 33032160, "total_awake_ms": 1692020, "total_light_ms": 17208990, "total_slow_wave_ms": 6660370, "total_rem_ms": 7470780, "sleep_needed_ms": 27566851, "sleep_debt_ms": null}, {"id": "09541808-a812-4a10-87f6-24d23fdbb1ec", "start": "2026-03-27T23:47:25.000Z", "end": "2026-03-28T07:37:15.860Z", "nap": false, "performance_pct": 102, "sleep_efficiency_pct": 96.26837, "sleep_consistency_pct": 72.0, "respiratory_rate": 16.113281, "total_in_bed_ms": 28190860, "total_awake_ms": 1099140, "total_light_ms": 14400970, "total_slow_wave_ms": 7380390, "total_rem_ms": 5310360, "sleep_needed_ms": 27567065, "sleep_debt_ms": null}, {"id": "248f202c-3477-41c3-b56c-2c30383d2604", "start": "2026-03-27T01:24:31.230Z", "end": "2026-03-27T06:58:32.500Z", "nap": false, "performance_pct": 73, "sleep_efficiency_pct": 96.69691, "sleep_consistency_pct": 84.0, "respiratory_rate": 16.125488, "total_in_bed_ms": 20041270, "total_awake_ms": 719980, "total_light_ms": 8610430, "total_slow_wave_ms": 5880470, "total_rem_ms": 4830390, "sleep_needed_ms": 27567065, "sleep_debt_ms": null}, {"id": "862fdcff-6e0b-461a-b454-103242ce7f59", "start": "2026-03-26T02:36:29.270Z", "end": "2026-03-26T07:54:24.310Z", "nap": false, "performance_pct": 69, "sleep_efficiency_pct": 91.57429, "sleep_consistency_pct": 70.0, "respiratory_rate": 15.996094, "total_in_bed_ms": 19075040, "total_awake_ms": 1794020, "total_light_ms": 8040530, "total_slow_wave_ms": 4500280, "total_rem_ms": 4740210, "sleep_needed_ms": 27567280, "sleep_debt_ms": null}, {"id": "c5092414-57ae-488e-8850-e8373a60f7bb", "start": "2026-03-25T01:02:36.260Z", "end": "2026-03-25T07:22:46.650Z", "nap": false, "performance_pct": 83, "sleep_efficiency_pct": 91.45087, "sleep_consistency_pct": 87.0, "respiratory_rate": 16.582031, "total_in_bed_ms": 22810390, "total_awake_ms": 1950090, "total_light_ms": 9699600, "total_slow_wave_ms": 5580290, "total_rem_ms": 5580410, "sleep_needed_ms": 27567495, "sleep_debt_ms": null}, {"id": "065950af-a245-4c74-858e-4e3bed84af57", "start": "2026-03-24T00:45:28.000Z", "end": "2026-03-24T07:06:02.170Z", "nap": false, "performance_pct": 83, "sleep_efficiency_pct": 93.1677, "sleep_consistency_pct": 86.0, "respiratory_rate": 16.289062, "total_in_bed_ms": 22834170, "total_awake_ms": 1560100, "total_light_ms": 11343490, "total_slow_wave_ms": 5040290, "total_rem_ms": 4890290, "sleep_needed_ms": 27567709, "sleep_debt_ms": null}, {"id": "874d4423-4c8d-4dfa-b12b-25de1840d547", "start": "2026-03-23T00:04:58.900Z", "end": "2026-03-23T07:03:39.400Z", "nap": false, "performance_pct": 91, "sleep_efficiency_pct": 95.68349, "sleep_consistency_pct": 89.0, "respiratory_rate": 16.757812, "total_in_bed_ms": 25120500, "total_awake_ms": 1178090, "total_light_ms": 11881850, "total_slow_wave_ms": 7410420, "total_rem_ms": 4650140, "sleep_needed_ms": 27567924, "sleep_debt_ms": null}, {"id": "353890db-5dff-4562-903a-566e4090fe7c", "start": "2026-03-22T00:13:40.330Z", "end": "2026-03-22T07:28:58.000Z", "nap": false, "performance_pct": 95, "sleep_efficiency_pct": 96.774445, "sleep_consistency_pct": 80.0, "respiratory_rate": 16.855469, "total_in_bed_ms": 26117670, "total_awake_ms": 915010, "total_light_ms": 13831800, "total_slow_wave_ms": 6090470, "total_rem_ms": 5280390, "sleep_needed_ms": 27568139, "sleep_debt_ms": null}, {"id": "7bb36110-e6c0-4783-8504-32f366e0831b", "start": "2026-03-20T23:23:07.240Z", "end": "2026-03-21T06:28:44.780Z", "nap": false, "performance_pct": 93, "sleep_efficiency_pct": 91.16661, "sleep_consistency_pct": 85.0, "respiratory_rate": 16.875, "total_in_bed_ms": 25537540, "total_awake_ms": 2315080, "total_light_ms": 12092010, "total_slow_wave_ms": 6150130, "total_rem_ms": 4980320, "sleep_needed_ms": 27568569, "sleep_debt_ms": null}, {"id": "bfff068f-626b-402d-b976-b0cceecd84a6", "start": "2026-03-19T23:21:34.910Z", "end": "2026-03-20T07:30:05.000Z", "nap": false, "performance_pct": 106, "sleep_efficiency_pct": 74.60993, "sleep_consistency_pct": 77.0, "respiratory_rate": 16.816406, "total_in_bed_ms": 29310090, "total_awake_ms": 7441850, "total_light_ms": 13407920, "total_slow_wave_ms": 5580210, "total_rem_ms": 2880110, "sleep_needed_ms": 27568784, "sleep_debt_ms": null}, {"id": "c406baed-599f-47ee-894f-d5d0f9c2fee4", "start": "2026-03-18T23:31:01.860Z", "end": "2026-03-19T06:35:26.550Z", "nap": false, "performance_pct": 92, "sleep_efficiency_pct": 95.87609, "sleep_consistency_pct": 74.0, "respiratory_rate": 17.143555, "total_in_bed_ms": 25464690, "total_awake_ms": 1050140, "total_light_ms": 11873700, "total_slow_wave_ms": 6120370, "total_rem_ms": 6420480, "sleep_needed_ms": 27568999, "sleep_debt_ms": null}, {"id": "a7ec990d-b989-4e14-894f-5f19ae8a61bb", "start": "2026-03-18T01:27:29.780Z", "end": "2026-03-18T05:15:46.680Z", "nap": false, "performance_pct": 50, "sleep_efficiency_pct": 97.15264, "sleep_consistency_pct": 67.0, "respiratory_rate": 17.382812, "total_in_bed_ms": 13696900, "total_awake_ms": 390000, "total_light_ms": 3196280, "total_slow_wave_ms": 4920220, "total_rem_ms": 5190400, "sleep_needed_ms": 27568999, "sleep_debt_ms": null}, {"id": "076c7a58-88c0-45f3-a699-e171a87b5926", "start": "2026-03-16T23:41:56.540Z", "end": "2026-03-17T07:02:28.180Z", "nap": false, "performance_pct": 96, "sleep_efficiency_pct": 95.329, "sleep_consistency_pct": 69.0, "respiratory_rate": 17.495117, "total_in_bed_ms": 26431640, "total_awake_ms": 1327080, "total_light_ms": 13404100, "total_slow_wave_ms": 5970160, "total_rem_ms": 5730300, "sleep_needed_ms": 27569430, "sleep_debt_ms": null}, {"id": "5a51aee0-4b6b-4bf3-80e2-cb53a8030a83", "start": "2026-03-15T23:37:23.590Z", "end": "2026-03-16T07:20:25.370Z", "nap": false, "performance_pct": 101, "sleep_efficiency_pct": 93.41248, "sleep_consistency_pct": 58.0, "respiratory_rate": 17.402344, "total_in_bed_ms": 27781780, "total_awake_ms": 1830130, "total_light_ms": 13620980, "total_slow_wave_ms": 6390320, "total_rem_ms": 5940350, "sleep_needed_ms": 27569645, "sleep_debt_ms": null}, {"id": "d0a5edd4-c630-45cb-9840-f81d067462b3", "start": "2026-03-15T00:29:35.760Z", "end": "2026-03-15T06:25:01.050Z", "nap": false, "performance_pct": 77, "sleep_efficiency_pct": 96.34238, "sleep_consistency_pct": 41.0, "respiratory_rate": 17.5, "total_in_bed_ms": 21325290, "total_awake_ms": 780000, "total_light_ms": 11634740, "total_slow_wave_ms": 5250320, "total_rem_ms": 3660230, "sleep_needed_ms": 27569645, "sleep_debt_ms": null}, {"id": "befa6cc7-ea81-4e6b-b6fc-4d409509fb53", "start": "2026-03-14T13:36:04.050Z", "end": "2026-03-14T16:08:26.580Z", "nap": true, "performance_pct": 33, "sleep_efficiency_pct": 97.37414, "sleep_consistency_pct": 39.0, "respiratory_rate": 19.208984, "total_in_bed_ms": 9142530, "total_awake_ms": 240070, "total_light_ms": 4042300, "total_slow_wave_ms": 3930130, "total_rem_ms": 930030, "sleep_needed_ms": 27569860, "sleep_debt_ms": null}, {"id": "be2da75d-0bff-41bd-81ea-16c5e201ca28", "start": "2026-03-14T01:56:26.190Z", "end": "2026-03-14T10:03:05.650Z", "nap": false, "performance_pct": 106, "sleep_efficiency_pct": 93.511826, "sleep_consistency_pct": 55.0, "respiratory_rate": 18.36914, "total_in_bed_ms": 29199460, "total_awake_ms": 1958100, "total_light_ms": 14610730, "total_slow_wave_ms": 5850300, "total_rem_ms": 6780330, "sleep_needed_ms": 27569860, "sleep_debt_ms": null}, {"id": "cee4fafe-4e52-4479-8316-296e863e5654", "start": "2026-03-13T00:31:23.120Z", "end": "2026-03-13T07:42:23.680Z", "nap": false, "performance_pct": 94, "sleep_efficiency_pct": 95.34399, "sleep_consistency_pct": 77.0, "respiratory_rate": 17.86621, "total_in_bed_ms": 25860560, "total_awake_ms": 1287000, "total_light_ms": 13861000, "total_slow_wave_ms": 5130280, "total_rem_ms": 5582280, "sleep_needed_ms": 27570076, "sleep_debt_ms": null}, {"id": "8082ec82-654b-48e2-9911-d099244491bf", "start": "2026-03-12T01:04:32.150Z", "end": "2026-03-12T06:31:03.420Z", "nap": false, "performance_pct": 71, "sleep_efficiency_pct": 87.289444, "sleep_consistency_pct": 64.0, "respiratory_rate": 18.28125, "total_in_bed_ms": 19591270, "total_awake_ms": 2490160, "total_light_ms": 8640700, "total_slow_wave_ms": 3840150, "total_rem_ms": 4620260, "sleep_needed_ms": 27570291, "sleep_debt_ms": null}, {"id": "f1b92328-15fc-4a3d-9472-3012b2141da4", "start": "2026-03-11T00:15:28.890Z", "end": "2026-03-11T07:59:33.660Z", "nap": false, "performance_pct": 101, "sleep_efficiency_pct": 91.88349, "sleep_consistency_pct": 66.0, "respiratory_rate": 18.164062, "total_in_bed_ms": 27844770, "total_awake_ms": 2373030, "total_light_ms": 14370900, "total_slow_wave_ms": 6030340, "total_rem_ms": 5070500, "sleep_needed_ms": 27570507, "sleep_debt_ms": null}, {"id": "f6a67535-bcc5-4ef4-a817-f9daa142231b", "start": "2026-03-10T01:15:55.000Z", "end": "2026-03-10T08:00:21.000Z", "nap": false, "performance_pct": 88, "sleep_efficiency_pct": 80.836975, "sleep_consistency_pct": 43.0, "respiratory_rate": 18.66211, "total_in_bed_ms": 24266000, "total_awake_ms": 4650100, "total_light_ms": 11965560, "total_slow_wave_ms": 5250180, "total_rem_ms": 2400160, "sleep_needed_ms": 27570722, "sleep_debt_ms": null}, {"id": "fcabb34a-adab-4503-bff8-9183a65f15c2", "start": "2026-03-09T10:43:54.030Z", "end": "2026-03-09T14:19:47.740Z", "nap": true, "performance_pct": 47, "sleep_efficiency_pct": 98.84187, "sleep_consistency_pct": 43.0, "respiratory_rate": 19.335938, "total_in_bed_ms": 12953710, "total_awake_ms": 150020, "total_light_ms": 6653330, "total_slow_wave_ms": 4440200, "total_rem_ms": 1710160, "sleep_needed_ms": 27570938, "sleep_debt_ms": null}, {"id": "e9a7ac2e-11b5-411e-b3fb-ed3c429c0fc0", "start": "2026-03-09T00:04:22.060Z", "end": "2026-03-09T07:10:13.740Z", "nap": false, "performance_pct": 93, "sleep_efficiency_pct": 98.585335, "sleep_consistency_pct": 70.0, "respiratory_rate": 19.628906, "total_in_bed_ms": 25551680, "total_awake_ms": 463990, "total_light_ms": 14555000, "total_slow_wave_ms": 6151360, "total_rem_ms": 4381330, "sleep_needed_ms": 27570938, "sleep_debt_ms": null}, {"id": "4dc075f2-4a27-417c-8e4d-f30d566ed695", "start": "2026-03-08T00:51:59.430Z", "end": "2026-03-08T10:51:21.520Z", "nap": false, "performance_pct": 130, "sleep_efficiency_pct": 80.22801, "sleep_consistency_pct": 54.0, "respiratory_rate": 18.674316, "total_in_bed_ms": 35962090, "total_awake_ms": 7110420, "total_light_ms": 17151100, "total_slow_wave_ms": 6630390, "total_rem_ms": 5070180, "sleep_needed_ms": 27571154, "sleep_debt_ms": null}, {"id": "d950ce3b-107c-4d63-ab2c-dccbf39b1443", "start": "2026-03-06T23:49:26.240Z", "end": "2026-03-07T07:19:06.870Z", "nap": false, "performance_pct": 98, "sleep_efficiency_pct": 97.887375, "sleep_consistency_pct": 86.0, "respiratory_rate": 18.657227, "total_in_bed_ms": 26980630, "total_awake_ms": 570000, "total_light_ms": 14800050, "total_slow_wave_ms": 6300240, "total_rem_ms": 5310340, "sleep_needed_ms": 27571585, "sleep_debt_ms": null}, {"id": "fd0fe751-4b28-45a4-847f-713d8e002495", "start": "2026-03-05T23:36:22.360Z", "end": "2026-03-06T06:49:59.040Z", "nap": false, "performance_pct": 94, "sleep_efficiency_pct": 95.96371, "sleep_consistency_pct": 75.0, "respiratory_rate": 17.402344, "total_in_bed_ms": 26016680, "total_awake_ms": 1050110, "total_light_ms": 15426180, "total_slow_wave_ms": 6210210, "total_rem_ms": 3330180, "sleep_needed_ms": 27571801, "sleep_debt_ms": null}, {"id": "70355fb0-857f-4034-ba53-ce8e16d850ce", "start": "2026-03-05T00:26:24.250Z", "end": "2026-03-05T08:45:17.030Z", "nap": false, "performance_pct": 109, "sleep_efficiency_pct": 88.67396, "sleep_consistency_pct": 76.0, "respiratory_rate": 17.402344, "total_in_bed_ms": 29932780, "total_awake_ms": 3390200, "total_light_ms": 16401840, "total_slow_wave_ms": 5880290, "total_rem_ms": 4260450, "sleep_needed_ms": 27571801, "sleep_debt_ms": null}, {"id": "dd983d0f-ddff-42c3-9c1f-f1cbe32c6808", "start": "2026-03-03T23:38:51.080Z", "end": "2026-03-04T07:49:18.704Z", "nap": false, "performance_pct": 107, "sleep_efficiency_pct": 93.27108, "sleep_consistency_pct": 72.0, "respiratory_rate": 17.402344, "total_in_bed_ms": 29427624, "total_awake_ms": 1980160, "total_light_ms": 15626634, "total_slow_wave_ms": 5400350, "total_rem_ms": 6420480, "sleep_needed_ms": 27572233, "sleep_debt_ms": null}, {"id": "231a90c2-ed6b-469a-8943-cdac106a9b00", "start": "2026-03-03T00:03:48.040Z", "end": "2026-03-03T08:14:50.690Z", "nap": false, "performance_pct": 107, "sleep_efficiency_pct": 91.14095, "sleep_consistency_pct": 59.0, "respiratory_rate": 17.43164, "total_in_bed_ms": 29462650, "total_awake_ms": 2610110, "total_light_ms": 16831980, "total_slow_wave_ms": 4590130, "total_rem_ms": 5430430, "sleep_needed_ms": 27572233, "sleep_debt_ms": null}, {"id": "c90234cf-1da2-4c9e-956f-4de0176d83fd", "start": "2026-03-01T22:20:11.400Z", "end": "2026-03-02T06:49:39.290Z", "nap": false, "performance_pct": 111, "sleep_efficiency_pct": 95.09276, "sleep_consistency_pct": 46.0, "respiratory_rate": 18.19336, "total_in_bed_ms": 30567890, "total_awake_ms": 1500040, "total_light_ms": 18477320, "total_slow_wave_ms": 5310270, "total_rem_ms": 5280260, "sleep_needed_ms": 27572665, "sleep_debt_ms": null}, {"id": "4e1fa61a-26a4-419d-b54b-34c69318c367", "start": "2026-03-01T01:16:08.360Z", "end": "2026-03-01T09:33:02.280Z", "nap": false, "performance_pct": 108, "sleep_efficiency_pct": 95.16964, "sleep_consistency_pct": 45.0, "respiratory_rate": 19.042969, "total_in_bed_ms": 29813920, "total_awake_ms": 1440120, "total_light_ms": 13942880, "total_slow_wave_ms": 6420430, "total_rem_ms": 8010490, "sleep_needed_ms": 27572665, "sleep_debt_ms": null}, {"id": "b8b7a672-f28a-4396-a459-6c7c9f40adae", "start": "2026-02-27T23:31:01.670Z", "end": "2026-02-28T08:20:02.000Z", "nap": false, "performance_pct": 115, "sleep_efficiency_pct": 78.776596, "sleep_consistency_pct": 21.0, "respiratory_rate": 18.017578, "total_in_bed_ms": 31740330, "total_awake_ms": 6778910, "total_light_ms": 17041020, "total_slow_wave_ms": 3660150, "total_rem_ms": 4260250, "sleep_needed_ms": 27573098, "sleep_debt_ms": null}, {"id": "86de35a2-1a46-4363-8ba6-4287a2343d44", "start": "2026-02-27T06:03:38.080Z", "end": "2026-02-27T14:01:53.800Z", "nap": false, "performance_pct": 104, "sleep_efficiency_pct": 87.66315, "sleep_consistency_pct": 9.0, "respiratory_rate": 18.515625, "total_in_bed_ms": 28695720, "total_awake_ms": 3540150, "total_light_ms": 14295110, "total_slow_wave_ms": 5370270, "total_rem_ms": 5490190, "sleep_needed_ms": 27573098, "sleep_debt_ms": null}, {"id": "e3a712c1-0e3a-4d66-b233-293d6b5b435e", "start": "2026-02-25T23:51:34.490Z", "end": "2026-02-26T08:48:06.360Z", "nap": false, "performance_pct": 117, "sleep_efficiency_pct": 77.073685, "sleep_consistency_pct": 36.0, "respiratory_rate": 18.632812, "total_in_bed_ms": 32191870, "total_awake_ms": 7380410, "total_light_ms": 15150870, "total_slow_wave_ms": 5970400, "total_rem_ms": 3690190, "sleep_needed_ms": 27573530, "sleep_debt_ms": null}, {"id": "1c7d01f9-5be1-440a-8347-6f2a01c9644f", "start": "2026-02-24T23:15:32.000Z", "end": "2026-02-25T07:28:02.080Z", "nap": false, "performance_pct": 107, "sleep_efficiency_pct": 84.3546, "sleep_consistency_pct": 21.0, "respiratory_rate": 17.988281, "total_in_bed_ms": 29550080, "total_awake_ms": 6418970, "total_light_ms": 13140680, "total_slow_wave_ms": 4350200, "total_rem_ms": 5640230, "sleep_needed_ms": 27573747, "sleep_debt_ms": null}, {"id": "5fd336b8-4c1e-4cd3-9648-76c18ba33d85", "start": "2026-02-24T14:06:30.240Z", "end": "2026-02-24T17:25:29.540Z", "nap": true, "performance_pct": 43, "sleep_efficiency_pct": 54.0159, "sleep_consistency_pct": 13.0, "respiratory_rate": 17.363281, "total_in_bed_ms": 11939300, "total_awake_ms": 5490180, "total_light_ms": 2429030, "total_slow_wave_ms": 3870090, "total_rem_ms": 150000, "sleep_needed_ms": 27573747, "sleep_debt_ms": null}, {"id": "7c976053-7802-4f95-9507-3b19f5fc46bd", "start": "2026-02-24T04:20:59.120Z", "end": "2026-02-24T06:32:25.490Z", "nap": true, "performance_pct": 29, "sleep_efficiency_pct": 86.68563, "sleep_consistency_pct": 24.0, "respiratory_rate": 16.289062, "total_in_bed_ms": 7886370, "total_awake_ms": 1050020, "total_light_ms": 2636240, "total_slow_wave_ms": 2850050, "total_rem_ms": 1350060, "sleep_needed_ms": 27573747, "sleep_debt_ms": null}, {"id": "8fec9324-95ad-4fc9-a915-7d84077601be", "start": "2026-02-23T22:14:58.440Z", "end": "2026-02-24T00:28:23.770Z", "nap": false, "performance_pct": 29, "sleep_efficiency_pct": 76.01461, "sleep_consistency_pct": 24.0, "respiratory_rate": 14.1796875, "total_in_bed_ms": 8005330, "total_awake_ms": 1920110, "total_light_ms": 3505200, "total_slow_wave_ms": 2580020, "total_rem_ms": 0, "sleep_needed_ms": 27573963, "sleep_debt_ms": null}, {"id": "4d997f2f-592d-4b21-9da5-87d47da80712", "start": "2026-02-23T11:31:57.520Z", "end": "2026-02-23T12:34:20.580Z", "nap": true, "performance_pct": 14, "sleep_efficiency_pct": 88.61759, "sleep_consistency_pct": 14.0, "respiratory_rate": 18.83789, "total_in_bed_ms": 3743060, "total_awake_ms": 473000, "total_light_ms": 1290030, "total_slow_wave_ms": 1980030, "total_rem_ms": 0, "sleep_needed_ms": 27573963, "sleep_debt_ms": null}, {"id": "d8f5776e-3b98-41e6-903f-cb32d92f9b11", "start": "2026-02-23T05:54:56.920Z", "end": "2026-02-23T08:05:57.250Z", "nap": true, "performance_pct": 29, "sleep_efficiency_pct": 71.94794, "sleep_consistency_pct": 16.0, "respiratory_rate": 18.28125, "total_in_bed_ms": 7860330, "total_awake_ms": 2243110, "total_light_ms": 2407120, "total_slow_wave_ms": 2670100, "total_rem_ms": 540000, "sleep_needed_ms": 27573963, "sleep_debt_ms": null}, {"id": "b439e109-483a-4dd2-bc7a-0e79193ef9bb", "start": "2026-02-22T19:49:25.250Z", "end": "2026-02-23T03:29:26.730Z", "nap": false, "performance_pct": 100, "sleep_efficiency_pct": 76.383125, "sleep_consistency_pct": 18.0, "respiratory_rate": 19.355469, "total_in_bed_ms": 27601480, "total_awake_ms": 6740110, "total_light_ms": 15641090, "total_slow_wave_ms": 4230250, "total_rem_ms": 990030, "sleep_needed_ms": 27574180, "sleep_debt_ms": null}, {"id": "509b3a47-a6c2-4d57-987a-f85b5f95cda7", "start": "2026-02-22T01:25:28.820Z", "end": "2026-02-22T10:43:06.710Z", "nap": false, "performance_pct": 121, "sleep_efficiency_pct": 81.24429, "sleep_consistency_pct": 46.0, "respiratory_rate": 16.845703, "total_in_bed_ms": 33457890, "total_awake_ms": 6426370, "total_light_ms": 14820770, "total_slow_wave_ms": 5910350, "total_rem_ms": 6300400, "sleep_needed_ms": 27574180, "sleep_debt_ms": null}, {"id": "e483a057-13c0-411e-bd07-96d78fcb073a", "start": "2026-02-21T14:30:00.000Z", "end": "2026-02-21T16:10:00.000Z", "nap": true, "performance_pct": 22, "sleep_efficiency_pct": 98.5, "sleep_consistency_pct": 42.0, "respiratory_rate": 15.410156, "total_in_bed_ms": 6000000, "total_awake_ms": 90000, "total_light_ms": 3119810, "total_slow_wave_ms": 2520120, "total_rem_ms": 270070, "sleep_needed_ms": 27574396, "sleep_debt_ms": null}, {"id": "8aa1ad27-ea53-4173-8164-78f1cc748a3b", "start": "2026-02-21T02:40:47.680Z", "end": "2026-02-21T09:38:57.230Z", "nap": false, "performance_pct": 91, "sleep_efficiency_pct": 89.59654, "sleep_consistency_pct": 53.0, "respiratory_rate": 15.527344, "total_in_bed_ms": 25089550, "total_awake_ms": 2610180, "total_light_ms": 12038760, "total_slow_wave_ms": 5460290, "total_rem_ms": 4980320, "sleep_needed_ms": 27574396, "sleep_debt_ms": null}, {"id": "31511b20-10f5-40db-8fd3-e53785776f6b", "start": "2026-02-20T00:44:39.710Z", "end": "2026-02-20T07:21:41.070Z", "nap": false, "performance_pct": 86, "sleep_efficiency_pct": 90.513954, "sleep_consistency_pct": 81.0, "respiratory_rate": 15.007324, "total_in_bed_ms": 23821360, "total_awake_ms": 2350210, "total_light_ms": 12350580, "total_slow_wave_ms": 4530240, "total_rem_ms": 4590330, "sleep_needed_ms": 27574613, "sleep_debt_ms": null}, {"id": "b31f7077-e9f2-4db1-9ad4-baa7e42c20d1", "start": "2026-02-18T23:24:03.430Z", "end": "2026-02-19T07:44:51.090Z", "nap": false, "performance_pct": 109, "sleep_efficiency_pct": 87.91836, "sleep_consistency_pct": 78.0, "respiratory_rate": 15.3515625, "total_in_bed_ms": 30047660, "total_awake_ms": 3630250, "total_light_ms": 13906610, "total_slow_wave_ms": 6510390, "total_rem_ms": 6000410, "sleep_needed_ms": 27575046, "sleep_debt_ms": null}, {"id": "f62fb0f8-e528-4fb7-ad21-7626378260b9", "start": "2026-02-18T00:01:55.880Z", "end": "2026-02-18T08:15:29.830Z", "nap": false, "performance_pct": 107, "sleep_efficiency_pct": 93.92128, "sleep_consistency_pct": 83.0, "respiratory_rate": 15.058594, "total_in_bed_ms": 29613950, "total_awake_ms": 1800150, "total_light_ms": 15212890, "total_slow_wave_ms": 5670410, "total_rem_ms": 6930500, "sleep_needed_ms": 27575046, "sleep_debt_ms": null}, {"id": "3855ad01-0343-4faa-acdc-fe2462e4a389", "start": "2026-02-17T01:28:53.230Z", "end": "2026-02-17T08:32:30.520Z", "nap": false, "performance_pct": 92, "sleep_efficiency_pct": 87.36982, "sleep_consistency_pct": 77.0, "respiratory_rate": 14.8828125, "total_in_bed_ms": 25417290, "total_awake_ms": 3210250, "total_light_ms": 12606440, "total_slow_wave_ms": 2850170, "total_rem_ms": 6750430, "sleep_needed_ms": 27575263, "sleep_debt_ms": null}, {"id": "ff4e9c6a-2ed1-46cf-8559-ab3dad9f19d4", "start": "2026-02-16T00:42:02.180Z", "end": "2026-02-16T07:24:05.770Z", "nap": false, "performance_pct": 87, "sleep_efficiency_pct": 96.64175, "sleep_consistency_pct": 82.0, "respiratory_rate": 15.703125, "total_in_bed_ms": 24123590, "total_awake_ms": 810130, "total_light_ms": 12212720, "total_slow_wave_ms": 5340340, "total_rem_ms": 5760400, "sleep_needed_ms": 27575480, "sleep_debt_ms": null}, {"id": "fc8014de-8c99-455b-b7c6-35cab9dcf814", "start": "2026-02-15T00:17:58.820Z", "end": "2026-02-15T08:58:00.820Z", "nap": false, "performance_pct": 113, "sleep_efficiency_pct": 95.961, "sleep_consistency_pct": 80.0, "respiratory_rate": 15.078125, "total_in_bed_ms": 31202000, "total_awake_ms": 1260250, "total_light_ms": 17221230, "total_slow_wave_ms": 5610190, "total_rem_ms": 7110330, "sleep_needed_ms": 27575697, "sleep_debt_ms": null}, {"id": "cab58fee-206e-48b0-a96d-edee06cce132", "start": "2026-02-14T00:04:28.040Z", "end": "2026-02-14T07:57:49.830Z", "nap": false, "performance_pct": 103, "sleep_efficiency_pct": 91.866425, "sleep_consistency_pct": 88.0, "respiratory_rate": 15.336914, "total_in_bed_ms": 28401790, "total_awake_ms": 2310080, "total_light_ms": 15111000, "total_slow_wave_ms": 4860370, "total_rem_ms": 6120340, "sleep_needed_ms": 27575914, "sleep_debt_ms": null}, {"id": "56c67ee9-2073-4da3-a13e-580dd1b57a23", "start": "2026-02-12T23:56:57.050Z", "end": "2026-02-13T06:51:11.610Z", "nap": false, "performance_pct": 90, "sleep_efficiency_pct": 91.06739, "sleep_consistency_pct": 79.0, "respiratory_rate": 15.544434, "total_in_bed_ms": 24854560, "total_awake_ms": 2220160, "total_light_ms": 10963620, "total_slow_wave_ms": 6780450, "total_rem_ms": 4890330, "sleep_needed_ms": 27576348, "sleep_debt_ms": null}, {"id": "9fbacf00-793a-4694-9bed-bbef04a0b196", "start": "2026-02-11T23:55:56.220Z", "end": "2026-02-12T07:29:09.980Z", "nap": false, "performance_pct": 99, "sleep_efficiency_pct": 95.23313, "sleep_consistency_pct": 77.0, "respiratory_rate": 15.546875, "total_in_bed_ms": 27193760, "total_awake_ms": 1421990, "total_light_ms": 14010990, "total_slow_wave_ms": 5430290, "total_rem_ms": 6330490, "sleep_needed_ms": 27576565, "sleep_debt_ms": null}, {"id": "d8878360-7e7b-48df-88ab-b51f334166e1", "start": "2026-02-11T00:26:31.930Z", "end": "2026-02-11T08:38:43.850Z", "nap": false, "performance_pct": 107, "sleep_efficiency_pct": 93.09174, "sleep_consistency_pct": 80.0, "respiratory_rate": 15.292969, "total_in_bed_ms": 29531920, "total_awake_ms": 2040140, "total_light_ms": 15551050, "total_slow_wave_ms": 5760350, "total_rem_ms": 6180380, "sleep_needed_ms": 27576565, "sleep_debt_ms": null}, {"id": "59b3e2da-456b-490f-a38b-ddc3165464b5", "start": "2026-02-10T00:09:49.880Z", "end": "2026-02-10T08:08:51.800Z", "nap": false, "performance_pct": 104, "sleep_efficiency_pct": 95.92898, "sleep_consistency_pct": 72.0, "respiratory_rate": 15.175781, "total_in_bed_ms": 28741920, "total_awake_ms": 1170090, "total_light_ms": 15330000, "total_slow_wave_ms": 5251330, "total_rem_ms": 6990500, "sleep_needed_ms": 27576782, "sleep_debt_ms": null}, {"id": "f4487f1e-cf8c-47ca-a593-45ec2fc2fe3c", "start": "2026-02-09T02:57:15.320Z", "end": "2026-02-09T08:16:03.510Z", "nap": false, "performance_pct": 69, "sleep_efficiency_pct": 97.33341, "sleep_consistency_pct": 68.0, "respiratory_rate": 15.46875, "total_in_bed_ms": 19128190, "total_awake_ms": 510070, "total_light_ms": 9407530, "total_slow_wave_ms": 4710270, "total_rem_ms": 4500320, "sleep_needed_ms": 27576999, "sleep_debt_ms": null}, {"id": "afd1e8e4-578b-471f-8930-78316abee6d7", "start": "2026-02-08T00:49:21.280Z", "end": "2026-02-08T09:38:56.250Z", "nap": false, "performance_pct": 115, "sleep_efficiency_pct": 93.48515, "sleep_consistency_pct": 71.0, "respiratory_rate": 15.410156, "total_in_bed_ms": 31774970, "total_awake_ms": 2070090, "total_light_ms": 16624030, "total_slow_wave_ms": 6990440, "total_rem_ms": 6090410, "sleep_needed_ms": 27577217, "sleep_debt_ms": null}, {"id": "971cd88c-1675-4961-8cf1-6a72c1c5109e", "start": "2026-02-07T00:48:01.130Z", "end": "2026-02-07T07:51:52.820Z", "nap": false, "performance_pct": 92, "sleep_efficiency_pct": 98.46648, "sleep_consistency_pct": 75.0, "respiratory_rate": 15.390625, "total_in_bed_ms": 25431690, "total_awake_ms": 390000, "total_light_ms": 13310990, "total_slow_wave_ms": 5460370, "total_rem_ms": 6270330, "sleep_needed_ms": 27577434, "sleep_debt_ms": null}, {"id": "be319db7-dcde-46d9-9d80-7db80c0900a0", "start": "2026-02-06T02:44:16.210Z", "end": "2026-02-06T09:05:12.650Z", "nap": false, "performance_pct": 83, "sleep_efficiency_pct": 95.66818, "sleep_consistency_pct": 51.0, "respiratory_rate": 14.824219, "total_in_bed_ms": 22856440, "total_awake_ms": 990100, "total_light_ms": 12595680, "total_slow_wave_ms": 5340270, "total_rem_ms": 3930390, "sleep_needed_ms": 27577652, "sleep_debt_ms": null}, {"id": "30b508f7-b082-4199-a5bd-ffd0a4a97498", "start": "2026-02-04T23:36:13.100Z", "end": "2026-02-05T07:20:25.890Z", "nap": false, "performance_pct": 101, "sleep_efficiency_pct": 96.11526, "sleep_consistency_pct": 87.0, "respiratory_rate": 15.097656, "total_in_bed_ms": 27852790, "total_awake_ms": 1082010, "total_light_ms": 15757930, "total_slow_wave_ms": 5100380, "total_rem_ms": 5912470, "sleep_needed_ms": 27578087, "sleep_debt_ms": null}, {"id": "635cca45-f050-4840-aa27-7df042e4b4a4", "start": "2026-02-03T23:45:09.990Z", "end": "2026-02-04T07:40:02.730Z", "nap": false, "performance_pct": 103, "sleep_efficiency_pct": 96.72453, "sleep_consistency_pct": 82.0, "respiratory_rate": 15.1171875, "total_in_bed_ms": 28492740, "total_awake_ms": 1028050, "total_light_ms": 14468970, "total_slow_wave_ms": 5370220, "total_rem_ms": 7625500, "sleep_needed_ms": 27578304, "sleep_debt_ms": null}, {"id": "5c8b9ba9-8d55-4850-b90f-35033a275e67", "start": "2026-02-03T00:16:06.260Z", "end": "2026-02-03T08:04:08.060Z", "nap": false, "performance_pct": 102, "sleep_efficiency_pct": 93.909935, "sleep_consistency_pct": 74.0, "respiratory_rate": 15.292969, "total_in_bed_ms": 28081800, "total_awake_ms": 1710200, "total_light_ms": 15444790, "total_slow_wave_ms": 6150420, "total_rem_ms": 4776390, "sleep_needed_ms": 27578304, "sleep_debt_ms": null}, {"id": "1afddfbb-6988-414b-9255-8e78d9a001ec", "start": "2026-02-02T16:40:00.000Z", "end": "2026-02-02T17:03:00.000Z", "nap": true, "performance_pct": 5, "sleep_efficiency_pct": 100.0, "sleep_consistency_pct": 66.0, "respiratory_rate": 16.875, "total_in_bed_ms": 1380000, "total_awake_ms": 640610, "total_light_ms": 180000, "total_slow_wave_ms": 559390, "total_rem_ms": 0, "sleep_needed_ms": 27578522, "sleep_debt_ms": null}, {"id": "6b17569a-a79c-4c7e-8b1c-8481505340a6", "start": "2026-02-01T22:43:32.760Z", "end": "2026-02-02T07:14:57.770Z", "nap": false, "performance_pct": 111, "sleep_efficiency_pct": 90.90357, "sleep_consistency_pct": 68.0, "respiratory_rate": 15.1171875, "total_in_bed_ms": 30685010, "total_awake_ms": 2791240, "total_light_ms": 15411190, "total_slow_wave_ms": 5220210, "total_rem_ms": 7262370, "sleep_needed_ms": 27578740, "sleep_debt_ms": null}, {"id": "c1c12ae0-f9f0-4e35-965d-9eac0bd6df1f", "start": "2026-02-01T00:18:29.340Z", "end": "2026-02-01T07:17:26.950Z", "nap": false, "performance_pct": 91, "sleep_efficiency_pct": 93.909164, "sleep_consistency_pct": 70.0, "respiratory_rate": 15.761719, "total_in_bed_ms": 25137610, "total_awake_ms": 1531090, "total_light_ms": 12383840, "total_slow_wave_ms": 5310340, "total_rem_ms": 5912340, "sleep_needed_ms": 27578740, "sleep_debt_ms": null}, {"id": "38996a86-67e6-4652-86df-53658603cedf", "start": "2026-01-31T02:21:26.530Z", "end": "2026-01-31T08:40:04.970Z", "nap": false, "performance_pct": 82, "sleep_efficiency_pct": 95.10957, "sleep_consistency_pct": 54.0, "respiratory_rate": 16.367188, "total_in_bed_ms": 22718440, "total_awake_ms": 1111030, "total_light_ms": 8875590, "total_slow_wave_ms": 7354480, "total_rem_ms": 5377340, "sleep_needed_ms": 27578957, "sleep_debt_ms": null}, {"id": "c26e8dbb-5736-4be9-a1d8-d1c398e4355a", "start": "2026-01-29T23:41:52.770Z", "end": "2026-01-30T08:53:24.610Z", "nap": false, "performance_pct": 120, "sleep_efficiency_pct": 74.962585, "sleep_consistency_pct": 62.0, "respiratory_rate": 16.933594, "total_in_bed_ms": 33091840, "total_awake_ms": 8285340, "total_light_ms": 13330930, "total_slow_wave_ms": 6090230, "total_rem_ms": 5385340, "sleep_needed_ms": 27579393, "sleep_debt_ms": null}, {"id": "ca433c76-9dac-41d3-8451-e57bcd624f60", "start": "2026-01-28T22:45:19.000Z", "end": "2026-01-29T07:32:09.380Z", "nap": false, "performance_pct": 115, "sleep_efficiency_pct": 93.04676, "sleep_consistency_pct": 63.0, "respiratory_rate": 15.244141, "total_in_bed_ms": 31610380, "total_awake_ms": 2703720, "total_light_ms": 17865080, "total_slow_wave_ms": 4110200, "total_rem_ms": 6931380, "sleep_needed_ms": 27579611, "sleep_debt_ms": null}, {"id": "5b2d163a-5254-455a-83a2-59010a9b2642", "start": "2026-01-27T21:59:46.740Z", "end": "2026-01-28T06:58:56.620Z", "nap": false, "performance_pct": 117, "sleep_efficiency_pct": 91.65338, "sleep_consistency_pct": 45.0, "respiratory_rate": 15.073242, "total_in_bed_ms": 32349880, "total_awake_ms": 2700120, "total_light_ms": 18698070, "total_slow_wave_ms": 5010240, "total_rem_ms": 5941450, "sleep_needed_ms": 27579829, "sleep_debt_ms": null}, {"id": "a0f62c53-d35d-41e7-bed0-73f53641984c", "start": "2026-01-26T23:00:22.000Z", "end": "2026-01-27T06:10:23.000Z", "nap": false, "performance_pct": 94, "sleep_efficiency_pct": 87.43537, "sleep_consistency_pct": 39.0, "respiratory_rate": 15.4296875, "total_in_bed_ms": 25801000, "total_awake_ms": 3241800, "total_light_ms": 12148400, "total_slow_wave_ms": 4440270, "total_rem_ms": 5970530, "sleep_needed_ms": 27580047, "sleep_debt_ms": null}, {"id": "8b46eef5-4301-4d8c-99d9-56659b94544b", "start": "2026-01-25T23:12:18.220Z", "end": "2026-01-26T06:49:54.990Z", "nap": false, "performance_pct": 100, "sleep_efficiency_pct": 96.82453, "sleep_consistency_pct": 19.0, "respiratory_rate": 15.527344, "total_in_bed_ms": 27456770, "total_awake_ms": 928030, "total_light_ms": 15908170, "total_slow_wave_ms": 5820290, "total_rem_ms": 4800280, "sleep_needed_ms": 27580265, "sleep_debt_ms": null}, {"id": "f08a9d5a-5ce8-4f7b-b99f-4b8a87dfb6a1", "start": "2026-01-25T05:38:45.700Z", "end": "2026-01-25T14:08:44.470Z", "nap": false, "performance_pct": 111, "sleep_efficiency_pct": 91.95964, "sleep_consistency_pct": 14.0, "respiratory_rate": 16.171875, "total_in_bed_ms": 30598770, "total_awake_ms": 2460250, "total_light_ms": 13944820, "total_slow_wave_ms": 6183190, "total_rem_ms": 8010510, "sleep_needed_ms": 27580265, "sleep_debt_ms": null}, {"id": "a8024776-98b3-4a10-8d2e-c8bd9805e47b", "start": "2026-01-23T23:48:07.300Z", "end": "2026-01-24T08:48:15.220Z", "nap": false, "performance_pct": 118, "sleep_efficiency_pct": 91.183975, "sleep_consistency_pct": 80.0, "respiratory_rate": 14.941406, "total_in_bed_ms": 32407920, "total_awake_ms": 2857090, "total_light_ms": 18778180, "total_slow_wave_ms": 5580370, "total_rem_ms": 5192280, "sleep_needed_ms": 27580701, "sleep_debt_ms": null}, {"id": "e7cfb193-5593-4abd-a8bd-d20a9041b868", "start": "2026-01-22T23:18:03.910Z", "end": "2026-01-23T08:30:15.112Z", "nap": false, "performance_pct": 120, "sleep_efficiency_pct": 94.108215, "sleep_consistency_pct": 77.0, "respiratory_rate": 15.134277, "total_in_bed_ms": 33131202, "total_awake_ms": 1952020, "total_light_ms": 16686960, "total_slow_wave_ms": 6182440, "total_rem_ms": 8309782, "sleep_needed_ms": 27580920, "sleep_debt_ms": null}, {"id": "d7985e16-d108-42ab-bb9f-65a1c811be44", "start": "2026-01-22T01:33:53.840Z", "end": "2026-01-22T08:15:25.310Z", "nap": false, "performance_pct": 87, "sleep_efficiency_pct": 91.399284, "sleep_consistency_pct": 71.0, "respiratory_rate": 15.5859375, "total_in_bed_ms": 24091470, "total_awake_ms": 2072040, "total_light_ms": 12803800, "total_slow_wave_ms": 4230250, "total_rem_ms": 4985380, "sleep_needed_ms": 27580920, "sleep_debt_ms": null}, {"id": "b4ee8130-57e8-4f39-9a0a-13570a954846", "start": "2026-01-20T23:14:50.490Z", "end": "2026-01-21T07:46:15.380Z", "nap": false, "performance_pct": 111, "sleep_efficiency_pct": 92.07043, "sleep_consistency_pct": 65.0, "respiratory_rate": 15.0, "total_in_bed_ms": 30684890, "total_awake_ms": 2433180, "total_light_ms": 15675910, "total_slow_wave_ms": 7290410, "total_rem_ms": 5285390, "sleep_needed_ms": 27581357, "sleep_debt_ms": null}, {"id": "f53234b0-e0bf-4055-8ea1-e52beb364611", "start": "2026-01-20T00:18:17.770Z", "end": "2026-01-20T06:53:01.280Z", "nap": false, "performance_pct": 86, "sleep_efficiency_pct": 97.085945, "sleep_consistency_pct": 62.0, "respiratory_rate": 15.527344, "total_in_bed_ms": 23683510, "total_awake_ms": 690150, "total_light_ms": 11711680, "total_slow_wave_ms": 6720420, "total_rem_ms": 4561260, "sleep_needed_ms": 27581357, "sleep_debt_ms": null}, {"id": "3a669d98-87ce-48d5-9e4e-f9afd3ea5ec8", "start": "2026-01-19T00:09:21.670Z", "end": "2026-01-19T08:06:44.400Z", "nap": false, "performance_pct": 104, "sleep_efficiency_pct": 89.77663, "sleep_consistency_pct": 63.0, "respiratory_rate": 15.9375, "total_in_bed_ms": 28642730, "total_awake_ms": 3035080, "total_light_ms": 15016930, "total_slow_wave_ms": 7230410, "total_rem_ms": 3360310, "sleep_needed_ms": 27581575, "sleep_debt_ms": null}, {"id": "7b8bd0c9-e528-4460-b5ec-997437109462", "start": "2026-01-18T01:00:49.000Z", "end": "2026-01-18T09:03:41.500Z", "nap": false, "performance_pct": 105, "sleep_efficiency_pct": 93.8457, "sleep_consistency_pct": 47.0, "respiratory_rate": 15.644531, "total_in_bed_ms": 28972500, "total_awake_ms": 1980890, "total_light_ms": 15885900, "total_slow_wave_ms": 4590350, "total_rem_ms": 6515360, "sleep_needed_ms": 27581793, "sleep_debt_ms": null}, {"id": "e8b1a6fd-b364-4eeb-92f4-255986043c63", "start": "2026-01-17T04:10:46.170Z", "end": "2026-01-17T11:35:43.750Z", "nap": false, "performance_pct": 97, "sleep_efficiency_pct": 88.406815, "sleep_consistency_pct": 28.0, "respiratory_rate": 16.523438, "total_in_bed_ms": 26697580, "total_awake_ms": 3095100, "total_light_ms": 9640600, "total_slow_wave_ms": 6815370, "total_rem_ms": 7146510, "sleep_needed_ms": 27582012, "sleep_debt_ms": null}, {"id": "60e21935-755b-484b-9a54-b84d190821d6", "start": "2026-01-16T00:18:08.450Z", "end": "2026-01-16T07:33:59.130Z", "nap": false, "performance_pct": 95, "sleep_efficiency_pct": 95.1815, "sleep_consistency_pct": 60.0, "respiratory_rate": 15.996094, "total_in_bed_ms": 26150680, "total_awake_ms": 1260070, "total_light_ms": 14596060, "total_slow_wave_ms": 4980270, "total_rem_ms": 5314280, "sleep_needed_ms": 27582231, "sleep_debt_ms": null}, {"id": "5de96825-0816-43b0-82c8-1674f6f62d7a", "start": "2026-01-15T00:33:35.550Z", "end": "2026-01-15T07:13:25.020Z", "nap": false, "performance_pct": 87, "sleep_efficiency_pct": 90.22834, "sleep_consistency_pct": 49.0, "respiratory_rate": 15.703125, "total_in_bed_ms": 23989470, "total_awake_ms": 2344170, "total_light_ms": 11083570, "total_slow_wave_ms": 5851290, "total_rem_ms": 4710440, "sleep_needed_ms": 27582449, "sleep_debt_ms": null}, {"id": "1772dafb-8811-48f7-8689-aafdf337666f", "start": "2026-01-14T02:08:35.880Z", "end": "2026-01-14T07:05:22.000Z", "nap": false, "performance_pct": 65, "sleep_efficiency_pct": 95.95644, "sleep_consistency_pct": 33.0, "respiratory_rate": 15.761719, "total_in_bed_ms": 17806120, "total_awake_ms": 720000, "total_light_ms": 7511430, "total_slow_wave_ms": 6034310, "total_rem_ms": 3540380, "sleep_needed_ms": 27582668, "sleep_debt_ms": null}, {"id": "2cf30c17-9a42-49e1-b360-5bfeb1d2e910", "start": "2026-01-13T09:50:00.000Z", "end": "2026-01-13T13:29:00.000Z", "nap": true, "performance_pct": 48, "sleep_efficiency_pct": 93.72682, "sleep_consistency_pct": 22.0, "respiratory_rate": 17.285156, "total_in_bed_ms": 13140000, "total_awake_ms": 1109290, "total_light_ms": 4260260, "total_slow_wave_ms": 5520290, "total_rem_ms": 2250160, "sleep_needed_ms": 27582887, "sleep_debt_ms": null}, {"id": "a473320f-c832-41d8-b3fd-d2f7a39d4161", "start": "2026-01-13T01:01:32.450Z", "end": "2026-01-13T08:00:34.000Z", "nap": false, "performance_pct": 91, "sleep_efficiency_pct": 89.22819, "sleep_consistency_pct": 39.0, "respiratory_rate": 19.160156, "total_in_bed_ms": 25141550, "total_awake_ms": 2708200, "total_light_ms": 10847710, "total_slow_wave_ms": 7890390, "total_rem_ms": 3695250, "sleep_needed_ms": 27582887, "sleep_debt_ms": null}, {"id": "397d4861-9d47-4477-8706-284e97def8bd", "start": "2026-01-12T13:50:01.480Z", "end": "2026-01-12T17:29:36.800Z", "nap": true, "performance_pct": 48, "sleep_efficiency_pct": 56.736004, "sleep_consistency_pct": 33.0, "respiratory_rate": 13.7109375, "total_in_bed_ms": 13175320, "total_awake_ms": 5700170, "total_light_ms": 2435040, "total_slow_wave_ms": 4440100, "total_rem_ms": 600010, "sleep_needed_ms": 27583106, "sleep_debt_ms": null}, {"id": "f680e109-19b3-4395-bc49-42f6a43c906c", "start": "2026-01-12T02:45:29.980Z", "end": "2026-01-12T10:11:36.120Z", "nap": false, "performance_pct": 97, "sleep_efficiency_pct": 61.322475, "sleep_consistency_pct": 60.0, "respiratory_rate": 17.8125, "total_in_bed_ms": 26766140, "total_awake_ms": 10352480, "total_light_ms": 9783390, "total_slow_wave_ms": 3000090, "total_rem_ms": 3630180, "sleep_needed_ms": 27583106, "sleep_debt_ms": null}, {"id": "716a92c5-4365-4b03-ba97-d1bb19fece4e", "start": "2026-01-11T00:58:56.650Z", "end": "2026-01-11T09:36:58.490Z", "nap": false, "performance_pct": 113, "sleep_efficiency_pct": 93.799545, "sleep_consistency_pct": 68.0, "respiratory_rate": 15.175781, "total_in_bed_ms": 31081840, "total_awake_ms": 2019130, "total_light_ms": 15705060, "total_slow_wave_ms": 6870420, "total_rem_ms": 6487230, "sleep_needed_ms": 27583325, "sleep_debt_ms": null}], "cycles": [{"id": 1424689443, "start": "2026-04-10T23:52:32.580Z", "end": null, "strain": 0.115519464, "kilojoule": 2672.6152, "avg_hr": 56, "max_hr": 109}, {"id": 1422451242, "start": "2026-04-09T22:50:12.670Z", "end": "2026-04-10T23:52:32.580Z", "strain": 16.173532, "kilojoule": 12431.723, "avg_hr": 74, "max_hr": 195}, {"id": 1420385826, "start": "2026-04-08T23:44:10.200Z", "end": "2026-04-09T22:50:12.670Z", "strain": 5.0952773, "kilojoule": 8129.401, "avg_hr": 69, "max_hr": 142}, {"id": 1418460280, "start": "2026-04-07T23:39:37.430Z", "end": "2026-04-08T23:44:10.200Z", "strain": 4.237491, "kilojoule": 8211.447, "avg_hr": 67, "max_hr": 122}, {"id": 1416144050, "start": "2026-04-06T22:18:29.070Z", "end": "2026-04-07T23:39:37.430Z", "strain": 14.186516, "kilojoule": 11308.106, "avg_hr": 72, "max_hr": 190}, {"id": 1414093395, "start": "2026-04-05T23:49:26.410Z", "end": "2026-04-06T22:18:29.070Z", "strain": 4.7583513, "kilojoule": 7752.793, "avg_hr": 69, "max_hr": 136}, {"id": 1412348126, "start": "2026-04-05T01:57:53.490Z", "end": "2026-04-05T23:49:26.410Z", "strain": 14.181859, "kilojoule": 10560.344, "avg_hr": 71, "max_hr": 180}, {"id": 1409915515, "start": "2026-04-04T02:06:50.820Z", "end": "2026-04-05T01:57:53.490Z", "strain": 4.3423166, "kilojoule": 8209.901, "avg_hr": 70, "max_hr": 157}, {"id": 1408017927, "start": "2026-04-03T01:16:47.390Z", "end": "2026-04-04T02:06:50.820Z", "strain": 11.725176, "kilojoule": 10497.905, "avg_hr": 74, "max_hr": 174}, {"id": 1405980199, "start": "2026-04-02T01:32:44.030Z", "end": "2026-04-03T01:16:47.390Z", "strain": 4.2165146, "kilojoule": 8123.448, "avg_hr": 66, "max_hr": 142}, {"id": 1403659556, "start": "2026-03-31T22:52:11.020Z", "end": "2026-04-02T01:32:44.030Z", "strain": 4.3136134, "kilojoule": 9129.729, "avg_hr": 70, "max_hr": 139}, {"id": 1401676307, "start": "2026-03-30T22:58:07.680Z", "end": "2026-03-31T22:52:11.020Z", "strain": 15.367452, "kilojoule": 11619.67, "avg_hr": 72, "max_hr": 187}, {"id": 1399545018, "start": "2026-03-29T23:23:00.910Z", "end": "2026-03-30T22:58:07.680Z", "strain": 4.3224983, "kilojoule": 8091.551, "avg_hr": 68, "max_hr": 131}, {"id": 1397602418, "start": "2026-03-28T23:36:27.590Z", "end": "2026-03-29T23:23:00.910Z", "strain": 9.822971, "kilojoule": 8153.41, "avg_hr": 67, "max_hr": 136}, {"id": 1395427771, "start": "2026-03-27T23:47:25.000Z", "end": "2026-03-28T23:36:27.590Z", "strain": 15.031658, "kilojoule": 11676.909, "avg_hr": 72, "max_hr": 179}, {"id": 1393331631, "start": "2026-03-27T01:24:31.230Z", "end": "2026-03-27T23:47:25.000Z", "strain": 4.9758368, "kilojoule": 7806.096, "avg_hr": 70, "max_hr": 153}, {"id": 1391411479, "start": "2026-03-26T02:36:29.270Z", "end": "2026-03-27T01:24:31.230Z", "strain": 4.497403, "kilojoule": 7764.373, "avg_hr": 73, "max_hr": 144}, {"id": 1389152799, "start": "2026-03-25T01:02:36.260Z", "end": "2026-03-26T02:36:29.270Z", "strain": 4.209786, "kilojoule": 8636.8545, "avg_hr": 69, "max_hr": 134}, {"id": 1387128540, "start": "2026-03-24T00:45:28.000Z", "end": "2026-03-25T01:02:36.260Z", "strain": 5.8043933, "kilojoule": 8568.955, "avg_hr": 74, "max_hr": 166}, {"id": 1385041257, "start": "2026-03-23T00:04:58.900Z", "end": "2026-03-24T00:45:28.000Z", "strain": 13.45815, "kilojoule": 10636.092, "avg_hr": 79, "max_hr": 187}, {"id": 1382959050, "start": "2026-03-22T00:13:40.330Z", "end": "2026-03-23T00:04:58.900Z", "strain": 12.870497, "kilojoule": 8516.291, "avg_hr": 73, "max_hr": 154}, {"id": 1380848719, "start": "2026-03-20T23:23:07.240Z", "end": "2026-03-22T00:13:40.330Z", "strain": 14.365534, "kilojoule": 11491.745, "avg_hr": 76, "max_hr": 179}, {"id": 1378383089, "start": "2026-03-19T23:21:34.910Z", "end": "2026-03-20T23:23:07.240Z", "strain": 4.4757957, "kilojoule": 8158.9194, "avg_hr": 73, "max_hr": 141}, {"id": 1376748554, "start": "2026-03-18T23:31:01.860Z", "end": "2026-03-19T23:21:34.910Z", "strain": 4.0427012, "kilojoule": 7992.044, "avg_hr": 72, "max_hr": 128}, {"id": 1374172572, "start": "2026-03-18T01:27:29.780Z", "end": "2026-03-18T23:31:01.860Z", "strain": 5.212209, "kilojoule": 7687.918, "avg_hr": 77, "max_hr": 144}, {"id": 1372197700, "start": "2026-03-16T23:41:56.540Z", "end": "2026-03-18T01:27:29.780Z", "strain": 10.5224495, "kilojoule": 10588.632, "avg_hr": 79, "max_hr": 164}, {"id": 1369835418, "start": "2026-03-15T23:37:23.590Z", "end": "2026-03-16T23:41:56.540Z", "strain": 6.1572847, "kilojoule": 8596.524, "avg_hr": 77, "max_hr": 154}, {"id": 1367907672, "start": "2026-03-15T00:29:35.760Z", "end": "2026-03-15T23:37:23.590Z", "strain": 6.5239544, "kilojoule": 8175.4995, "avg_hr": 76, "max_hr": 142}, {"id": 1366148763, "start": "2026-03-14T01:56:26.190Z", "end": "2026-03-15T00:29:35.760Z", "strain": 8.072071, "kilojoule": 8570.146, "avg_hr": 75, "max_hr": 148}, {"id": 1364189452, "start": "2026-03-13T00:31:23.120Z", "end": "2026-03-14T01:56:26.190Z", "strain": 4.9534497, "kilojoule": 8646.618, "avg_hr": 76, "max_hr": 134}, {"id": 1361886037, "start": "2026-03-12T01:04:32.150Z", "end": "2026-03-13T00:31:23.120Z", "strain": 5.9810314, "kilojoule": 8152.1255, "avg_hr": 78, "max_hr": 146}, {"id": 1360160731, "start": "2026-03-11T00:15:28.890Z", "end": "2026-03-12T01:04:32.150Z", "strain": 5.17601, "kilojoule": 8564.458, "avg_hr": 74, "max_hr": 137}, {"id": 1358039725, "start": "2026-03-10T01:15:55.000Z", "end": "2026-03-11T00:15:28.890Z", "strain": 11.602717, "kilojoule": 10093.7, "avg_hr": 84, "max_hr": 154}, {"id": 1356000495, "start": "2026-03-09T00:04:22.060Z", "end": "2026-03-10T01:15:55.000Z", "strain": 6.8994684, "kilojoule": 8987.107, "avg_hr": 76, "max_hr": 142}, {"id": 1353923186, "start": "2026-03-08T00:51:59.430Z", "end": "2026-03-09T00:04:22.060Z", "strain": 7.3261046, "kilojoule": 8408.09, "avg_hr": 84, "max_hr": 144}, {"id": 1351920717, "start": "2026-03-06T23:49:26.240Z", "end": "2026-03-08T00:51:59.430Z", "strain": 11.752618, "kilojoule": 10510.318, "avg_hr": 84, "max_hr": 152}, {"id": 1349937969, "start": "2026-03-05T23:36:22.360Z", "end": "2026-03-06T23:49:26.240Z", "strain": 5.575219, "kilojoule": 8360.635, "avg_hr": 73, "max_hr": 136}, {"id": 1347718045, "start": "2026-03-05T00:26:24.250Z", "end": "2026-03-05T23:36:22.360Z", "strain": 11.863692, "kilojoule": 9992.319, "avg_hr": 71, "max_hr": 174}, {"id": 1346034139, "start": "2026-03-03T23:38:51.080Z", "end": "2026-03-05T00:26:24.250Z", "strain": 4.807285, "kilojoule": 8486.861, "avg_hr": 67, "max_hr": 143}, {"id": 1344080122, "start": "2026-03-03T00:03:48.040Z", "end": "2026-03-03T23:38:51.080Z", "strain": 5.2564588, "kilojoule": 8049.9897, "avg_hr": 68, "max_hr": 144}, {"id": 1341450687, "start": "2026-03-01T22:20:11.400Z", "end": "2026-03-03T00:03:48.040Z", "strain": 4.5304565, "kilojoule": 8690.733, "avg_hr": 65, "max_hr": 125}, {"id": 1340160068, "start": "2026-03-01T01:16:08.360Z", "end": "2026-03-01T22:20:11.400Z", "strain": 4.0538616, "kilojoule": 7034.7236, "avg_hr": 65, "max_hr": 120}, {"id": 1337659437, "start": "2026-02-27T23:31:01.670Z", "end": "2026-03-01T01:16:08.360Z", "strain": 4.8104486, "kilojoule": 8742.237, "avg_hr": 67, "max_hr": 125}, {"id": 1336996214, "start": "2026-02-27T06:03:38.080Z", "end": "2026-02-27T23:31:01.670Z", "strain": 4.369206, "kilojoule": 5882.406, "avg_hr": 68, "max_hr": 126}, {"id": 1333683067, "start": "2026-02-25T23:51:34.490Z", "end": "2026-02-27T06:03:38.080Z", "strain": 4.0248475, "kilojoule": 10144.486, "avg_hr": 68, "max_hr": 123}, {"id": 1332099897, "start": "2026-02-24T23:15:32.000Z", "end": "2026-02-25T23:51:34.490Z", "strain": 4.7603006, "kilojoule": 8459.338, "avg_hr": 69, "max_hr": 122}, {"id": 1329496551, "start": "2026-02-23T22:14:58.440Z", "end": "2026-02-24T23:15:32.000Z", "strain": 7.7506065, "kilojoule": 9495.991, "avg_hr": 82, "max_hr": 137}, {"id": 1327584988, "start": "2026-02-22T19:49:25.250Z", "end": "2026-02-23T22:14:58.440Z", "strain": 4.76993, "kilojoule": 9144.376, "avg_hr": 74, "max_hr": 130}, {"id": 1326068718, "start": "2026-02-22T01:25:28.820Z", "end": "2026-02-22T19:49:25.250Z", "strain": 5.4237976, "kilojoule": 6571.278, "avg_hr": 75, "max_hr": 145}, {"id": 1324398731, "start": "2026-02-21T02:40:47.680Z", "end": "2026-02-22T01:25:28.820Z", "strain": 14.031257, "kilojoule": 10954.857, "avg_hr": 68, "max_hr": 177}, {"id": 1322275737, "start": "2026-02-20T00:44:39.710Z", "end": "2026-02-21T02:40:47.680Z", "strain": 9.441399, "kilojoule": 10244.07, "avg_hr": 68, "max_hr": 164}, {"id": 1319916372, "start": "2026-02-18T23:24:03.430Z", "end": "2026-02-20T00:44:39.710Z", "strain": 12.928046, "kilojoule": 11044.423, "avg_hr": 65, "max_hr": 177}, {"id": 1318530742, "start": "2026-02-18T00:01:55.880Z", "end": "2026-02-18T23:24:03.430Z", "strain": 7.925922, "kilojoule": 9133.936, "avg_hr": 65, "max_hr": 152}, {"id": 1316640557, "start": "2026-02-17T01:28:53.230Z", "end": "2026-02-18T00:01:55.880Z", "strain": 10.362571, "kilojoule": 9310.701, "avg_hr": 65, "max_hr": 168}, {"id": 1314595892, "start": "2026-02-16T00:42:02.180Z", "end": "2026-02-17T01:28:53.230Z", "strain": 12.807794, "kilojoule": 10617.137, "avg_hr": 65, "max_hr": 182}, {"id": 1312777356, "start": "2026-02-15T00:17:58.820Z", "end": "2026-02-16T00:42:02.180Z", "strain": 4.496119, "kilojoule": 8506.329, "avg_hr": 62, "max_hr": 132}, {"id": 1310793193, "start": "2026-02-14T00:04:28.040Z", "end": "2026-02-15T00:17:58.820Z", "strain": 12.447066, "kilojoule": 10997.384, "avg_hr": 65, "max_hr": 160}, {"id": 1308845061, "start": "2026-02-12T23:56:57.050Z", "end": "2026-02-14T00:04:28.040Z", "strain": 6.5289207, "kilojoule": 8978.471, "avg_hr": 64, "max_hr": 148}, {"id": 1307060725, "start": "2026-02-11T23:55:56.220Z", "end": "2026-02-12T23:56:57.050Z", "strain": 10.403486, "kilojoule": 9763.325, "avg_hr": 65, "max_hr": 157}, {"id": 1305159274, "start": "2026-02-11T00:26:31.930Z", "end": "2026-02-11T23:55:56.220Z", "strain": 11.764682, "kilojoule": 9961.217, "avg_hr": 66, "max_hr": 190}, {"id": 1303308481, "start": "2026-02-10T00:09:49.880Z", "end": "2026-02-11T00:26:31.930Z", "strain": 4.514, "kilojoule": 8446.023, "avg_hr": 61, "max_hr": 148}, {"id": 1301393288, "start": "2026-02-09T02:57:15.320Z", "end": "2026-02-10T00:09:49.880Z", "strain": 11.224033, "kilojoule": 8913.39, "avg_hr": 62, "max_hr": 177}, {"id": 1299551978, "start": "2026-02-08T00:49:21.280Z", "end": "2026-02-09T02:57:15.320Z", "strain": 9.219083, "kilojoule": 10391.391, "avg_hr": 63, "max_hr": 159}, {"id": 1297523419, "start": "2026-02-07T00:48:01.130Z", "end": "2026-02-08T00:49:21.280Z", "strain": 7.163383, "kilojoule": 8932.138, "avg_hr": 66, "max_hr": 165}, {"id": 1295865838, "start": "2026-02-06T02:44:16.210Z", "end": "2026-02-07T00:48:01.130Z", "strain": 7.738804, "kilojoule": 7792.685, "avg_hr": 71, "max_hr": 151}, {"id": 1293803242, "start": "2026-02-04T23:36:13.100Z", "end": "2026-02-06T02:44:16.210Z", "strain": 5.1942163, "kilojoule": 9469.884, "avg_hr": 72, "max_hr": 141}, {"id": 1291956004, "start": "2026-02-03T23:45:09.990Z", "end": "2026-02-04T23:36:13.100Z", "strain": 12.653346, "kilojoule": 10698.509, "avg_hr": 66, "max_hr": 172}, {"id": 1290123499, "start": "2026-02-03T00:16:06.260Z", "end": "2026-02-03T23:45:09.990Z", "strain": 4.100547, "kilojoule": 8062.2603, "avg_hr": 63, "max_hr": 123}, {"id": 1288104648, "start": "2026-02-01T22:43:32.760Z", "end": "2026-02-03T00:16:06.260Z", "strain": 14.305794, "kilojoule": 11384.605, "avg_hr": 66, "max_hr": 190}, {"id": 1286117120, "start": "2026-02-01T00:18:29.340Z", "end": "2026-02-01T22:43:32.760Z", "strain": 11.747483, "kilojoule": 7801.5483, "avg_hr": 64, "max_hr": 132}, {"id": 1284485794, "start": "2026-01-31T02:21:26.530Z", "end": "2026-02-01T00:18:29.340Z", "strain": 4.426316, "kilojoule": 7613.0044, "avg_hr": 66, "max_hr": 140}, {"id": 1282514716, "start": "2026-01-29T23:41:52.770Z", "end": "2026-01-31T02:21:26.530Z", "strain": 4.9828415, "kilojoule": 9360.103, "avg_hr": 71, "max_hr": 143}, {"id": 1280754016, "start": "2026-01-28T22:45:19.000Z", "end": "2026-01-29T23:41:52.770Z", "strain": 11.680307, "kilojoule": 10772.805, "avg_hr": 67, "max_hr": 174}, {"id": 1278830644, "start": "2026-01-27T21:59:46.740Z", "end": "2026-01-28T22:45:19.000Z", "strain": 4.6382847, "kilojoule": 8646.673, "avg_hr": 63, "max_hr": 131}, {"id": 1276875505, "start": "2026-01-26T23:00:22.000Z", "end": "2026-01-27T21:59:46.740Z", "strain": 12.210744, "kilojoule": 9739.003, "avg_hr": 70, "max_hr": 179}, {"id": 1275097018, "start": "2026-01-25T23:12:18.220Z", "end": "2026-01-26T23:00:22.000Z", "strain": 16.481077, "kilojoule": 11632.042, "avg_hr": 70, "max_hr": 195}, {"id": 1273978079, "start": "2026-01-25T05:38:45.700Z", "end": "2026-01-25T23:12:18.220Z", "strain": 4.1382236, "kilojoule": 6011.6963, "avg_hr": 71, "max_hr": 126}, {"id": 1271401955, "start": "2026-01-23T23:48:07.300Z", "end": "2026-01-25T05:38:45.700Z", "strain": 7.695888, "kilojoule": 11059.92, "avg_hr": 72, "max_hr": 142}, {"id": 1269791438, "start": "2026-01-22T23:18:03.910Z", "end": "2026-01-23T23:48:07.300Z", "strain": 10.573836, "kilojoule": 10170.938, "avg_hr": 68, "max_hr": 173}, {"id": 1267800597, "start": "2026-01-22T01:33:53.840Z", "end": "2026-01-22T23:18:03.910Z", "strain": 4.0239005, "kilojoule": 7413.5044, "avg_hr": 63, "max_hr": 120}, {"id": 1265949133, "start": "2026-01-20T23:14:50.490Z", "end": "2026-01-22T01:33:53.840Z", "strain": 4.4436603, "kilojoule": 9070.298, "avg_hr": 66, "max_hr": 124}, {"id": 1264154381, "start": "2026-01-20T00:18:17.770Z", "end": "2026-01-20T23:14:50.490Z", "strain": 13.668949, "kilojoule": 9937.497, "avg_hr": 70, "max_hr": 181}, {"id": 1262277132, "start": "2026-01-19T00:09:21.670Z", "end": "2026-01-20T00:18:17.770Z", "strain": 1.4794188, "kilojoule": 8289.214, "avg_hr": 59, "max_hr": 104}, {"id": 1260642403, "start": "2026-01-18T01:00:49.000Z", "end": "2026-01-19T00:09:21.670Z", "strain": 4.062425, "kilojoule": 8002.193, "avg_hr": 63, "max_hr": 127}, {"id": 1259103718, "start": "2026-01-17T04:10:46.170Z", "end": "2026-01-18T01:00:49.000Z", "strain": 4.04142, "kilojoule": 7163.074, "avg_hr": 67, "max_hr": 122}, {"id": 1256988457, "start": "2026-01-16T00:18:08.450Z", "end": "2026-01-17T04:10:46.170Z", "strain": 13.308476, "kilojoule": 12219.797, "avg_hr": 76, "max_hr": 174}, {"id": 1255034361, "start": "2026-01-15T00:33:35.550Z", "end": "2026-01-16T00:18:08.450Z", "strain": 4.50864, "kilojoule": 8204.45, "avg_hr": 64, "max_hr": 135}, {"id": 1253337201, "start": "2026-01-14T02:08:35.880Z", "end": "2026-01-15T00:33:35.550Z", "strain": 4.330529, "kilojoule": 7744.8774, "avg_hr": 61, "max_hr": 123}, {"id": 1251511331, "start": "2026-01-13T01:01:32.450Z", "end": "2026-01-14T02:08:35.880Z", "strain": 4.4132695, "kilojoule": 8574.5, "avg_hr": 62, "max_hr": 125}, {"id": 1249749697, "start": "2026-01-12T02:45:29.980Z", "end": "2026-01-13T01:01:32.450Z", "strain": 6.0283027, "kilojoule": 8078.5664, "avg_hr": 77, "max_hr": 140}, {"id": 1247847926, "start": "2026-01-11T00:58:56.650Z", "end": "2026-01-12T02:45:29.980Z", "strain": 5.3765497, "kilojoule": 9214.202, "avg_hr": 63, "max_hr": 148}], "workouts": [{"id": "e776cf00-3c3e-4836-9550-deacf820af67", "start": "2026-04-10T15:58:30.900Z", "end": "2026-04-10T17:01:29.990Z", "sport_id": 0, "sport_name": "Running", "strain": 15.873849, "avg_hr": 166, "max_hr": 195, "kilojoule": 3947.1042, "distance_meter": null, "zone_durations": {}}, {"id": "dbaf1d1e-185b-4485-a1f7-6fbb3870437f", "start": "2026-04-07T20:46:13.000Z", "end": "2026-04-07T21:22:08.688Z", "sport_id": 0, "sport_name": "Running", "strain": 13.738578, "avg_hr": 173, "max_hr": 190, "kilojoule": 2455.578, "distance_meter": null, "zone_durations": {}}, {"id": "68a7d5f5-e345-440e-aabc-0c32ea7cbf9e", "start": "2026-04-06T08:39:31.000Z", "end": "2026-04-06T10:07:39.484Z", "sport_id": 63, "sport_name": "Walking", "strain": 4.3860946, "avg_hr": 95, "max_hr": 136, "kilojoule": 560.7793, "distance_meter": null, "zone_durations": {}}, {"id": "16622929-12e3-4648-af02-2380a040befa", "start": "2026-04-05T17:05:22.000Z", "end": "2026-04-05T18:01:59.167Z", "sport_id": 0, "sport_name": "Running", "strain": 14.04369, "avg_hr": 163, "max_hr": 180, "kilojoule": 3352.4226, "distance_meter": null, "zone_durations": {}}, {"id": "53fcfbd7-6b3a-4f84-a93e-85c90e09156c", "start": "2026-04-03T09:55:00.000Z", "end": "2026-04-03T10:10:00.000Z", "sport_id": 233, "sport_name": "Sport 233", "strain": null, "avg_hr": null, "max_hr": null, "kilojoule": null, "distance_meter": null, "zone_durations": {}}, {"id": "cc5b7578-7cd4-4e48-b672-e34afb305745", "start": "2026-04-03T08:54:39.000Z", "end": "2026-04-03T09:24:29.329Z", "sport_id": 0, "sport_name": "Running", "strain": 9.805848, "avg_hr": 155, "max_hr": 171, "kilojoule": 1555.7856, "distance_meter": null, "zone_durations": {}}, {"id": "e70074f5-fb4e-4dae-9a18-02711bc38fdd", "start": "2026-03-31T19:36:20.000Z", "end": "2026-03-31T20:25:56.072Z", "sport_id": 0, "sport_name": "Running", "strain": 13.570448, "avg_hr": 158, "max_hr": 186, "kilojoule": 2710.6763, "distance_meter": null, "zone_durations": {}}, {"id": "27dcea98-a060-41ef-ba98-53d8053e40e1", "start": "2026-03-29T16:22:00.000Z", "end": "2026-03-29T16:52:00.000Z", "sport_id": 123, "sport_name": "Sport 123", "strain": 9.409638, "avg_hr": 100, "max_hr": 136, "kilojoule": 244.26868, "distance_meter": null, "zone_durations": {}}, {"id": "6c959e54-f6bb-4e4e-ac23-630e3f123123", "start": "2026-03-28T16:42:11.000Z", "end": "2026-03-28T17:42:17.197Z", "sport_id": 0, "sport_name": "Running", "strain": 14.654407, "avg_hr": 164, "max_hr": 179, "kilojoule": 3595.3896, "distance_meter": null, "zone_durations": {}}, {"id": "464cad82-4bd0-4b56-9924-620e1a4a89b9", "start": "2026-03-23T20:16:12.000Z", "end": "2026-03-23T20:46:21.630Z", "sport_id": 0, "sport_name": "Running", "strain": 12.6876135, "avg_hr": 171, "max_hr": 187, "kilojoule": 1985.4042, "distance_meter": null, "zone_durations": {}}, {"id": "f4544f64-1bde-4a04-8bd2-fd1e1617d866", "start": "2026-03-22T09:51:00.000Z", "end": "2026-03-22T10:46:37.507Z", "sport_id": 123, "sport_name": "Sport 123", "strain": 12.610816, "avg_hr": 108, "max_hr": 154, "kilojoule": 690.30054, "distance_meter": null, "zone_durations": {}}, {"id": "beaa4f8e-11c9-4f18-9f5a-0f286b7e54b3", "start": "2026-03-21T14:37:50.000Z", "end": "2026-03-21T15:25:56.202Z", "sport_id": 0, "sport_name": "Running", "strain": 13.594191, "avg_hr": 165, "max_hr": 179, "kilojoule": 2858.4358, "distance_meter": null, "zone_durations": {}}, {"id": "ada70e0f-596f-4c90-b588-395056348259", "start": "2026-03-17T10:39:00.500Z", "end": "2026-03-17T10:58:29.530Z", "sport_id": 252, "sport_name": "Sport 252", "strain": 5.306491, "avg_hr": 125, "max_hr": 164, "kilojoule": 465.96393, "distance_meter": null, "zone_durations": {}}, {"id": "f1188671-cf77-40f6-825b-f923c3b24977", "start": "2026-03-17T09:18:00.380Z", "end": "2026-03-17T09:40:29.410Z", "sport_id": 252, "sport_name": "Sport 252", "strain": 5.669264, "avg_hr": 130, "max_hr": 162, "kilojoule": 648.9292, "distance_meter": null, "zone_durations": {}}, {"id": "88bc9e10-0540-4171-99d9-f9579c959aec", "start": "2026-03-17T08:27:00.310Z", "end": "2026-03-17T08:49:29.340Z", "sport_id": 252, "sport_name": "Sport 252", "strain": 5.516316, "avg_hr": 127, "max_hr": 160, "kilojoule": 589.62823, "distance_meter": null, "zone_durations": {}}, {"id": "e0cc57b6-c237-4246-8277-e58c72c9c8ef", "start": "2026-03-07T23:46:30.350Z", "end": "2026-03-08T00:01:29.370Z", "sport_id": 63, "sport_name": "Walking", "strain": 4.833068, "avg_hr": 124, "max_hr": 139, "kilojoule": 364.51077, "distance_meter": null, "zone_durations": {}}, {"id": "bf1035a1-56b5-4be0-bebf-aeb351dc72e4", "start": "2026-03-07T16:05:00.000Z", "end": "2026-03-07T17:20:00.000Z", "sport_id": 233, "sport_name": "Sport 233", "strain": null, "avg_hr": null, "max_hr": null, "kilojoule": null, "distance_meter": null, "zone_durations": {}}, {"id": "f0d59eb3-a79a-4292-981a-b764d6a10de5", "start": "2026-03-05T21:10:00.000Z", "end": "2026-03-05T21:22:00.000Z", "sport_id": 233, "sport_name": "Sport 233", "strain": null, "avg_hr": null, "max_hr": null, "kilojoule": null, "distance_meter": null, "zone_durations": {}}, {"id": "d033ece0-30c9-4d47-a71e-fb17494fb363", "start": "2026-03-05T20:30:00.090Z", "end": "2026-03-05T21:01:29.130Z", "sport_id": 0, "sport_name": "Running", "strain": 9.881384, "avg_hr": 153, "max_hr": 174, "kilojoule": 1579.6667, "distance_meter": null, "zone_durations": {}}, {"id": "c2e83a8a-480f-4418-a836-98d94ce9f5f9", "start": "2026-02-21T11:01:30.370Z", "end": "2026-02-21T12:02:44.460Z", "sport_id": 0, "sport_name": "Running", "strain": 13.919481, "avg_hr": 157, "max_hr": 177, "kilojoule": 3399.971, "distance_meter": null, "zone_durations": {}}, {"id": "f74881d0-13f9-40af-b612-4b0180aa92fe", "start": "2026-02-20T12:36:49.000Z", "end": "2026-02-20T13:06:51.609Z", "sport_id": 0, "sport_name": "Running", "strain": 8.688051, "avg_hr": 147, "max_hr": 164, "kilojoule": 1421.6721, "distance_meter": null, "zone_durations": {}}, {"id": "f081f37f-009f-452f-8c6c-947b9660737a", "start": "2026-02-19T17:07:30.000Z", "end": "2026-02-19T17:45:31.180Z", "sport_id": 0, "sport_name": "Running", "strain": 12.309421, "avg_hr": 160, "max_hr": 177, "kilojoule": 2218.6448, "distance_meter": null, "zone_durations": {}}, {"id": "c1eb0c8e-8923-4947-949e-2586f460abbf", "start": "2026-02-19T16:10:00.000Z", "end": "2026-02-19T17:00:00.000Z", "sport_id": 123, "sport_name": "Sport 123", "strain": 4.167932, "avg_hr": 90, "max_hr": 125, "kilojoule": 310.00827, "distance_meter": null, "zone_durations": {}}, {"id": "471d56ce-ccc4-4305-9425-5e7e844eae0d", "start": "2026-02-18T12:41:49.000Z", "end": "2026-02-18T13:05:51.539Z", "sport_id": 0, "sport_name": "Running", "strain": 6.624023, "avg_hr": 137, "max_hr": 152, "kilojoule": 939.36145, "distance_meter": null, "zone_durations": {}}, {"id": "60cbd01f-a3ac-4425-83a9-973a962f54bd", "start": "2026-02-18T12:16:16.000Z", "end": "2026-02-18T12:40:25.856Z", "sport_id": 123, "sport_name": "Sport 123", "strain": 4.693296, "avg_hr": 104, "max_hr": 150, "kilojoule": 333.20963, "distance_meter": null, "zone_durations": {}}, {"id": "337071c6-f13e-48fa-95f6-e1b30466a9e6", "start": "2026-02-17T21:02:06.000Z", "end": "2026-02-17T21:32:09.072Z", "sport_id": 0, "sport_name": "Running", "strain": 9.5533085, "avg_hr": 153, "max_hr": 168, "kilojoule": 1563.2173, "distance_meter": null, "zone_durations": {}}, {"id": "8e6af03d-1d7d-48f0-8ff2-f1483bdea946", "start": "2026-02-16T16:16:19.000Z", "end": "2026-02-16T16:54:25.929Z", "sport_id": 0, "sport_name": "Running", "strain": 12.549121, "avg_hr": 160, "max_hr": 182, "kilojoule": 2221.4338, "distance_meter": null, "zone_durations": {}}, {"id": "a65d8c8d-75f2-43da-b532-7abb3aec8dd3", "start": "2026-02-15T20:40:00.000Z", "end": "2026-02-15T21:05:00.000Z", "sport_id": 123, "sport_name": "Sport 123", "strain": 4.170066, "avg_hr": 87, "max_hr": 127, "kilojoule": 190.18193, "distance_meter": null, "zone_durations": {}}, {"id": "c073ebb3-916c-47ad-b16b-613f17d24675", "start": "2026-02-14T09:31:14.000Z", "end": "2026-02-14T10:30:16.136Z", "sport_id": 0, "sport_name": "Running", "strain": 12.0378895, "avg_hr": 148, "max_hr": 160, "kilojoule": 2835.353, "distance_meter": null, "zone_durations": {}}, {"id": "7514b8e7-b208-4709-a47e-aea4bb19b487", "start": "2026-02-13T16:38:14.000Z", "end": "2026-02-13T17:02:18.371Z", "sport_id": 0, "sport_name": "Running", "strain": 6.2892427, "avg_hr": 134, "max_hr": 148, "kilojoule": 858.94666, "distance_meter": null, "zone_durations": {}}, {"id": "56dfc2a6-562b-4022-ad6b-cbaef8459f90", "start": "2026-02-12T17:30:33.000Z", "end": "2026-02-12T17:53:37.306Z", "sport_id": 45, "sport_name": "Weightlifting", "strain": 6.80507, "avg_hr": 115, "max_hr": 151, "kilojoule": 472.07828, "distance_meter": null, "zone_durations": {}}, {"id": "dd743560-ef08-4437-b290-0f03e5440e8b", "start": "2026-02-12T16:44:34.000Z", "end": "2026-02-12T17:14:50.086Z", "sport_id": 0, "sport_name": "Running", "strain": 7.3484287, "avg_hr": 137, "max_hr": 157, "kilojoule": 1168.652, "distance_meter": null, "zone_durations": {}}, {"id": "b75ce90d-9d75-47ac-bcc5-a57e1eee0b0b", "start": "2026-02-11T20:35:44.000Z", "end": "2026-02-11T21:12:48.603Z", "sport_id": 0, "sport_name": "Running", "strain": 11.2424755, "avg_hr": 152, "max_hr": 190, "kilojoule": 1901.8177, "distance_meter": null, "zone_durations": {}}, {"id": "576d89ab-3ba1-4ce1-b37c-2196a3175587", "start": "2026-02-09T17:15:31.000Z", "end": "2026-02-09T17:46:48.501Z", "sport_id": 0, "sport_name": "Running", "strain": 11.048638, "avg_hr": 159, "max_hr": 177, "kilojoule": 1792.8656, "distance_meter": null, "zone_durations": {}}, {"id": "532eaab0-44a6-40c7-b8bc-7286e11eb34d", "start": "2026-02-08T18:37:06.000Z", "end": "2026-02-08T19:17:08.540Z", "sport_id": 0, "sport_name": "Running", "strain": 9.018321, "avg_hr": 142, "max_hr": 159, "kilojoule": 1706.0502, "distance_meter": null, "zone_durations": {}}, {"id": "55affa09-73e3-4dae-b6d7-ae58560806ec", "start": "2026-02-07T15:18:26.000Z", "end": "2026-02-07T15:34:47.797Z", "sport_id": 0, "sport_name": "Running", "strain": 6.6903987, "avg_hr": 146, "max_hr": 165, "kilojoule": 759.14844, "distance_meter": null, "zone_durations": {}}, {"id": "3daec96d-108f-4f96-9600-a3f3aa3676fb", "start": "2026-02-07T14:43:33.440Z", "end": "2026-02-07T15:14:49.448Z", "sport_id": 123, "sport_name": "Sport 123", "strain": 3.6793792, "avg_hr": 86, "max_hr": 119, "kilojoule": 180.78839, "distance_meter": null, "zone_durations": {}}, {"id": "23498e97-0cc1-4df5-be0c-bdad47b5ad14", "start": "2026-02-04T16:44:56.000Z", "end": "2026-02-04T17:32:56.817Z", "sport_id": 0, "sport_name": "Running", "strain": 11.942695, "avg_hr": 152, "max_hr": 172, "kilojoule": 2443.6338, "distance_meter": null, "zone_durations": {}}, {"id": "627de24f-9b75-4b80-927c-f9f953f2dcb3", "start": "2026-02-02T20:47:08.000Z", "end": "2026-02-02T21:26:15.859Z", "sport_id": 0, "sport_name": "Running", "strain": 14.000841, "avg_hr": 170, "max_hr": 190, "kilojoule": 2603.144, "distance_meter": null, "zone_durations": {}}, {"id": "723867ef-a96d-4b12-a202-99e2ef364eb8", "start": "2026-02-01T13:46:42.457Z", "end": "2026-02-01T14:36:35.770Z", "sport_id": 123, "sport_name": "Sport 123", "strain": 11.307994, "avg_hr": 89, "max_hr": 116, "kilojoule": 295.38376, "distance_meter": null, "zone_durations": {}}, {"id": "25313067-0bb2-4aa6-b770-e2c96db1b622", "start": "2026-02-01T11:28:18.000Z", "end": "2026-02-01T11:59:14.361Z", "sport_id": 63, "sport_name": "Walking", "strain": 4.496067, "avg_hr": 90, "max_hr": 126, "kilojoule": 310.36517, "distance_meter": null, "zone_durations": {}}, {"id": "8ee48145-93dd-41c4-9102-790125e7a079", "start": "2026-02-01T09:31:25.000Z", "end": "2026-02-01T10:06:42.952Z", "sport_id": 63, "sport_name": "Walking", "strain": 4.018027, "avg_hr": 87, "max_hr": 120, "kilojoule": 211.9488, "distance_meter": null, "zone_durations": {}}, {"id": "0cc81a6c-b63a-4a89-8804-46de2db614da", "start": "2026-01-29T17:01:00.000Z", "end": "2026-01-29T17:46:00.188Z", "sport_id": 0, "sport_name": "Running", "strain": 10.616038, "avg_hr": 146, "max_hr": 173, "kilojoule": 2092.1528, "distance_meter": null, "zone_durations": {}}, {"id": "04f82597-3510-41f5-a07c-067e0ccc222a", "start": "2026-01-27T16:35:58.000Z", "end": "2026-01-27T17:06:01.027Z", "sport_id": 0, "sport_name": "Running", "strain": 11.744563, "avg_hr": 164, "max_hr": 179, "kilojoule": 1841.101, "distance_meter": null, "zone_durations": {}}, {"id": "822349ad-5c38-4f77-97d5-9e702d22b6e6", "start": "2026-01-26T20:30:00.600Z", "end": "2026-01-26T21:16:51.670Z", "sport_id": 0, "sport_name": "Running", "strain": 15.1228, "avg_hr": 170, "max_hr": 195, "kilojoule": 3113.2017, "distance_meter": null, "zone_durations": {}}, {"id": "ff89cdd6-fa46-4104-b64f-1fb581e96165", "start": "2026-01-26T19:47:01.802Z", "end": "2026-01-26T20:29:35.433Z", "sport_id": 123, "sport_name": "Sport 123", "strain": 8.860334, "avg_hr": 107, "max_hr": 142, "kilojoule": 580.3638, "distance_meter": null, "zone_durations": {}}, {"id": "f68228c0-707f-4ddd-9c15-f1e86f4009b9", "start": "2026-01-23T16:44:00.000Z", "end": "2026-01-23T17:19:10.487Z", "sport_id": 0, "sport_name": "Running", "strain": 9.247253, "avg_hr": 145, "max_hr": 170, "kilojoule": 1600.4712, "distance_meter": null, "zone_durations": {}}, {"id": "2e6a0c72-6a47-4f9c-be2f-803ebb8ec5ba", "start": "2026-01-20T09:10:30.280Z", "end": "2026-01-20T09:35:59.320Z", "sport_id": 0, "sport_name": "Running", "strain": 11.152945, "avg_hr": 164, "max_hr": 181, "kilojoule": 1563.8208, "distance_meter": null, "zone_durations": {}}, {"id": "2659c94c-94d0-4c75-8506-08a88a51b823", "start": "2026-01-20T08:31:11.677Z", "end": "2026-01-20T09:08:40.145Z", "sport_id": 123, "sport_name": "Sport 123", "strain": 7.7759457, "avg_hr": 104, "max_hr": 144, "kilojoule": 413.556, "distance_meter": null, "zone_durations": {}}]};
+const _origFetch = window.fetch;
+window.fetch = function(url, opts) {
+  if (typeof url === 'string') {
+    if (url.includes('activities.json')) return Promise.resolve({ok:true,json:()=>Promise.resolve(_embeddedActivities)});
+    if (url.includes('whoop_data.json')) return Promise.resolve({ok:true,json:()=>Promise.resolve(_embeddedWhoop)});
+    if (url.includes('strength_workouts.json')) return Promise.resolve({ok:true,json:()=>Promise.resolve([])});
+  }
+  return _origFetch(url, opts);
+};
+</script>
+<style>
+  :root {
+    --bg:        #0f0f13;
+    --surface:   #1a1a24;
+    --surface2:  #22222f;
+    --orange:    #fc4c02;
+    --orange2:   #ff6a33;
+    --blue:      #4a9eff;
+    --green:     #2dd4a0;
+    --red:       #ff5c6a;
+    --yellow:    #f5c542;
+    --purple:    #a78bfa;
+    --text:      #f0f0f5;
+    --muted:     #8888a0;
+    --border:    #2a2a3a;
+    --whoop-green:  #16a34a;
+    --whoop-yellow: #eab308;
+    --whoop-red:    #ef4444;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+    font-size: 14px;
+    line-height: 1.5;
+  }
+
+  /* ── Header ── */
+  header {
+    background: var(--surface);
+    border-bottom: 1px solid var(--border);
+    padding: 16px 32px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+  }
+  .logo { display: flex; align-items: center; gap: 12px; }
+  .logo-icon {
+    width: 36px; height: 36px;
+    background: var(--orange);
+    border-radius: 8px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 20px;
+  }
+  .logo h1 { font-size: 18px; font-weight: 700; }
+  .logo span { color: var(--muted); font-size: 13px; }
+
+  /* ── Overview row ── */
+  .overview-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    margin-bottom: 20px;
+  }
+  .overview-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 24px 28px;
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+  }
+  .overview-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; bottom: 0;
+    width: 3px;
+    border-radius: 12px 0 0 12px;
+  }
+  .overview-card.accent-orange::before { background: var(--orange); }
+  .overview-card.accent-blue::before { background: var(--blue); }
+  .ov-label {
+    color: var(--muted);
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    margin-bottom: 8px;
+  }
+  .ov-title { font-size: 20px; font-weight: 700; margin-bottom: 4px; }
+  .ov-meta { color: var(--muted); font-size: 13px; margin-bottom: 12px; }
+  .ov-stats { display: flex; gap: 24px; flex-wrap: wrap; }
+  .ov-stat-label { color: var(--muted); font-size: 11px; text-transform: uppercase; letter-spacing: 0.06em; }
+  .ov-stat-value { font-size: 18px; font-weight: 700; line-height: 1.3; }
+  .ov-stat-unit { color: var(--muted); font-size: 11px; }
+  .weekly-big { font-size: 36px; font-weight: 800; line-height: 1; }
+  .weekly-unit { color: var(--muted); font-size: 14px; font-weight: 400; margin-left: 4px; }
+  .weekly-delta { font-size: 13px; font-weight: 600; margin-top: 6px; display: flex; align-items: center; gap: 4px; }
+  .weekly-delta.up { color: var(--green); }
+  .weekly-delta.down { color: var(--red); }
+  .weekly-delta.flat { color: var(--muted); }
+  .weekly-chart { margin-top: auto; margin-left: -28px; margin-right: -28px; margin-bottom: -24px; position: relative; }
+  .weekly-chart canvas { width: 100%; height: 80px; display: block; border-radius: 0 0 11px 11px; }
+  .weekly-legend { display: flex; gap: 16px; margin-top: 8px; font-size: 11px; }
+  .weekly-legend span { display: flex; align-items: center; gap: 5px; color: var(--muted); }
+  .weekly-legend .dot { width: 8px; height: 8px; border-radius: 50%; }
+  .weekly-tooltip {
+    position: absolute;
+    background: var(--surface2);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 4px 8px;
+    font-size: 11px;
+    font-weight: 600;
+    color: var(--text);
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 0.12s;
+    white-space: nowrap;
+    z-index: 10;
+  }
+  .weekly-tooltip.visible { opacity: 1; }
+
+  /* ── Health overview cards ── */
+  .health-overview-row {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 12px;
+    margin-bottom: 28px;
+  }
+  .health-mini {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 16px 16px 0;
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+  }
+  .health-mini::after {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 2px;
+    background: var(--accent, var(--green));
+    border-radius: 10px 10px 0 0;
+  }
+  .hm-label { color: var(--muted); font-size: 10px; text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 4px; }
+  .hm-value { font-size: 24px; font-weight: 700; line-height: 1; }
+  .hm-unit { color: var(--muted); font-size: 11px; }
+  .hm-delta { font-size: 11px; font-weight: 600; margin-top: 4px; display: flex; align-items: center; gap: 3px; }
+  .hm-delta.better { color: var(--green); }
+  .hm-delta.worse { color: var(--red); }
+  .hm-delta.neutral { color: var(--muted); }
+  .hm-spark { margin-top: auto; margin-left: -16px; margin-right: -16px; position: relative; }
+  .hm-spark canvas { width: 100%; height: 80px; display: block; border-radius: 0 0 9px 9px; }
+  .hm-tooltip {
+    position: absolute;
+    background: var(--surface2);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 4px 8px;
+    font-size: 11px;
+    font-weight: 600;
+    color: var(--text);
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 0.12s;
+    white-space: nowrap;
+    z-index: 10;
+  }
+  .hm-tooltip.visible { opacity: 1; }
+
+  /* ── Sleep horizontal metrics ── */
+  .sleep-metrics { display: flex; gap: 0; flex: 1; }
+  .sleep-metric { flex: 1; text-align: center; padding: 0 4px; }
+  .sleep-metric-label { font-size: 9px; color: var(--muted); text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 3px; }
+  .sleep-metric-val { font-size: 24px; font-weight: 700; line-height: 1.2; color: #2dd4a0; }
+  .sleep-hours { font-size: 14px; color: var(--muted); text-align: center; margin-top: 0; }
+  .sleep-hours strong { color: var(--text); font-weight: 600; }
+
+  /* ── Activity selector ── */
+  .activity-select-wrap { position: absolute; top: 16px; right: 16px; z-index: 2; }
+  .activity-select {
+    background: var(--surface2);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    color: var(--text);
+    font-size: 11px;
+    padding: 4px 8px;
+    cursor: pointer;
+    max-width: 180px;
+  }
+  .activity-select:focus { outline: none; border-color: var(--orange); }
+
+  /* ── Route map ── */
+  .route-map { margin-top: auto; padding-top: 8px; }
+  .route-map canvas { display: block; }
+
+  /* ── 10-day label ── */
+  .overview-sublabel {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 12px;
+  }
+  .overview-sublabel span {
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--muted);
+    white-space: nowrap;
+  }
+  .overview-sublabel .sub-line {
+    flex: 1;
+    height: 1px;
+    background: var(--border);
+  }
+
+  /* ── Strain ring card ── */
+  .strain-ring-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 20px 16px 16px;
+    position: relative;
+  }
+  .strain-ring-card .hm-label,
+  .strain-ring-card .hm-delta { position: relative; z-index: 1; }
+  .strain-ring-card .strain-ring-value { z-index: 1; }
+  .strain-ring-wrap {
+    position: relative;
+    z-index: 1;
+    width: 90px;
+    height: 90px;
+    margin-bottom: 6px;
+  }
+  .strain-ring-wrap canvas { width: 90px; height: 90px; }
+  .strain-ring-value {
+    position: absolute;
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 24px;
+    font-weight: 700;
+    color: var(--text);
+  }
+  .strain-bg-canvas {
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0.15;
+    pointer-events: none;
+    border-radius: 0 0 9px 9px;
+  }
+  .strain-sub {
+    font-size: 11px;
+    color: var(--muted);
+    text-align: center;
+    margin-top: 2px;
+    position: relative;
+    z-index: 1;
+  }
+
+  /* ── Main layout ── */
+  main { padding: 28px 32px; max-width: 1400px; margin: 0 auto; }
+
+  /* ── Section dividers ── */
+  .section-header {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin: 48px 0 24px;
+    scroll-margin-top: 80px;
+  }
+  .section-header:first-child { margin-top: 0; }
+  .section-header h2 {
+    font-size: 18px;
+    font-weight: 700;
+    white-space: nowrap;
+  }
+  .section-header .section-line {
+    flex: 1;
+    height: 1px;
+    background: var(--border);
+  }
+  .section-header .section-badge {
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--muted);
+    padding: 3px 10px;
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    white-space: nowrap;
+  }
+
+  /* ── Filter bar ── */
+  .filter-bar {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 20px;
+  }
+  .filter-btn {
+    padding: 6px 16px;
+    border-radius: 20px;
+    border: 1px solid var(--border);
+    background: transparent;
+    color: var(--muted);
+    cursor: pointer;
+    font-size: 13px;
+    transition: all 0.15s;
+  }
+  .filter-btn.active, .filter-btn:hover {
+    background: var(--orange);
+    border-color: var(--orange);
+    color: #fff;
+  }
+
+  /* ── Stat cards ── */
+  .stats-row {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+    gap: 16px;
+    margin-bottom: 28px;
+  }
+  .stat-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 20px;
+    position: relative;
+    overflow: hidden;
+  }
+  .stat-card::after {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 3px;
+    background: var(--accent, var(--orange));
+    border-radius: 12px 12px 0 0;
+  }
+  .stat-label {
+    color: var(--muted);
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    margin-bottom: 8px;
+  }
+  .stat-value { font-size: 28px; font-weight: 700; line-height: 1; }
+  .stat-sub { color: var(--muted); font-size: 12px; margin-top: 4px; }
+
+  /* ── Charts grid ── */
+  .charts-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    margin-bottom: 28px;
+  }
+  .chart-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 24px;
+  }
+  .chart-card.wide { grid-column: span 2; }
+  .chart-title { font-size: 14px; font-weight: 600; margin-bottom: 4px; }
+  .chart-subtitle { color: var(--muted); font-size: 12px; margin-bottom: 20px; }
+  .chart-wrap { position: relative; height: 240px; }
+  .chart-wrap.tall { height: 300px; }
+
+  /* ── Newest Activity card ── */
+  .newest-activity {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 24px;
+    margin-bottom: 28px;
+    display: flex;
+    gap: 32px;
+    align-items: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .newest-activity::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; bottom: 0;
+    width: 4px;
+    background: var(--orange);
+    border-radius: 12px 0 0 12px;
+  }
+  .newest-activity .na-header {
+    color: var(--muted);
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    margin-bottom: 6px;
+  }
+  .newest-activity .na-name { font-size: 20px; font-weight: 700; margin-bottom: 4px; }
+  .newest-activity .na-date { color: var(--muted); font-size: 12px; }
+  .newest-activity .na-stats { display: flex; gap: 28px; flex-wrap: wrap; }
+  .newest-activity .na-stat-label { color: var(--muted); font-size: 10px; text-transform: uppercase; letter-spacing: 0.06em; }
+  .newest-activity .na-stat-value { font-size: 18px; font-weight: 700; line-height: 1.2; }
+  .newest-activity .na-stat-unit { color: var(--muted); font-size: 11px; }
+  .newest-activity .na-kudos { display: flex; align-items: center; gap: 4px; color: #e74c8b; font-size: 13px; font-weight: 600; margin-top: 6px; }
+
+  /* ── Recovery ring (Whoop) ── */
+  .today-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 28px;
+    margin-bottom: 28px;
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 28px;
+    align-items: center;
+  }
+  .recovery-ring { width: 120px; height: 120px; position: relative; }
+  .recovery-ring canvas { width: 120px; height: 120px; }
+  .recovery-ring-label {
+    position: absolute;
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+  }
+  .recovery-ring-value { font-size: 32px; font-weight: 700; }
+  .recovery-ring-text { font-size: 11px; color: var(--muted); text-transform: uppercase; }
+  .today-metrics { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; }
+  .today-metric-label { font-size: 11px; color: var(--muted); text-transform: uppercase; letter-spacing: 0.05em; }
+  .today-metric-value { font-size: 22px; font-weight: 700; margin-top: 4px; }
+  .today-metric-unit { font-size: 12px; color: var(--muted); }
+
+  .recovery-green { color: var(--whoop-green); }
+  .recovery-yellow { color: var(--whoop-yellow); }
+  .recovery-red { color: var(--whoop-red); }
+
+  /* ── Tables ── */
+  .table-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 24px;
+    margin-bottom: 28px;
+    overflow-x: auto;
+  }
+  .table-card h2 { font-size: 14px; font-weight: 600; margin-bottom: 16px; }
+  table { width: 100%; border-collapse: collapse; }
+  thead th {
+    text-align: left;
+    color: var(--muted);
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    padding: 8px 12px;
+    border-bottom: 1px solid var(--border);
+  }
+  tbody tr { transition: background 0.1s; }
+  tbody tr:hover { background: var(--surface2); }
+  tbody td { padding: 10px 12px; border-bottom: 1px solid var(--border); font-size: 13px; }
+  tbody tr:last-child td { border-bottom: none; }
+  .badge {
+    display: inline-block;
+    padding: 2px 8px;
+    border-radius: 10px;
+    font-size: 11px;
+    font-weight: 600;
+  }
+  .badge-run  { background: rgba(252,76,2,0.2);  color: var(--orange); }
+  .badge-ride { background: rgba(74,158,255,0.2); color: var(--blue); }
+  .badge-swim { background: rgba(45,212,160,0.2); color: var(--green); }
+  .badge-strength { background: rgba(167,139,250,0.2); color: var(--purple); }
+  .pace-good { color: var(--green); }
+  .pace-med  { color: var(--orange); }
+  .pace-slow { color: var(--red); }
+
+  /* ── Strength detail panel ── */
+  .detail-panel {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 24px;
+    margin-bottom: 28px;
+    display: none;
+  }
+  .detail-panel.visible { display: block; }
+  .detail-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 20px;
+  }
+  .detail-header h2 { font-size: 16px; font-weight: 600; }
+  .detail-header .close-btn {
+    background: transparent;
+    border: 1px solid var(--border);
+    color: var(--muted);
+    padding: 4px 12px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 13px;
+  }
+  .detail-header .close-btn:hover { border-color: var(--red); color: var(--red); }
+  .exercise-list { margin-bottom: 20px; }
+  .exercise-item {
+    background: var(--surface2);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 16px;
+    margin-bottom: 8px;
+  }
+  .exercise-name { font-weight: 600; margin-bottom: 8px; color: var(--purple); }
+  .sets-grid {
+    display: grid;
+    grid-template-columns: auto repeat(4, 1fr);
+    gap: 4px 12px;
+    font-size: 12px;
+  }
+  .sets-grid .sh { color: var(--muted); font-size: 10px; text-transform: uppercase; letter-spacing: 0.05em; }
+  .exercise-notes { color: var(--muted); font-size: 12px; margin-top: 8px; font-style: italic; }
+
+  /* ── Add exercise form ── */
+  .add-form {
+    background: var(--surface2);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 20px;
+  }
+  .add-form h3 { font-size: 13px; font-weight: 600; margin-bottom: 12px; color: var(--green); }
+  .form-row { display: flex; gap: 12px; margin-bottom: 12px; flex-wrap: wrap; align-items: end; }
+  .form-group { display: flex; flex-direction: column; gap: 4px; }
+  .form-group label { font-size: 11px; color: var(--muted); text-transform: uppercase; letter-spacing: 0.05em; }
+  .form-group input, .form-group textarea, .form-group select {
+    background: var(--bg); border: 1px solid var(--border); border-radius: 6px;
+    color: var(--text); padding: 8px 12px; font-size: 13px; font-family: inherit;
+  }
+  .form-group input:focus, .form-group textarea:focus { outline: none; border-color: var(--purple); }
+  .form-group input[type="number"] { width: 80px; }
+  .form-group textarea { resize: vertical; min-height: 40px; }
+  .set-rows { margin-bottom: 12px; }
+  .set-row { display: flex; gap: 8px; align-items: center; margin-bottom: 6px; }
+  .set-row .set-num { color: var(--muted); font-size: 12px; width: 32px; text-align: center; }
+  .set-row input { width: 70px; }
+  .set-row .remove-set { background: transparent; border: none; color: var(--red); cursor: pointer; font-size: 16px; padding: 0 4px; }
+  .btn { padding: 8px 16px; border-radius: 8px; border: none; font-size: 13px; font-weight: 600; cursor: pointer; transition: all 0.15s; }
+  .btn-primary { background: var(--purple); color: #fff; }
+  .btn-primary:hover { background: #8b6fe0; }
+  .btn-secondary { background: transparent; border: 1px solid var(--border); color: var(--muted); }
+  .btn-secondary:hover { border-color: var(--purple); color: var(--text); }
+  .btn-sm { padding: 5px 10px; font-size: 12px; }
+  .btn-danger { background: transparent; border: 1px solid var(--red); color: var(--red); }
+  .btn-danger:hover { background: rgba(255,92,106,0.1); }
+
+  /* ── No data / Loading ── */
+  .no-data { text-align: center; padding: 60px; color: var(--muted); }
+  .no-data h2 { font-size: 20px; margin-bottom: 8px; }
+  #loading {
+    position: fixed; inset: 0; background: var(--bg);
+    display: flex; flex-direction: column; align-items: center; justify-content: center;
+    gap: 16px; z-index: 999;
+  }
+  .spinner {
+    width: 40px; height: 40px;
+    border: 3px solid var(--border);
+    border-top-color: var(--orange);
+    border-radius: 50%;
+    animation: spin 0.8s linear infinite;
+  }
+  @keyframes spin { to { transform: rotate(360deg); } }
+
+  .toast {
+    position: fixed; bottom: 24px; right: 24px;
+    background: var(--green); color: #000;
+    padding: 12px 24px; border-radius: 8px; font-weight: 600; font-size: 13px;
+    opacity: 0; transform: translateY(10px); transition: all 0.3s; z-index: 999;
+  }
+  .toast.show { opacity: 1; transform: translateY(0); }
+
+  .empty-state {
+    text-align: center; padding: 40px 20px; color: var(--muted);
+    background: var(--surface); border: 1px solid var(--border); border-radius: 12px;
+    margin-bottom: 28px;
+  }
+  .empty-state h3 { font-size: 16px; color: var(--text); margin-bottom: 8px; }
+
+  @media (max-width: 900px) {
+    main { padding: 16px; }
+    header { padding: 12px 16px; flex-wrap: wrap; gap: 8px; }
+    .overview-row { grid-template-columns: 1fr; }
+    .health-overview-row { grid-template-columns: repeat(2, 1fr); }
+    .charts-grid { grid-template-columns: 1fr; }
+    .chart-card.wide { grid-column: 1; }
+    .today-card { grid-template-columns: 1fr; justify-items: center; }
+    .today-metrics { grid-template-columns: repeat(2, 1fr); }
+    .newest-activity { flex-direction: column; }
+    .form-row { flex-direction: column; }
+  }
+</style>
+</head>
+<body>
+
+<div id="loading">
+  <div class="spinner"></div>
+  <span style="color:var(--muted)">Loading your health data...</span>
+</div>
+
+<header>
+  <div class="logo">
+    <div class="logo-icon">&#10084;&#65039;</div>
+    <div>
+      <h1>Health Dashboard</h1>
+      <span id="last-updated">-</span>
+    </div>
+  </div>
+</header>
+
+<main id="app" style="display:none">
+
+  <!-- ════════ OVERVIEW ROW ════════ -->
+  <div class="overview-row" id="overview-row"></div>
+
+  <!-- ════════ 10 DAY HEALTH LABEL ════════ -->
+  <div class="overview-sublabel" id="health-sublabel" style="display:none">
+    <span>Last 10 days</span>
+    <div class="sub-line"></div>
+    <span>Whoop</span>
+  </div>
+
+  <!-- ════════ HEALTH OVERVIEW CARDS ════════ -->
+  <div class="health-overview-row" id="health-overview-row"></div>
+
+  <!-- ════════ RUNNING (Strava) ════════ -->
+  <div class="section-header" id="section-running">
+    <h2>Running</h2>
+    <div class="section-line"></div>
+    <span class="section-badge">Strava</span>
+  </div>
+
+  <div class="filter-bar">
+    <button class="filter-btn active" data-range="all">All time</button>
+    <button class="filter-btn" data-range="year">This year</button>
+    <button class="filter-btn" data-range="90">Last 90 days</button>
+    <button class="filter-btn" data-range="30">Last 30 days</button>
+  </div>
+
+  <div class="stats-row" id="run-stat-cards"></div>
+
+  <div class="charts-grid">
+    <div class="chart-card">
+      <div class="chart-title">Pace Trend</div>
+      <div class="chart-subtitle">Average pace per run (lower = faster)</div>
+      <div class="chart-wrap"><canvas id="paceChart"></canvas></div>
+    </div>
+    <div class="chart-card">
+      <div class="chart-title">Heart Rate vs Pace</div>
+      <div class="chart-subtitle">If Recent line sits lower or right of Earlier, you're improving</div>
+      <div class="chart-wrap"><canvas id="hrPaceChart"></canvas></div>
+    </div>
+    <div class="chart-card wide">
+      <div class="chart-title">Weekly Distance</div>
+      <div class="chart-subtitle">Kilometres per week</div>
+      <div class="chart-wrap tall"><canvas id="weeklyRunChart"></canvas></div>
+    </div>
+    <div class="chart-card">
+      <div class="chart-title">Monthly Volume</div>
+      <div class="chart-subtitle">Total km per month (last 12 months)</div>
+      <div class="chart-wrap"><canvas id="monthlyChart"></canvas></div>
+    </div>
+    <div class="chart-card">
+      <div class="chart-title">Elevation Gain</div>
+      <div class="chart-subtitle">Metres of climbing per run</div>
+      <div class="chart-wrap"><canvas id="elevChart"></canvas></div>
+    </div>
+  </div>
+
+  <div class="table-card">
+    <h2>Recent Runs</h2>
+    <table>
+      <thead><tr>
+        <th>Date</th><th>Name</th><th>Type</th><th>Distance</th><th>Duration</th><th>Pace</th><th>Avg HR</th><th>Elevation</th>
+      </tr></thead>
+      <tbody id="run-table"></tbody>
+    </table>
+  </div>
+
+  <!-- ════════ STRENGTH (Strava) ════════ -->
+  <div class="section-header" id="section-strength">
+    <h2>Strength</h2>
+    <div class="section-line"></div>
+    <span class="section-badge">Strava</span>
+  </div>
+
+  <div class="stats-row" id="str-stat-cards"></div>
+
+  <div class="charts-grid">
+    <div class="chart-card wide">
+      <div class="chart-title">Weekly Training Frequency</div>
+      <div class="chart-subtitle">Strength sessions per week</div>
+      <div class="chart-wrap tall"><canvas id="weeklyStrChart"></canvas></div>
+    </div>
+    <div class="chart-card">
+      <div class="chart-title">Session Duration</div>
+      <div class="chart-subtitle">Minutes per session over time</div>
+      <div class="chart-wrap"><canvas id="durationChart"></canvas></div>
+    </div>
+    <div class="chart-card">
+      <div class="chart-title">Heart Rate per Session</div>
+      <div class="chart-subtitle">Average and max HR trends</div>
+      <div class="chart-wrap"><canvas id="strHRChart"></canvas></div>
+    </div>
+    <div class="chart-card wide" id="volumeChartCard" style="display:none">
+      <div class="chart-title">Total Volume per Session</div>
+      <div class="chart-subtitle">Sets x Reps x Weight (kg)</div>
+      <div class="chart-wrap tall"><canvas id="volumeChart"></canvas></div>
+    </div>
+  </div>
+
+  <!-- Strength detail panel -->
+  <div class="detail-panel" id="detail-panel">
+    <div class="detail-header">
+      <div>
+        <h2 id="detail-title">Session Detail</h2>
+        <span id="detail-meta" style="color:var(--muted);font-size:12px"></span>
+      </div>
+      <button class="close-btn" onclick="closeDetail()">Close</button>
+    </div>
+    <div class="exercise-list" id="exercise-list"></div>
+    <div class="add-form" id="add-form">
+      <h3>+ Add Exercise</h3>
+      <div class="form-row">
+        <div class="form-group" style="flex:2">
+          <label>Exercise Name</label>
+          <input type="text" id="ex-name" placeholder="e.g. Bench Press, Squat..." list="exercise-suggestions">
+          <datalist id="exercise-suggestions"></datalist>
+        </div>
+      </div>
+      <div class="set-rows" id="set-rows">
+        <div style="display:flex;gap:8px;margin-bottom:6px;">
+          <span style="width:32px;font-size:10px;color:var(--muted);text-align:center">SET</span>
+          <span style="width:70px;font-size:10px;color:var(--muted)">REPS</span>
+          <span style="width:70px;font-size:10px;color:var(--muted)">WEIGHT (kg)</span>
+          <span style="width:70px;font-size:10px;color:var(--muted)">RPE</span>
+          <span style="width:90px;font-size:10px;color:var(--muted)">REST (sec)</span>
+        </div>
+      </div>
+      <div class="form-row" style="gap:8px;margin-bottom:12px">
+        <button class="btn btn-secondary btn-sm" onclick="addSetRow()">+ Add Set</button>
+      </div>
+      <div class="form-row">
+        <div class="form-group" style="flex:1">
+          <label>Notes</label>
+          <textarea id="ex-notes" placeholder="Optional notes..." rows="2"></textarea>
+        </div>
+      </div>
+      <div class="form-row" style="margin-top:8px">
+        <button class="btn btn-primary" onclick="saveExercise()">Save Exercise</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="table-card">
+    <h2>All Strength Sessions</h2>
+    <table>
+      <thead><tr>
+        <th>Date</th><th>Name</th><th>Duration</th><th>Avg HR</th><th>Max HR</th><th>Exercises</th><th>Volume (kg)</th>
+      </tr></thead>
+      <tbody id="str-table"></tbody>
+    </table>
+  </div>
+
+  <!-- ════════ HEALTH & RECOVERY (Whoop) ════════ -->
+  <div class="section-header" id="section-health">
+    <h2>Health &amp; Recovery</h2>
+    <div class="section-line"></div>
+    <span class="section-badge">Whoop</span>
+  </div>
+
+  <div id="whoop-content">
+    <div class="empty-state" id="whoop-empty">
+      <h3>Loading Whoop data...</h3>
+      <p>If this persists, run <code>python whoop_fetch.py</code></p>
+    </div>
+  </div>
+
+</main>
+
+<div class="toast" id="toast"></div>
+
+<script>
+// ══════════════════════════════════════════════════════════════════════════════
+// CHART DEFAULTS
+// ══════════════════════════════════════════════════════════════════════════════
+Chart.defaults.color = '#8888a0';
+Chart.defaults.borderColor = '#2a2a3a';
+Chart.defaults.font.family = "'Segoe UI', system-ui, sans-serif";
+
+const ORANGE = '#fc4c02';
+const BLUE   = '#4a9eff';
+const GREEN  = '#2dd4a0';
+const RED    = '#ff5c6a';
+const PURPLE = '#a78bfa';
+const MUTED  = '#8888a0';
+
+const charts = {};
+
+// ══════════════════════════════════════════════════════════════════════════════
+// SHARED UTILITIES
+// ══════════════════════════════════════════════════════════════════════════════
+function fmtDuration(s) {
+  if (!s) return '-';
+  const h = Math.floor(s / 3600);
+  const m = Math.floor((s % 3600) / 60);
+  const sec = s % 60;
+  if (h > 0) return h + ':' + String(m).padStart(2,'0') + ':' + String(sec).padStart(2,'0');
+  return m + ':' + String(sec).padStart(2,'0');
+}
+function fmtDurationHM(s) {
+  if (!s) return '-';
+  const h = Math.floor(s / 3600), m = Math.floor((s % 3600) / 60);
+  return h > 0 ? h + 'h ' + m + 'm' : m + 'm';
+}
+function fmtDate(d) {
+  return new Date(d).toLocaleDateString('en-GB', {day:'2-digit', month:'short', year:'numeric'});
+}
+function dateShort(iso) {
+  if (!iso) return '-';
+  return new Date(iso).toLocaleDateString('en-GB', { day: 'numeric', month: 'short' });
+}
+function weekLabel(dateStr) {
+  const d = new Date(dateStr);
+  const mon = new Date(d);
+  mon.setDate(d.getDate() - d.getDay() + (d.getDay() === 0 ? -6 : 1));
+  return mon.toISOString().slice(0,10);
+}
+function destroyChart(id) {
+  if (charts[id]) { charts[id].destroy(); delete charts[id]; }
+}
+function paceFmt(v) {
+  const m = Math.floor(v), s = Math.round((v - m) * 60);
+  return m + ':' + String(s).padStart(2, '0');
+}
+function paceColor(pace) {
+  if (!pace) return '';
+  if (pace < 5.0) return 'pace-good';
+  if (pace < 6.0) return 'pace-med';
+  return 'pace-slow';
+}
+function badgeClass(type) {
+  const t = type.toLowerCase();
+  if (t.includes('run'))  return 'badge-run';
+  if (t.includes('ride') || t.includes('cycl')) return 'badge-ride';
+  if (t.includes('swim')) return 'badge-swim';
+  if (t.includes('weight') || t.includes('strength')) return 'badge-strength';
+  return 'badge-run';
+}
+function linearRegression(xs, ys) {
+  const n = xs.length;
+  if (n < 2) return null;
+  const meanX = xs.reduce((a,b)=>a+b,0)/n, meanY = ys.reduce((a,b)=>a+b,0)/n;
+  const num = xs.reduce((s,x,i) => s + (x-meanX)*(ys[i]-meanY), 0);
+  const den = xs.reduce((s,x) => s + (x-meanX)**2, 0);
+  if (den === 0) return null;
+  const slope = num/den, intercept = meanY - slope*meanX;
+  return { slope, intercept, predict: x => slope*x + intercept };
+}
+function isRun(a) {
+  const t = (a.sport_type || a.type || '').toLowerCase();
+  return t.includes('run');
+}
+function isStrength(a) {
+  const t = ((a.sport_type || '') + (a.type || '')).toLowerCase();
+  return t.includes('weight') || t.includes('strength') || t === 'workout';
+}
+function cutoffDate(range) {
+  const now = new Date();
+  if (range === 'year') return new Date(now.getFullYear(), 0, 1);
+  if (range === '90')   { const d = new Date(now); d.setDate(d.getDate()-90); return d; }
+  if (range === '30')   { const d = new Date(now); d.setDate(d.getDate()-30); return d; }
+  return null;
+}
+function filterActivities(activities, range) {
+  const runs = activities.filter(isRun);
+  const cut = cutoffDate(range);
+  if (!cut) return runs;
+  return runs.filter(a => new Date(a.date) >= cut);
+}
+function showToast(msg) {
+  const t = document.getElementById('toast');
+  t.textContent = msg;
+  t.classList.add('show');
+  setTimeout(() => t.classList.remove('show'), 2500);
+}
+
+// Whoop helpers
+function recoveryColor(score) {
+  if (score == null) return MUTED;
+  if (score >= 67) return '#16a34a';
+  if (score >= 34) return '#eab308';
+  return '#ef4444';
+}
+function recoveryClass(score) {
+  if (score == null) return '';
+  if (score >= 67) return 'recovery-green';
+  if (score >= 34) return 'recovery-yellow';
+  return 'recovery-red';
+}
+function msToHM(ms) {
+  if (!ms) return '-';
+  const h = Math.floor(ms / 3600000);
+  const m = Math.round((ms % 3600000) / 60000);
+  return h > 0 ? h + 'h ' + m + 'm' : m + 'm';
+}
+
+// ══════════════════════════════════════════════════════════════════════════════
+// STATE
+// ══════════════════════════════════════════════════════════════════════════════
+let allActivities = [];
+let strSessions = [];
+let exerciseData = { sessions: {} };
+let selectedSessionId = null;
+let setCount = 0;
+let currentRange = 'all';
+
+// ══════════════════════════════════════════════════════════════════════════════
+// OVERVIEW ROW (compact newest activity + weekly km)
+// ══════════════════════════════════════════════════════════════════════════════
+let selectedActivityIdx = 0;
+
+function renderOverviewRow() {
+  const container = document.getElementById('overview-row');
+  renderActivityCard(container);
+}
+
+function renderActivityCard(container) {
+  const act = allActivities[selectedActivityIdx] || null;
+
+  // Build dropdown options (last 10)
+  const selectOpts = allActivities.slice(0, 10).map((a, i) => {
+    const lbl = (a.name || a.sport_type || 'Activity').substring(0, 30) + ' - ' + fmtDate(a.date);
+    return '<option value="' + i + '"' + (i === selectedActivityIdx ? ' selected' : '') + '>' + lbl + '</option>';
+  }).join('');
+
+  let leftHtml = '';
+  if (act) {
+    const typeLabel = act.sport_type || act.type || 'Activity';
+    const dist = act.distance_km ? act.distance_km.toFixed(1) + ' km' : '-';
+    const dur = fmtDuration(act.moving_time_s);
+    const paceStr = act.pace_str || '-';
+    const hr = act.avg_heartrate ? Math.round(act.avg_heartrate) + ' bpm' : '-';
+    const kudos = act.kudos_count || 0;
+    const ago = (() => {
+      const diff = Date.now() - new Date(act.datetime || act.date).getTime();
+      const days = Math.floor(diff / 86400000);
+      if (days === 0) return 'Today';
+      if (days === 1) return 'Yesterday';
+      return days + ' days ago';
+    })();
+    const hasMap = act.map_polyline && act.map_polyline.length > 10;
+    leftHtml = '<div class="overview-card accent-orange" style="position:relative">' +
+      '<div class="activity-select-wrap"><select class="activity-select" id="activitySelect">' + selectOpts + '</select></div>' +
+      '<div class="ov-label">Activity</div>' +
+      '<div class="ov-title">' + (act.name || typeLabel) + '</div>' +
+      '<div class="ov-meta">' + fmtDate(act.date) + ' &middot; ' + ago +
+        (kudos > 0 ? ' &middot; &#128079; ' + kudos : '') +
+        ' &middot; <span class="badge ' + badgeClass(typeLabel) + '" style="font-size:10px">' + typeLabel + '</span></div>' +
+      '<div class="ov-stats">' +
+        '<div><div class="ov-stat-label">Dist</div><div class="ov-stat-value">' + dist + '</div></div>' +
+        '<div><div class="ov-stat-label">Time</div><div class="ov-stat-value">' + dur + '</div></div>' +
+        '<div><div class="ov-stat-label">Pace</div><div class="ov-stat-value">' + paceStr + '</div><div class="ov-stat-unit">/km</div></div>' +
+        '<div><div class="ov-stat-label">HR</div><div class="ov-stat-value">' + hr + '</div></div>' +
+      '</div>' +
+      (hasMap ? '<div class="route-map"><canvas id="routeCanvas" width="260" height="80"></canvas></div>' : '') +
+    '</div>';
+  } else {
+    leftHtml = '<div class="overview-card accent-orange"><div class="ov-label">Activity</div><div style="color:var(--muted);padding:12px 0">No activities yet</div></div>';
+  }
+
+  // ── Right card: this week vs last week cumulative km ──
+  const runs = allActivities.filter(isRun);
+  const now = new Date();
+  const thisMonday = new Date(now);
+  thisMonday.setDate(now.getDate() - (now.getDay() === 0 ? 6 : now.getDay() - 1));
+  thisMonday.setHours(0,0,0,0);
+  const lastMonday = new Date(thisMonday);
+  lastMonday.setDate(lastMonday.getDate() - 7);
+
+  // Build daily cumulative km for each week (Mon=0 .. Sun=6)
+  const thisWeekDaily = [0,0,0,0,0,0,0];
+  const lastWeekDaily = [0,0,0,0,0,0,0];
+  runs.forEach(r => {
+    const d = new Date(r.date);
+    if (d >= thisMonday) {
+      const dayIdx = Math.min(Math.floor((d - thisMonday) / 86400000), 6);
+      thisWeekDaily[dayIdx] += (r.distance_km || 0);
+    } else if (d >= lastMonday && d < thisMonday) {
+      const dayIdx = Math.min(Math.floor((d - lastMonday) / 86400000), 6);
+      lastWeekDaily[dayIdx] += (r.distance_km || 0);
+    }
+  });
+  // Make cumulative
+  for (let i = 1; i < 7; i++) { thisWeekDaily[i] += thisWeekDaily[i-1]; lastWeekDaily[i] += lastWeekDaily[i-1]; }
+
+  const thisWeekKm = thisWeekDaily[6] || thisWeekDaily.reduce((a,b) => Math.max(a,b), 0);
+  const lastWeekKm = lastWeekDaily[6];
+  const delta = thisWeekKm - lastWeekKm;
+  const deltaAbs = Math.abs(delta).toFixed(1);
+
+  // Figure out current day of week (0=Mon)
+  const todayIdx = now.getDay() === 0 ? 6 : now.getDay() - 1;
+  const thisWeekSoFar = thisWeekDaily[todayIdx];
+  const lastWeekSameDay = lastWeekDaily[todayIdx];
+  const pacing = thisWeekSoFar - lastWeekSameDay;
+  const pacingAbs = Math.abs(pacing).toFixed(1);
+  const pacingClass = pacing > 0.5 ? 'up' : pacing < -0.5 ? 'down' : 'flat';
+  const pacingArrow = pacing > 0.5 ? '&#9650;' : pacing < -0.5 ? '&#9660;' : '&#8212;';
+  const pacingText = pacing > 0.5 ? '+' + pacingAbs + ' km ahead of last week' : pacing < -0.5 ? pacingAbs + ' km behind last week' : 'On par with last week';
+
+  const dayLabels = ['Mon','Tue','Wed','Thu','Fri','Sat','Sun'];
+
+  let rightHtml = '<div class="overview-card accent-blue">' +
+    '<div class="ov-label">This Week Running</div>' +
+    '<div class="weekly-big">' + thisWeekSoFar.toFixed(1) + '<span class="weekly-unit">km</span></div>' +
+    '<div class="weekly-delta ' + pacingClass + '">' + pacingArrow + ' ' + pacingText + '</div>' +
+    '<div class="weekly-legend"><span><span class="dot" style="background:' + BLUE + '"></span>This week</span><span><span class="dot" style="background:' + MUTED + '"></span>Last week</span></div>' +
+    '<div class="weekly-chart"><canvas id="weeklyCompareCanvas" height="80"></canvas><div class="weekly-tooltip"></div></div>' +
+  '</div>';
+
+  container.innerHTML = leftHtml + rightHtml;
+
+  // Draw the two-line comparison chart
+  drawWeeklyCompare(thisWeekDaily, lastWeekDaily, todayIdx, dayLabels);
+
+  // Activity selector
+  const sel = document.getElementById('activitySelect');
+  if (sel) {
+    sel.addEventListener('change', function() {
+      selectedActivityIdx = parseInt(this.value);
+      renderActivityCard(container);
+    });
+  }
+
+  // Draw route map if available
+  if (act && act.map_polyline && act.map_polyline.length > 10) {
+    drawRouteMap(act.map_polyline);
+  }
+}
+
+// ── Google Polyline Decoder ──
+function decodePolyline(encoded) {
+  const points = [];
+  let idx = 0, lat = 0, lng = 0;
+  while (idx < encoded.length) {
+    let b, shift = 0, result = 0;
+    do { b = encoded.charCodeAt(idx++) - 63; result |= (b & 0x1f) << shift; shift += 5; } while (b >= 0x20);
+    lat += (result & 1) ? ~(result >> 1) : (result >> 1);
+    shift = 0; result = 0;
+    do { b = encoded.charCodeAt(idx++) - 63; result |= (b & 0x1f) << shift; shift += 5; } while (b >= 0x20);
+    lng += (result & 1) ? ~(result >> 1) : (result >> 1);
+    points.push([lat / 1e5, lng / 1e5]);
+  }
+  return points;
+}
+
+function drawRouteMap(polyline) {
+  const canvas = document.getElementById('routeCanvas');
+  if (!canvas) return;
+  const points = decodePolyline(polyline);
+  if (points.length < 2) return;
+  const dpr = 2;
+  const w = canvas.offsetWidth || 260;
+  const h = canvas.offsetHeight || 80;
+  canvas.style.width = w + 'px';
+  canvas.style.height = h + 'px';
+  canvas.width = w * dpr;
+  canvas.height = h * dpr;
+  const ctx = canvas.getContext('2d');
+  ctx.scale(dpr, dpr);
+
+  const lats = points.map(p => p[0]), lngs = points.map(p => p[1]);
+  const minLat = Math.min(...lats), maxLat = Math.max(...lats);
+  const minLng = Math.min(...lngs), maxLng = Math.max(...lngs);
+  const latR = maxLat - minLat || 0.001, lngR = maxLng - minLng || 0.001;
+  const pad = 6;
+  const scaleX = (w - pad * 2) / lngR;
+  const scaleY = (h - pad * 2) / latR;
+  const scale = Math.min(scaleX, scaleY);
+  const offX = (w - lngR * scale) / 2;
+  const offY = (h - latR * scale) / 2;
+
+  ctx.beginPath();
+  points.forEach((p, i) => {
+    const x = offX + (p[1] - minLng) * scale;
+    const y = offY + (maxLat - p[0]) * scale;
+    i === 0 ? ctx.moveTo(x, y) : ctx.lineTo(x, y);
+  });
+  ctx.strokeStyle = 'rgba(252, 76, 2, 0.6)';
+  ctx.lineWidth = 1.5;
+  ctx.lineJoin = 'round';
+  ctx.lineCap = 'round';
+  ctx.stroke();
+
+  // Start dot
+  const s = points[0];
+  ctx.beginPath();
+  ctx.arc(offX + (s[1] - minLng) * scale, offY + (maxLat - s[0]) * scale, 2.5, 0, Math.PI * 2);
+  ctx.fillStyle = '#2dd4a0';
+  ctx.fill();
+}
+
+// ══════════════════════════════════════════════════════════════════════════════
+// HEALTH OVERVIEW CARDS (Whoop data)
+// ══════════════════════════════════════════════════════════════════════════════
+let whoopDataGlobal = null;
+
+function renderHealthOverview(data) {
+  whoopDataGlobal = data;
+  const container = document.getElementById('health-overview-row');
+  const recs = data.recoveries.filter(r => r.recovery_score != null);
+  const sleeps = data.sleeps.filter(s => !s.nap && s.total_in_bed_ms);
+  const cycles = data.cycles.filter(c => c.strain != null);
+
+  if (!recs.length) { container.innerHTML = ''; return; }
+  document.getElementById('health-sublabel').style.display = 'flex';
+
+  const latest = recs[0] || {};
+  const prev = recs[1] || {};
+  const latestSleep = sleeps[0] || {};
+  const prevSleep = sleeps[1] || {};
+  const latestCycle = cycles[0] || {};
+  const prevCycle = cycles[1] || {};
+
+  // Helpers
+  function deltaHTML(curr, prev, unit, higherIsBetter) {
+    if (curr == null || prev == null) return '<span class="hm-delta neutral">--</span>';
+    const diff = curr - prev;
+    const absDiff = Math.abs(diff).toFixed(diff > 10 ? 0 : 1);
+    const isBetter = higherIsBetter ? diff > 0 : diff < 0;
+    const cls = Math.abs(diff) < 0.5 ? 'neutral' : isBetter ? 'better' : 'worse';
+    const arrow = diff > 0.5 ? '&#9650;' : diff < -0.5 ? '&#9660;' : '&#8212;';
+    return '<div class="hm-delta ' + cls + '">' + arrow + ' ' + absDiff + ' ' + unit + '</div>';
+  }
+
+  const sleepHrs = latestSleep.total_in_bed_ms ? (latestSleep.total_in_bed_ms / 3600000) : null;
+  const prevSleepHrs = prevSleep.total_in_bed_ms ? (prevSleep.total_in_bed_ms / 3600000) : null;
+  const sleepEff = latestSleep.sleep_efficiency_pct ? Math.round(latestSleep.sleep_efficiency_pct) : null;
+  const sleepCons = latestSleep.sleep_consistency_pct ? Math.round(latestSleep.sleep_consistency_pct) : null;
+
+  // Calories from cycles (kilojoule → kcal)
+  const latestKcal = latestCycle.kilojoule ? Math.round(latestCycle.kilojoule / 4.184) : null;
+
+  // Strain
+  const strainVal = latestCycle.strain != null ? (Math.round(latestCycle.strain * 10) / 10) : null;
+  const strainDisplay = strainVal != null ? strainVal.toFixed(1) : '-';
+  function strainColor(s) {
+    if (s == null) return '#3a3a4a';
+    if (s >= 18) return '#00b4ff';
+    if (s >= 14) return '#0098e0';
+    if (s >= 10) return '#0080cc';
+    if (s >= 6) return '#0068b0';
+    return '#4a7fa8';
+  }
+  const strainCol = strainColor(strainVal);
+
+  // 10-day data slices (reversed = oldest first for charts)
+  const rec10 = recs.slice(0, 10).reverse();
+  const sleep10 = sleeps.slice(0, 10).reverse();
+  const rhr10 = recs.filter(r => r.resting_heart_rate).slice(0, 10).reverse();
+  const strain10 = cycles.slice(0, 10).reverse();
+
+  // ── Recovery card ──
+  const recoveryHTML = '<div class="health-mini" style="--accent:' + recoveryColor(latest.recovery_score) + '">' +
+    '<div class="hm-label">Recovery</div>' +
+    '<div class="hm-value" style="color:' + recoveryColor(latest.recovery_score) + '">' + (latest.recovery_score != null ? Math.round(latest.recovery_score) + '%' : '-') + '</div>' +
+    deltaHTML(latest.recovery_score, prev.recovery_score, '%', true) +
+    '<div class="hm-spark"><canvas id="hmRecovery" height="80"></canvas><div class="hm-tooltip"></div></div>' +
+  '</div>';
+
+  // ── Sleep card (horizontal: Performance, Efficiency, Consistency) ──
+  const sleepPerf = latestSleep.performance_pct != null ? Math.round(latestSleep.performance_pct) : null;
+  const sleepNeeded = latestSleep.sleep_needed_ms ? (latestSleep.sleep_needed_ms / 3600000).toFixed(1) : null;
+
+  const sleepHTML = '<div class="health-mini" style="--accent:#2dd4a0">' +
+    '<div class="hm-label">Sleep</div>' +
+    '<div class="sleep-metrics">' +
+      '<div class="sleep-metric"><div class="sleep-metric-label">Performance</div><div class="sleep-metric-val">' + (sleepPerf != null ? sleepPerf + '%' : '-') + '</div></div>' +
+      '<div class="sleep-metric"><div class="sleep-metric-label">Efficiency</div><div class="sleep-metric-val">' + (sleepEff ? sleepEff + '%' : '-') + '</div></div>' +
+      '<div class="sleep-metric"><div class="sleep-metric-label">Consistency</div><div class="sleep-metric-val">' + (sleepCons ? sleepCons + '%' : '-') + '</div></div>' +
+    '</div>' +
+    '<div class="sleep-hours"><strong>' + (sleepHrs ? sleepHrs.toFixed(1) + 'h</strong> slept' : '-</strong>') + (sleepNeeded ? ' / ' + sleepNeeded + 'h needed' : '') + '</div>' +
+    '<div class="hm-spark"><canvas id="hmSleep" height="80"></canvas><div class="hm-tooltip"></div></div>' +
+  '</div>';
+
+  // ── Resting HR card ──
+  const rhrHTML = '<div class="health-mini" style="--accent:#ff5c6a">' +
+    '<div class="hm-label">Resting HR</div>' +
+    '<div class="hm-value" style="color:#ff5c6a">' + (latest.resting_heart_rate ? Math.round(latest.resting_heart_rate) : '-') + '</div>' +
+    '<div class="hm-unit">bpm</div>' +
+    deltaHTML(latest.resting_heart_rate, prev.resting_heart_rate, 'bpm', false) +
+    '<div class="hm-spark"><canvas id="hmRHR" height="80"></canvas><div class="hm-tooltip"></div></div>' +
+  '</div>';
+
+  // ── Strain card with ring + faded bar background ──
+  const strainHTML = '<div class="health-mini strain-ring-card" style="--accent:' + strainCol + '">' +
+    '<div class="hm-label">Day Strain</div>' +
+    '<canvas id="strainBgBars" class="strain-bg-canvas"></canvas>' +
+    '<div class="strain-ring-wrap"><canvas id="strainRingCanvas" width="90" height="90"></canvas>' +
+      '<div class="strain-ring-value">' + strainDisplay + '</div>' +
+    '</div>' +
+    (latestKcal ? '<div class="strain-sub">' + latestKcal.toLocaleString() + ' kcal</div>' : '') +
+    deltaHTML(latestCycle.strain, prevCycle.strain, '', true) +
+  '</div>';
+
+  container.innerHTML = recoveryHTML + sleepHTML + rhrHTML + strainHTML;
+
+  // ── Draw bar charts ──
+  drawBarChart('hmRecovery',
+    rec10.map(r => r.recovery_score),
+    recoveryColor(latest.recovery_score),
+    rec10.map(r => dateShort(r.created_at)),
+    function(v) { return recoveryColor(v); }
+  );
+  drawBarChart('hmSleep',
+    sleep10.map(s => s.total_in_bed_ms / 3600000),
+    '#2dd4a0',
+    sleep10.map(s => dateShort(s.start))
+  );
+  drawBarChart('hmRHR',
+    rhr10.map(r => r.resting_heart_rate),
+    '#ff5c6a',
+    rhr10.map(r => dateShort(r.created_at))
+  );
+
+  // Draw strain ring + background bars
+  drawStrainRing(strainVal, strainCol);
+  drawStrainBg(strain10);
+}
+
+// ══════════════════════════════════════════════════════════════════════════════
+// SPARKLINE HELPER
+// ══════════════════════════════════════════════════════════════════════════════
+function drawBarChart(canvasId, values, barColor, labels, colorFn) {
+  const canvas = document.getElementById(canvasId);
+  if (!canvas || !values.length) return;
+  const dpr = 2;
+  const w = canvas.offsetWidth || 200;
+  const h = canvas.offsetHeight || 52;
+  canvas.style.width = w + 'px';
+  canvas.style.height = h + 'px';
+  canvas.width = w * dpr;
+  canvas.height = h * dpr;
+
+  const padSide = 3, padTop = 2, padBot = 2, gap = 2;
+  const n = values.length;
+  const barW = (w - padSide * 2 - gap * (n - 1)) / n;
+  const min = 0;
+  const max = Math.max(...values, 1);
+  const plotH = h - padTop - padBot;
+
+  // Compute bars
+  const bars = values.map((v, i) => {
+    const barH = Math.max((v / max) * plotH, 1);
+    return {
+      x: padSide + i * (barW + gap),
+      y: h - padBot - barH,
+      w: barW,
+      h: barH,
+      val: v
+    };
+  });
+
+  function paint(ctx2, hoverIdx) {
+    ctx2.clearRect(0, 0, canvas.width, canvas.height);
+    ctx2.save();
+    ctx2.scale(dpr, dpr);
+    bars.forEach((b, i) => {
+      const isLast = i === bars.length - 1;
+      const isHover = i === hoverIdx;
+      let col = barColor;
+      if (colorFn) col = colorFn(b.val);
+      const alpha = isHover ? 1.0 : isLast ? 0.9 : 0.45;
+      ctx2.fillStyle = col;
+      ctx2.globalAlpha = alpha;
+      const r = Math.min(2, barW / 3);
+      // Rounded top corners
+      ctx2.beginPath();
+      ctx2.moveTo(b.x, b.y + b.h);
+      ctx2.lineTo(b.x, b.y + r);
+      ctx2.quadraticCurveTo(b.x, b.y, b.x + r, b.y);
+      ctx2.lineTo(b.x + b.w - r, b.y);
+      ctx2.quadraticCurveTo(b.x + b.w, b.y, b.x + b.w, b.y + r);
+      ctx2.lineTo(b.x + b.w, b.y + b.h);
+      ctx2.closePath();
+      ctx2.fill();
+      ctx2.globalAlpha = 1;
+    });
+    ctx2.restore();
+  }
+
+  paint(canvas.getContext('2d'), null);
+
+  // Hover
+  if (!canvas._barHover) {
+    canvas._barHover = true;
+    const tooltip = canvas.parentElement.querySelector('.hm-tooltip');
+    if (!tooltip) return;
+    canvas.addEventListener('mousemove', function(e) {
+      const rect = canvas.getBoundingClientRect();
+      const mx = (e.clientX - rect.left) * (w / rect.width);
+      let hit = -1;
+      bars.forEach((b, i) => { if (mx >= b.x && mx <= b.x + b.w) hit = i; });
+      if (hit < 0) { // find closest
+        let minD = Infinity;
+        bars.forEach((b, i) => { const cx = b.x + b.w/2; const d = Math.abs(cx - mx); if (d < minD) { minD = d; hit = i; } });
+      }
+      if (hit >= 0) {
+        const b = bars[hit];
+        const v = b.val;
+        const lbl = labels ? labels[hit] + ': ' : '';
+        const displayVal = Number.isInteger(v) ? v : (typeof v === 'number' ? v.toFixed(1) : v);
+        tooltip.textContent = lbl + displayVal;
+        const tx = ((b.x + b.w/2) / w) * rect.width;
+        tooltip.style.left = Math.max(0, Math.min(tx - 20, rect.width - 60)) + 'px';
+        tooltip.style.bottom = (rect.height - (b.y / h) * rect.height + 6) + 'px';
+        tooltip.classList.add('visible');
+        paint(canvas.getContext('2d'), hit);
+      }
+    });
+    canvas.addEventListener('mouseleave', function() {
+      tooltip.classList.remove('visible');
+      paint(canvas.getContext('2d'), null);
+    });
+  }
+}
+
+function drawStrainRing(strain, color) {
+  const canvas = document.getElementById('strainRingCanvas');
+  if (!canvas) return;
+  const ctx = canvas.getContext('2d');
+  const dpr = 2;
+  canvas.width = 90 * dpr;
+  canvas.height = 90 * dpr;
+  ctx.scale(dpr, dpr);
+  const cx = 45, cy = 45, r = 36, lw = 6;
+  const pct = Math.min((strain || 0) / 21, 1);
+  // Background track
+  ctx.beginPath();
+  ctx.arc(cx, cy, r, 0, Math.PI * 2);
+  ctx.strokeStyle = '#2a2a3a';
+  ctx.lineWidth = lw;
+  ctx.stroke();
+  // Strain arc (starts at top, goes clockwise)
+  if (pct > 0) {
+    ctx.beginPath();
+    ctx.arc(cx, cy, r, -Math.PI / 2, -Math.PI / 2 + Math.PI * 2 * pct);
+    ctx.strokeStyle = color;
+    ctx.lineWidth = lw;
+    ctx.lineCap = 'round';
+    ctx.stroke();
+  }
+}
+
+function drawStrainBg(strain10) {
+  const canvas = document.getElementById('strainBgBars');
+  if (!canvas || !strain10.length) return;
+  const dpr = 2;
+  const w = canvas.offsetWidth || 200;
+  const h = canvas.offsetHeight || 150;
+  canvas.style.width = w + 'px';
+  canvas.style.height = h + 'px';
+  canvas.width = w * dpr;
+  canvas.height = h * dpr;
+  const ctx = canvas.getContext('2d');
+  ctx.scale(dpr, dpr);
+
+  const n = strain10.length;
+  const gap = 3, padSide = 6;
+  const barW = (w - padSide * 2 - gap * (n - 1)) / n;
+  const max = 21; // strain max is always 21
+
+  strain10.forEach((c, i) => {
+    const v = c.strain || 0;
+    const barH = Math.max((v / max) * h * 0.85, 1);
+    const x = padSide + i * (barW + gap);
+    const y = h - barH;
+    const r = Math.min(2, barW / 3);
+    ctx.fillStyle = '#4a9eff';
+    ctx.globalAlpha = i === n - 1 ? 0.7 : 0.35;
+    ctx.beginPath();
+    ctx.moveTo(x, y + barH);
+    ctx.lineTo(x, y + r);
+    ctx.quadraticCurveTo(x, y, x + r, y);
+    ctx.lineTo(x + barW - r, y);
+    ctx.quadraticCurveTo(x + barW, y, x + barW, y + r);
+    ctx.lineTo(x + barW, y + barH);
+    ctx.closePath();
+    ctx.fill();
+  });
+  ctx.globalAlpha = 1;
+}
+
+function drawWeeklyCompare(thisWeek, lastWeek, todayIdx, dayLabels) {
+  const canvas = document.getElementById('weeklyCompareCanvas');
+  if (!canvas) return;
+  const dpr = 2;
+  const w = canvas.offsetWidth || 400;
+  const h = canvas.offsetHeight || 80;
+  canvas.style.width = w + 'px';
+  canvas.style.height = h + 'px';
+  canvas.width = w * dpr;
+  canvas.height = h * dpr;
+  const ctx = canvas.getContext('2d');
+  ctx.scale(dpr, dpr);
+
+  // Clean layout — no axis labels, no grid
+  const padTop = 6, padBot = 16, padL = 10, padR = 10;
+  const plotT = padTop, plotB = h - padBot;
+  const plotW = w - padL - padR;
+
+  const allVals = [...thisWeek, ...lastWeek];
+  const max = Math.max(...allVals, 1);
+  const step = plotW / 6;
+
+  function yPos(v) { return plotT + (1 - v / max) * (plotB - plotT); }
+  function xPos(i) { return padL + i * step; }
+
+  const thisPoints = thisWeek.map((v, i) => ({ x: xPos(i), y: yPos(v), val: v }));
+  const lastPoints = lastWeek.map((v, i) => ({ x: xPos(i), y: yPos(v), val: v }));
+
+  function drawLine(points, color, fillCol, limit) {
+    const end = limit != null ? limit : points.length - 1;
+    ctx.beginPath();
+    for (let i = 0; i <= end; i++) {
+      i === 0 ? ctx.moveTo(points[i].x, points[i].y) : ctx.lineTo(points[i].x, points[i].y);
+    }
+    ctx.lineTo(points[end].x, plotB);
+    ctx.lineTo(points[0].x, plotB);
+    ctx.closePath();
+    ctx.fillStyle = fillCol;
+    ctx.fill();
+    ctx.beginPath();
+    for (let i = 0; i <= end; i++) {
+      i === 0 ? ctx.moveTo(points[i].x, points[i].y) : ctx.lineTo(points[i].x, points[i].y);
+    }
+    ctx.strokeStyle = color;
+    ctx.lineWidth = 2;
+    ctx.lineJoin = 'round';
+    ctx.lineCap = 'round';
+    ctx.stroke();
+  }
+
+  // Last week (full, muted)
+  drawLine(lastPoints, MUTED, 'rgba(136,136,160,0.08)', 6);
+  // This week (up to today)
+  drawLine(thisPoints, BLUE, 'rgba(74,158,255,0.15)', todayIdx);
+
+  // Dot on today
+  const tp = thisPoints[todayIdx];
+  ctx.beginPath(); ctx.arc(tp.x, tp.y, 3.5, 0, Math.PI * 2); ctx.fillStyle = BLUE; ctx.fill();
+  ctx.beginPath(); ctx.arc(tp.x, tp.y, 1.5, 0, Math.PI * 2); ctx.fillStyle = '#fff'; ctx.fill();
+
+  // Day labels — bigger, bolder for today
+  ctx.textAlign = 'center';
+  for (let i = 0; i < 7; i++) {
+    const isToday = i === todayIdx;
+    ctx.font = isToday ? 'bold 10px system-ui, sans-serif' : '10px system-ui, sans-serif';
+    ctx.fillStyle = isToday ? '#f0f0f5' : '#666678';
+    ctx.fillText(dayLabels[i], xPos(i), h - 3);
+  }
+
+  // Hover
+  const tooltip = canvas.parentElement.querySelector('.weekly-tooltip');
+  if (!tooltip) return;
+  canvas.addEventListener('mousemove', function(e) {
+    const rect = canvas.getBoundingClientRect();
+    const mx = (e.clientX - rect.left) * (w / rect.width);
+    let closest = 0, minDist = Infinity;
+    for (let i = 0; i < 7; i++) {
+      const d = Math.abs(xPos(i) - mx);
+      if (d < minDist) { minDist = d; closest = i; }
+    }
+    const tw = thisPoints[closest].val, lw2 = lastPoints[closest].val;
+    tooltip.innerHTML = '<strong>' + dayLabels[closest] + '</strong>: ' + tw.toFixed(1) + ' km <span style="color:' + MUTED + '">vs ' + lw2.toFixed(1) + ' km</span>';
+    const tx = (thisPoints[closest].x / w) * rect.width;
+    tooltip.style.left = Math.max(0, Math.min(tx - 40, rect.width - 100)) + 'px';
+    tooltip.style.bottom = (rect.height - Math.min(thisPoints[closest].y, lastPoints[closest].y) / h * rect.height + 10) + 'px';
+    tooltip.classList.add('visible');
+  });
+  canvas.addEventListener('mouseleave', function() { tooltip.classList.remove('visible'); });
+}
+
+// ══════════════════════════════════════════════════════════════════════════════
+// RUNNING SECTION
+// ══════════════════════════════════════════════════════════════════════════════
+function renderRunStats(runs) {
+  const el = document.getElementById('run-stat-cards');
+  if (!runs.length) { el.innerHTML = '<div class="no-data"><h2>No runs found</h2><p>Try a different time range.</p></div>'; return; }
+  const totalKm   = runs.reduce((s,r) => s + (r.distance_km||0), 0);
+  const avgPace   = runs.filter(r=>r.pace_decimal).reduce((s,r,_,a) => s + r.pace_decimal/a.length, 0);
+  const bestPace  = Math.min(...runs.filter(r=>r.pace_decimal&&r.distance_km>=1).map(r=>r.pace_decimal));
+  const hrRuns    = runs.filter(r=>r.avg_heartrate);
+  const avgHR     = hrRuns.length ? hrRuns.reduce((s,r)=>s+r.avg_heartrate,0)/hrRuns.length : null;
+  const totalElev = runs.reduce((s,r)=>s+(r.elevation_gain||0),0);
+  const totalTime = runs.reduce((s,r)=>s+(r.moving_time_s||0),0);
+  const longestRun = Math.max(...runs.map(r=>r.distance_km||0));
+  const totalKudos = runs.reduce((s,r) => s + (r.kudos_count||0), 0);
+  const avgKudos   = runs.length ? (totalKudos / runs.length).toFixed(1) : '0';
+  function ps(p) { if (!p||!isFinite(p)) return '-'; const m=Math.floor(p),s=Math.round((p-m)*60); return m+':'+String(s).padStart(2,'0'); }
+
+  const cards = [
+    { label:'Total Distance', value:totalKm.toFixed(1), unit:'km', accent:'var(--orange)', icon:'&#127939;' },
+    { label:'Runs', value:runs.length, unit:'runs', accent:'var(--blue)', icon:'&#128202;' },
+    { label:'Avg Pace', value:ps(avgPace), unit:'/km', accent:'var(--green)', icon:'&#9889;' },
+    { label:'Best Pace', value:ps(bestPace), unit:'/km', accent:'#9b59b6', icon:'&#127942;' },
+    { label:'Avg Heart Rate', value:avgHR?Math.round(avgHR):'-', unit:'bpm', accent:'var(--red)', icon:'&#10084;&#65039;' },
+    { label:'Total Elevation', value:Math.round(totalElev).toLocaleString(), unit:'m', accent:'#f39c12', icon:'&#9968;&#65039;' },
+    { label:'Total Time', value:fmtDuration(totalTime), unit:'', accent:'var(--muted)', icon:'&#9201;&#65039;' },
+    { label:'Longest Run', value:longestRun.toFixed(1), unit:'km', accent:'var(--orange2)', icon:'&#128207;' },
+    { label:'Total Kudos', value:totalKudos, unit:'avg '+avgKudos+'/run', accent:'#e74c8b', icon:'&#128079;' },
+  ];
+  el.innerHTML = cards.map(c =>
+    '<div class="stat-card" style="--accent:'+c.accent+'">' +
+      '<div class="stat-label">'+c.icon+' '+c.label+'</div>' +
+      '<div class="stat-value">'+c.value+'</div>' +
+      '<div class="stat-sub">'+c.unit+'</div>' +
+    '</div>'
+  ).join('');
+}
+
+function renderPaceChart(runs) {
+  const data = runs.filter(r=>r.pace_decimal&&r.distance_km>=1&&r.pace_decimal<=9).sort((a,b)=>a.date.localeCompare(b.date));
+  const vals = data.map(r=>r.pace_decimal);
+  const idx = vals.map((_,i)=>i);
+  const reg = linearRegression(idx, vals);
+  const trend = reg ? idx.map(i=>parseFloat(reg.predict(i).toFixed(4))) : [];
+  const improving = reg && reg.slope < 0;
+  destroyChart('pace');
+  charts['pace'] = new Chart(document.getElementById('paceChart'), {
+    type:'line',
+    data:{
+      labels: data.map(r=>fmtDate(r.date)),
+      datasets:[
+        { label:'Pace', data:vals, borderColor:GREEN, backgroundColor:'rgba(45,212,160,0.08)', pointRadius:3, pointHoverRadius:6, tension:0.3, fill:true, order:2 },
+        { label: improving?'Trend (improving)':'Trend (slower)', data:trend, borderColor:'rgba(252,76,2,0.9)', borderWidth:2.5, borderDash:[7,4], pointRadius:0, fill:false, tension:0, order:1 },
+      ]
+    },
+    options:{
+      responsive:true, maintainAspectRatio:false,
+      plugins:{ legend:{ display:true, labels:{ boxWidth:24, padding:16, font:{size:12} } } },
+      scales:{
+        y:{ reverse:true, ticks:{ callback:v=>paceFmt(v) }, title:{ display:true, text:'Pace (min/km)' } },
+        x:{ grid:{display:false}, ticks:{maxTicksLimit:10} }
+      }
+    }
+  });
+}
+
+function renderHRPaceChart(runs) {
+  const data = runs.filter(r=>r.avg_heartrate&&r.pace_decimal&&r.distance_km>=1&&r.pace_decimal<=9).sort((a,b)=>a.date.localeCompare(b.date));
+  if (!data.length) return;
+  const mid = Math.ceil(data.length/2);
+  const earlier = data.slice(0,mid), recent = data.slice(mid);
+  function trendLine(group, color, label) {
+    const xs=group.map(r=>r.pace_decimal), ys=group.map(r=>r.avg_heartrate);
+    const reg=linearRegression(xs,ys);
+    if(!reg||xs.length<2) return null;
+    const minX=Math.min(...xs), maxX=Math.max(...xs);
+    return { label, type:'line', data:[{x:minX,y:reg.predict(minX)},{x:maxX,y:reg.predict(maxX)}], borderColor:color, borderWidth:2.5, borderDash:[7,4], pointRadius:0, fill:false, tension:0, order:1 };
+  }
+  const fmt=d=>d?new Date(d).toLocaleDateString('en-GB',{month:'short',year:'2-digit'}):'';
+  const eL='Earlier (until '+fmt(earlier[earlier.length-1]?.date)+')';
+  const rL='Recent (from '+fmt(recent[0]?.date)+')';
+  const eT=trendLine(earlier,'rgba(74,158,255,0.95)','Trend - '+eL);
+  const rT=trendLine(recent,'rgba(252,76,2,0.95)','Trend - '+rL);
+  const pts=g=>g.map(r=>({x:r.pace_decimal,y:r.avg_heartrate,name:r.name,date:r.date,km:r.distance_km}));
+  destroyChart('hrpace');
+  charts['hrpace'] = new Chart(document.getElementById('hrPaceChart'), {
+    type:'scatter',
+    data:{ datasets:[
+      { label:eL, data:pts(earlier), backgroundColor:'rgba(74,158,255,0.45)', pointRadius:5, pointHoverRadius:7, order:3 },
+      { label:rL, data:pts(recent), backgroundColor:'rgba(252,76,2,0.55)', pointRadius:5, pointHoverRadius:7, order:2 },
+      ...(eT?[eT]:[]), ...(rT?[rT]:[]),
+    ]},
+    options:{
+      responsive:true, maintainAspectRatio:false,
+      plugins:{ legend:{ display:true, labels:{ boxWidth:20, padding:12, font:{size:11}, filter:item=>!item.text.startsWith('Trend') } },
+        tooltip:{ callbacks:{ label:ctx=>{ if(ctx.dataset.type==='line') return null; const d=ctx.raw; return [(d.name||'Run')+' - '+d.date, 'Pace: '+paceFmt(d.x)+'/km', 'HR: '+d.y+' bpm', 'Dist: '+d.km.toFixed(1)+' km']; } } }
+      },
+      scales:{ x:{title:{display:true,text:'Pace (min/km)'},ticks:{callback:v=>paceFmt(v)}}, y:{title:{display:true,text:'Avg Heart Rate (bpm)'}} }
+    }
+  });
+}
+
+function renderWeeklyRunChart(runs) {
+  const weekly={};
+  runs.forEach(r=>{ const wk=weekLabel(r.date); weekly[wk]=(weekly[wk]||0)+(r.distance_km||0); });
+  const sorted=Object.entries(weekly).sort((a,b)=>a[0].localeCompare(b[0]));
+  const labels=sorted.map(([wk])=>new Date(wk).toLocaleDateString('en-GB',{day:'numeric',month:'short'}));
+  const values=sorted.map(([,v])=>parseFloat(v.toFixed(2)));
+  destroyChart('weeklyRun');
+  charts['weeklyRun'] = new Chart(document.getElementById('weeklyRunChart'), {
+    type:'bar',
+    data:{ labels, datasets:[{ label:'km', data:values, backgroundColor:values.map(v=>v>=50?'#ff6a33':v>=30?ORANGE:'rgba(252,76,2,0.6)'), borderRadius:4 }] },
+    options:{ responsive:true, maintainAspectRatio:false, plugins:{legend:{display:false}}, scales:{ x:{grid:{display:false},ticks:{maxTicksLimit:20}}, y:{title:{display:true,text:'km'}} } }
+  });
+}
+
+function renderMonthlyChart(allRuns) {
+  const now=new Date(), months=[];
+  for(let i=11;i>=0;i--){ const d=new Date(now.getFullYear(),now.getMonth()-i,1); months.push({key:d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0'),label:d.toLocaleDateString('en-GB',{month:'short',year:'2-digit'})}); }
+  const monthly={};
+  allRuns.forEach(r=>{ const mk=r.date.slice(0,7); monthly[mk]=(monthly[mk]||0)+(r.distance_km||0); });
+  destroyChart('monthly');
+  charts['monthly'] = new Chart(document.getElementById('monthlyChart'), {
+    type:'bar',
+    data:{ labels:months.map(m=>m.label), datasets:[{ label:'km', data:months.map(m=>parseFloat((monthly[m.key]||0).toFixed(1))), backgroundColor:BLUE, borderRadius:4 }] },
+    options:{ responsive:true, maintainAspectRatio:false, plugins:{legend:{display:false}}, scales:{ x:{grid:{display:false}}, y:{title:{display:true,text:'km'}} } }
+  });
+}
+
+function renderElevChart(runs) {
+  const data=runs.filter(r=>r.elevation_gain>0).sort((a,b)=>a.date.localeCompare(b.date)).slice(-50);
+  destroyChart('elev');
+  charts['elev'] = new Chart(document.getElementById('elevChart'), {
+    type:'bar',
+    data:{ labels:data.map(r=>fmtDate(r.date)), datasets:[{ label:'m', data:data.map(r=>r.elevation_gain), backgroundColor:'#f39c12', borderRadius:3 }] },
+    options:{ responsive:true, maintainAspectRatio:false, plugins:{legend:{display:false}}, scales:{ x:{grid:{display:false},ticks:{maxTicksLimit:10}}, y:{title:{display:true,text:'m elevation'}} } }
+  });
+}
+
+function renderRunTable(runs) {
+  const tbody=document.getElementById('run-table');
+  const recent=runs.slice(0,50);
+  if(!recent.length){ tbody.innerHTML='<tr><td colspan="8" style="text-align:center;color:var(--muted);padding:32px">No runs found</td></tr>'; return; }
+  tbody.innerHTML = recent.map(r=>{
+    const tl=r.sport_type||r.type||'Run';
+    return '<tr><td>'+fmtDate(r.date)+'</td><td>'+(r.name||'-')+'</td><td><span class="badge '+badgeClass(tl)+'">'+tl+'</span></td><td>'+(r.distance_km?r.distance_km.toFixed(2)+' km':'-')+'</td><td>'+fmtDuration(r.moving_time_s)+'</td><td class="'+paceColor(r.pace_decimal)+'">'+(r.pace_str||'-')+'</td><td>'+(r.avg_heartrate?Math.round(r.avg_heartrate)+' bpm':'-')+'</td><td>'+(r.elevation_gain?r.elevation_gain+' m':'-')+'</td></tr>';
+  }).join('');
+}
+
+function renderRunSection(range) {
+  currentRange = range;
+  const runs = filterActivities(allActivities, range);
+  renderRunStats(runs);
+  renderPaceChart(runs);
+  renderHRPaceChart(runs);
+  renderWeeklyRunChart(runs);
+  renderMonthlyChart(allActivities.filter(isRun));
+  renderElevChart(runs);
+  renderRunTable(runs);
+}
+
+// ══════════════════════════════════════════════════════════════════════════════
+// STRENGTH SECTION
+// ══════════════════════════════════════════════════════════════════════════════
+function sessionVolume(id) {
+  const exs = exerciseData.sessions[id] || [];
+  let t=0; exs.forEach(ex=>(ex.sets||[]).forEach(s=>{ t+=(s.reps||0)*(s.weight||0); })); return t;
+}
+function sessionExerciseCount(id) { return (exerciseData.sessions[id]||[]).length; }
+function getAllExerciseNames() {
+  const names=new Set();
+  Object.values(exerciseData.sessions).forEach(exList=>exList.forEach(ex=>{ if(ex.name) names.add(ex.name); }));
+  return [...names].sort();
+}
+function updateExerciseSuggestions() {
+  document.getElementById('exercise-suggestions').innerHTML = getAllExerciseNames().map(n=>'<option value="'+n+'">').join('');
+}
+
+function renderStrStats(sessions) {
+  const el=document.getElementById('str-stat-cards');
+  if(!sessions.length){ el.innerHTML='<div class="no-data"><h2>No strength sessions found</h2></div>'; return; }
+  const totalMin=sessions.reduce((s,r)=>s+(r.moving_time_s||0),0)/60;
+  const avgDur=totalMin/sessions.length;
+  const hrS=sessions.filter(r=>r.avg_heartrate);
+  const avgHR=hrS.length?hrS.reduce((s,r)=>s+r.avg_heartrate,0)/hrS.length:null;
+  const maxHR=Math.max(...sessions.filter(r=>r.max_heartrate).map(r=>r.max_heartrate));
+  let totalVol=0, totalEx=0;
+  sessions.forEach(s=>{ totalVol+=sessionVolume(s.id); totalEx+=sessionExerciseCount(s.id); });
+  const weekSet=new Set(sessions.map(s=>weekLabel(s.date)));
+  let streak=0; const now=new Date();
+  for(let i=0;i<52;i++){ const d=new Date(now); d.setDate(d.getDate()-i*7); if(weekSet.has(weekLabel(d.toISOString().slice(0,10)))) streak++; else break; }
+
+  const cards=[
+    { label:'Total Sessions', value:sessions.length, unit:'sessions', accent:'var(--purple)', icon:'&#127947;' },
+    { label:'Total Time', value:Math.round(totalMin)+'m', unit:'', accent:'var(--blue)', icon:'&#9201;' },
+    { label:'Avg Duration', value:Math.round(avgDur)+'m', unit:'/session', accent:'var(--green)', icon:'&#128202;' },
+    { label:'Avg Heart Rate', value:avgHR?Math.round(avgHR):'-', unit:'bpm', accent:'var(--red)', icon:'&#10084;&#65039;' },
+    { label:'Total Volume', value:totalVol>0?(totalVol/1000).toFixed(1)+'t':'-', unit:totalVol>0?'':'log exercises', accent:'var(--purple)', icon:'&#128170;' },
+    { label:'Week Streak', value:streak, unit:'weeks', accent:'var(--green)', icon:'&#128293;' },
+  ];
+  el.innerHTML = cards.map(c=>
+    '<div class="stat-card" style="--accent:'+c.accent+'"><div class="stat-label">'+c.icon+' '+c.label+'</div><div class="stat-value">'+c.value+'</div><div class="stat-sub">'+c.unit+'</div></div>'
+  ).join('');
+}
+
+function renderWeeklyStrChart(sessions) {
+  const weekly={};
+  sessions.forEach(r=>{ const wk=weekLabel(r.date); weekly[wk]=(weekly[wk]||0)+1; });
+  const sorted=Object.entries(weekly).sort((a,b)=>a[0].localeCompare(b[0]));
+  destroyChart('weeklyStr');
+  charts['weeklyStr'] = new Chart(document.getElementById('weeklyStrChart'), {
+    type:'bar',
+    data:{ labels:sorted.map(([wk])=>new Date(wk).toLocaleDateString('en-GB',{day:'numeric',month:'short'})), datasets:[{ label:'Sessions', data:sorted.map(([,v])=>v), backgroundColor:sorted.map(([,v])=>v>=3?PURPLE:v>=2?'rgba(167,139,250,0.7)':'rgba(167,139,250,0.4)'), borderRadius:4 }] },
+    options:{ responsive:true, maintainAspectRatio:false, plugins:{legend:{display:false}}, scales:{ x:{grid:{display:false},ticks:{maxTicksLimit:20}}, y:{title:{display:true,text:'Sessions'},ticks:{stepSize:1}} } }
+  });
+}
+
+function renderDurationChart(sessions) {
+  const sorted=[...sessions].sort((a,b)=>a.date.localeCompare(b.date));
+  destroyChart('duration');
+  charts['duration'] = new Chart(document.getElementById('durationChart'), {
+    type:'line',
+    data:{ labels:sorted.map(r=>fmtDate(r.date)), datasets:[{ label:'Minutes', data:sorted.map(r=>Math.round((r.moving_time_s||0)/60)), borderColor:BLUE, backgroundColor:'rgba(74,158,255,0.08)', pointRadius:4, pointHoverRadius:6, tension:0.3, fill:true }] },
+    options:{ responsive:true, maintainAspectRatio:false, plugins:{legend:{display:false}}, scales:{ x:{grid:{display:false},ticks:{maxTicksLimit:10}}, y:{title:{display:true,text:'Minutes'}} } }
+  });
+}
+
+function renderStrHRChart(sessions) {
+  const sorted=[...sessions].filter(r=>r.avg_heartrate).sort((a,b)=>a.date.localeCompare(b.date));
+  if(!sorted.length) return;
+  destroyChart('strHR');
+  charts['strHR'] = new Chart(document.getElementById('strHRChart'), {
+    type:'line',
+    data:{ labels:sorted.map(r=>fmtDate(r.date)), datasets:[
+      { label:'Avg HR', data:sorted.map(r=>Math.round(r.avg_heartrate)), borderColor:GREEN, pointRadius:4, tension:0.3 },
+      { label:'Max HR', data:sorted.map(r=>r.max_heartrate?Math.round(r.max_heartrate):null), borderColor:RED, pointRadius:3, borderDash:[5,3], tension:0.3 },
+    ]},
+    options:{ responsive:true, maintainAspectRatio:false, plugins:{legend:{display:true,labels:{boxWidth:20,padding:12}}}, scales:{ x:{grid:{display:false},ticks:{maxTicksLimit:10}}, y:{title:{display:true,text:'BPM'}} } }
+  });
+}
+
+function renderVolumeChart(sessions) {
+  const sorted=[...sessions].sort((a,b)=>a.date.localeCompare(b.date));
+  const vols=sorted.map(s=>sessionVolume(s.id));
+  if(vols.every(v=>v===0)){ document.getElementById('volumeChartCard').style.display='none'; return; }
+  document.getElementById('volumeChartCard').style.display='';
+  destroyChart('volume');
+  charts['volume'] = new Chart(document.getElementById('volumeChart'), {
+    type:'bar',
+    data:{ labels:sorted.map(r=>fmtDate(r.date)), datasets:[{ label:'Volume (kg)', data:vols, backgroundColor:PURPLE, borderRadius:4 }] },
+    options:{ responsive:true, maintainAspectRatio:false, plugins:{legend:{display:false}}, scales:{ x:{grid:{display:false},ticks:{maxTicksLimit:15}}, y:{title:{display:true,text:'kg'}} } }
+  });
+}
+
+function renderStrTable(sessions) {
+  const tbody=document.getElementById('str-table');
+  if(!sessions.length){ tbody.innerHTML='<tr><td colspan="7" style="text-align:center;color:var(--muted);padding:32px">No sessions found</td></tr>'; return; }
+  tbody.innerHTML = sessions.map(r=>{
+    const vol=sessionVolume(r.id), exC=sessionExerciseCount(r.id);
+    return '<tr onclick="openDetail('+r.id+')"><td>'+fmtDate(r.date)+'</td><td>'+(r.name||'-')+'</td><td>'+fmtDurationHM(r.moving_time_s)+'</td><td>'+(r.avg_heartrate?Math.round(r.avg_heartrate)+' bpm':'-')+'</td><td>'+(r.max_heartrate?Math.round(r.max_heartrate)+' bpm':'-')+'</td><td>'+(exC?'<span class="badge badge-strength">'+exC+' exercises</span>':'<span style="color:var(--muted);font-size:12px">click to add</span>')+'</td><td>'+(vol>0?vol.toLocaleString()+' kg':'-')+'</td></tr>';
+  }).join('');
+}
+
+function renderStrSection() {
+  renderStrStats(strSessions);
+  renderWeeklyStrChart(strSessions);
+  renderDurationChart(strSessions);
+  renderStrHRChart(strSessions);
+  renderVolumeChart(strSessions);
+  renderStrTable(strSessions);
+}
+
+// Strength detail panel
+function openDetail(sessionId) {
+  selectedSessionId = sessionId;
+  const session = strSessions.find(s => s.id === sessionId);
+  if (!session) return;
+  document.getElementById('detail-title').textContent = session.name || 'Weight Training';
+  document.getElementById('detail-meta').textContent = fmtDate(session.date) + ' | ' + fmtDurationHM(session.moving_time_s) + (session.avg_heartrate ? ' | Avg HR: ' + Math.round(session.avg_heartrate) + ' bpm' : '') + (session.max_heartrate ? ' | Max HR: ' + Math.round(session.max_heartrate) + ' bpm' : '');
+  renderExerciseList(sessionId);
+  resetForm();
+  updateExerciseSuggestions();
+  const panel = document.getElementById('detail-panel');
+  panel.classList.add('visible');
+  panel.scrollIntoView({ behavior: 'smooth', block: 'start' });
+}
+function closeDetail() { document.getElementById('detail-panel').classList.remove('visible'); selectedSessionId = null; }
+
+function renderExerciseList(sessionId) {
+  const exercises = exerciseData.sessions[sessionId] || [];
+  const list = document.getElementById('exercise-list');
+  if (!exercises.length) { list.innerHTML = '<p style="color:var(--muted);font-size:13px;margin-bottom:12px">No exercises logged yet. Use the form below to add exercises.</p>'; return; }
+  list.innerHTML = exercises.map((ex, idx) => {
+    let setsHtml = '';
+    if (ex.sets && ex.sets.length) {
+      setsHtml = '<div class="sets-grid"><span class="sh">Set</span><span class="sh">Reps</span><span class="sh">Weight</span><span class="sh">RPE</span><span class="sh">Rest</span>' +
+        ex.sets.map((s, si) => '<span>'+(si+1)+'</span><span>'+(s.reps||'-')+'</span><span>'+(s.weight?s.weight+' kg':'-')+'</span><span>'+(s.rpe||'-')+'</span><span>'+(s.rest?s.rest+'s':'-')+'</span>').join('') + '</div>';
+    }
+    return '<div class="exercise-item"><div style="display:flex;justify-content:space-between;align-items:center"><div class="exercise-name">'+ex.name+'</div><button class="btn btn-danger btn-sm" onclick="deleteExercise('+sessionId+','+idx+')">Remove</button></div>'+setsHtml+(ex.notes?'<div class="exercise-notes">'+ex.notes+'</div>':'')+'</div>';
+  }).join('');
+}
+
+function resetForm() {
+  document.getElementById('ex-name').value = '';
+  document.getElementById('ex-notes').value = '';
+  setCount = 0;
+  document.querySelectorAll('.set-row').forEach(r => r.remove());
+  addSetRow();
+}
+function addSetRow() {
+  setCount++;
+  const container = document.getElementById('set-rows');
+  const row = document.createElement('div');
+  row.className = 'set-row';
+  row.innerHTML = '<span class="set-num">'+setCount+'</span><input type="number" class="set-reps" placeholder="Reps" min="0"><input type="number" class="set-weight" placeholder="kg" min="0" step="0.5"><input type="number" class="set-rpe" placeholder="RPE" min="1" max="10" step="0.5"><input type="number" class="set-rest" placeholder="Rest (s)" min="0" step="5"><button class="remove-set" onclick="removeSetRow(this)">&times;</button>';
+  container.appendChild(row);
+}
+function removeSetRow(btn) {
+  btn.closest('.set-row').remove();
+  document.querySelectorAll('.set-row .set-num').forEach((el,i) => el.textContent = i+1);
+  setCount = document.querySelectorAll('.set-row').length;
+}
+async function saveExercise() {
+  const name = document.getElementById('ex-name').value.trim();
+  if (!name) { showToast('Please enter an exercise name'); return; }
+  const sets = [];
+  document.querySelectorAll('.set-row').forEach(row => {
+    const reps=parseFloat(row.querySelector('.set-reps').value)||0;
+    const weight=parseFloat(row.querySelector('.set-weight').value)||0;
+    const rpe=parseFloat(row.querySelector('.set-rpe').value)||null;
+    const rest=parseInt(row.querySelector('.set-rest').value)||null;
+    if (reps>0||weight>0) sets.push({reps,weight,rpe,rest});
+  });
+  const notes=document.getElementById('ex-notes').value.trim();
+  if(!exerciseData.sessions[selectedSessionId]) exerciseData.sessions[selectedSessionId]=[];
+  exerciseData.sessions[selectedSessionId].push({name,sets,notes:notes||null});
+  await saveExerciseData();
+  renderExerciseList(selectedSessionId);
+  renderStrSection();
+  resetForm();
+  showToast('Saved '+name);
+}
+async function deleteExercise(sessionId, idx) {
+  if(!exerciseData.sessions[sessionId]) return;
+  exerciseData.sessions[sessionId].splice(idx,1);
+  if(exerciseData.sessions[sessionId].length===0) delete exerciseData.sessions[sessionId];
+  await saveExerciseData();
+  renderExerciseList(sessionId);
+  renderStrSection();
+  showToast('Exercise removed');
+}
+async function saveExerciseData() {
+  try { await fetch('strength_workouts.json', { method:'PUT', headers:{'Content-Type':'application/json'}, body:JSON.stringify(exerciseData,null,2) }); }
+  catch(e) { console.error('Save failed:',e); showToast('Save failed - check server'); }
+}
+
+// ══════════════════════════════════════════════════════════════════════════════
+// HEALTH SECTION (Whoop)
+// ══════════════════════════════════════════════════════════════════════════════
+function buildWhoopSection(data) {
+  const container = document.getElementById('whoop-content');
+  const recs = data.recoveries.filter(r => r.recovery_score != null);
+  const latest = recs[0] || {};
+  const latestSleep = data.sleeps.filter(s => !s.nap)[0] || {};
+  const col = recoveryColor(latest.recovery_score);
+
+  let html = '';
+
+  // Today's recovery
+  html += '<div class="today-card">' +
+    '<div class="recovery-ring"><canvas id="ringCanvas" width="120" height="120"></canvas>' +
+      '<div class="recovery-ring-label"><div class="recovery-ring-value" style="color:'+col+'">'+(latest.recovery_score!=null?latest.recovery_score+'%':'-')+'</div><div class="recovery-ring-text">Recovery</div></div>' +
+    '</div>' +
+    '<div class="today-metrics">' +
+      '<div><div class="today-metric-label">HRV</div><div class="today-metric-value">'+(latest.hrv_rmssd!=null?Math.round(latest.hrv_rmssd):'-')+'</div><div class="today-metric-unit">ms (RMSSD)</div></div>' +
+      '<div><div class="today-metric-label">Resting HR</div><div class="today-metric-value">'+(latest.resting_heart_rate||'-')+'</div><div class="today-metric-unit">bpm</div></div>' +
+      '<div><div class="today-metric-label">SpO2</div><div class="today-metric-value">'+(latest.spo2_pct!=null?latest.spo2_pct+'%':'-')+'</div><div class="today-metric-unit">oxygen</div></div>' +
+      '<div><div class="today-metric-label">Sleep</div><div class="today-metric-value">'+msToHM(latestSleep.total_in_bed_ms)+'</div><div class="today-metric-unit">in bed</div></div>' +
+    '</div></div>';
+
+  // Summary stats
+  html += '<div class="stats-row">' +
+    '<div class="stat-card" style="--accent:#16a34a"><div class="stat-label">Avg Recovery</div><div class="stat-value">'+data.summary.avg_recovery+'%</div><div class="stat-sub">last '+data.summary.days+' days</div></div>' +
+    '<div class="stat-card" style="--accent:var(--blue)"><div class="stat-label">Avg HRV</div><div class="stat-value">'+data.summary.avg_hrv+'</div><div class="stat-sub">ms RMSSD</div></div>' +
+    '<div class="stat-card" style="--accent:var(--red)"><div class="stat-label">Avg RHR</div><div class="stat-value">'+data.summary.avg_rhr+'</div><div class="stat-sub">bpm</div></div>' +
+    '<div class="stat-card" style="--accent:var(--orange)"><div class="stat-label">Tracked Days</div><div class="stat-value">'+data.summary.days+'</div><div class="stat-sub">days</div></div>' +
+  '</div>';
+
+  // Charts
+  html += '<div class="charts-grid">' +
+    '<div class="chart-card wide"><div class="chart-title">Recovery Score</div><div class="chart-subtitle">Daily recovery over time</div><div class="chart-wrap tall"><canvas id="recoveryChart"></canvas></div></div>' +
+    '<div class="chart-card"><div class="chart-title">HRV Trend</div><div class="chart-subtitle">Heart rate variability (RMSSD)</div><div class="chart-wrap"><canvas id="hrvChart"></canvas></div></div>' +
+    '<div class="chart-card"><div class="chart-title">Resting Heart Rate</div><div class="chart-subtitle">Daily resting HR</div><div class="chart-wrap"><canvas id="rhrChart"></canvas></div></div>' +
+    '<div class="chart-card"><div class="chart-title">Daily Strain</div><div class="chart-subtitle">Cardiovascular load (0-21)</div><div class="chart-wrap"><canvas id="strainChart"></canvas></div></div>' +
+    '<div class="chart-card"><div class="chart-title">Sleep Duration</div><div class="chart-subtitle">Hours per night (excluding naps)</div><div class="chart-wrap"><canvas id="sleepChart"></canvas></div></div>' +
+  '</div>';
+
+  // Recent days table
+  html += '<div class="table-card"><h2>Recent Days</h2><table><thead><tr><th>Date</th><th>Recovery</th><th>HRV</th><th>RHR</th><th>SpO2</th><th>Strain</th><th>Sleep</th></tr></thead><tbody id="whoopRecoveryTable"></tbody></table></div>';
+
+  container.innerHTML = html;
+
+  // Draw ring
+  drawRing(latest.recovery_score);
+
+  // Build charts
+  buildRecoveryChart(data.recoveries);
+  buildHRVChart(data.recoveries);
+  buildRHRChart(data.recoveries);
+  buildStrainChart(data.cycles);
+  buildSleepChart(data.sleeps);
+  fillWhoopTable(data);
+}
+
+function drawRing(score) {
+  const canvas = document.getElementById('ringCanvas');
+  if (!canvas) return;
+  const ctx = canvas.getContext('2d');
+  const cx=60,cy=60,r=50,lw=8;
+  const pct = (score||0)/100;
+  ctx.beginPath(); ctx.arc(cx,cy,r,0,Math.PI*2); ctx.strokeStyle='#2a2a3a'; ctx.lineWidth=lw; ctx.stroke();
+  ctx.beginPath(); ctx.arc(cx,cy,r,-Math.PI/2,-Math.PI/2+Math.PI*2*pct); ctx.strokeStyle=recoveryColor(score); ctx.lineWidth=lw; ctx.lineCap='round'; ctx.stroke();
+}
+
+const whoopChartOpts = {
+  responsive:true, maintainAspectRatio:false,
+  plugins:{ legend:{display:false} },
+  scales:{ x:{ticks:{color:MUTED,font:{size:10}},grid:{color:'#1e1e2e'}}, y:{ticks:{color:MUTED,font:{size:10}},grid:{color:'#1e1e2e'}} }
+};
+
+function buildRecoveryChart(recs) {
+  const sorted=[...recs].filter(r=>r.recovery_score!=null).reverse();
+  const scores=sorted.map(r=>r.recovery_score);
+  const colors=scores.map(s=>recoveryColor(s));
+  new Chart(document.getElementById('recoveryChart'), {
+    type:'bar',
+    data:{ labels:sorted.map(r=>dateShort(r.created_at)), datasets:[{ data:scores, backgroundColor:colors.map(c=>c+'88'), borderColor:colors, borderWidth:1, borderRadius:3 }] },
+    options:{ ...whoopChartOpts, scales:{ ...whoopChartOpts.scales, y:{ ...whoopChartOpts.scales.y, min:0, max:100 } } }
+  });
+}
+function buildHRVChart(recs) {
+  const sorted=[...recs].filter(r=>r.hrv_rmssd!=null).reverse();
+  new Chart(document.getElementById('hrvChart'), {
+    type:'line',
+    data:{ labels:sorted.map(r=>dateShort(r.created_at)), datasets:[{ data:sorted.map(r=>Math.round(r.hrv_rmssd)), borderColor:'#4a9eff', backgroundColor:'#4a9eff22', fill:true, tension:0.3, pointRadius:2 }] },
+    options:whoopChartOpts
+  });
+}
+function buildRHRChart(recs) {
+  const sorted=[...recs].filter(r=>r.resting_heart_rate!=null).reverse();
+  new Chart(document.getElementById('rhrChart'), {
+    type:'line',
+    data:{ labels:sorted.map(r=>dateShort(r.created_at)), datasets:[{ data:sorted.map(r=>r.resting_heart_rate), borderColor:'#ff5c6a', backgroundColor:'#ff5c6a22', fill:true, tension:0.3, pointRadius:2 }] },
+    options:whoopChartOpts
+  });
+}
+function buildStrainChart(cycles) {
+  const sorted=[...cycles].filter(c=>c.strain!=null).reverse();
+  new Chart(document.getElementById('strainChart'), {
+    type:'bar',
+    data:{ labels:sorted.map(c=>dateShort(c.start)), datasets:[{ data:sorted.map(c=>Math.round(c.strain*10)/10), backgroundColor:'#fc4c0266', borderColor:'#fc4c02', borderWidth:1, borderRadius:3 }] },
+    options:{ ...whoopChartOpts, scales:{ ...whoopChartOpts.scales, y:{ ...whoopChartOpts.scales.y, min:0, max:21 } } }
+  });
+}
+function buildSleepChart(sleeps) {
+  const nights=[...sleeps].filter(s=>!s.nap&&s.total_in_bed_ms).reverse();
+  new Chart(document.getElementById('sleepChart'), {
+    type:'bar',
+    data:{ labels:nights.map(s=>dateShort(s.start)), datasets:[{ data:nights.map(s=>Math.round(s.total_in_bed_ms/3600000*10)/10), backgroundColor:'#2dd4a066', borderColor:'#2dd4a0', borderWidth:1, borderRadius:3 }] },
+    options:whoopChartOpts
+  });
+}
+function fillWhoopTable(data) {
+  const tbody=document.getElementById('whoopRecoveryTable');
+  const recMap={};
+  data.recoveries.forEach(r=>{ if(r.cycle_id) recMap[r.cycle_id]=r; });
+  const rows=data.cycles.slice(0,30).map(c=>{
+    const rec=recMap[c.id]||{};
+    const sleep=data.sleeps.find(s=>!s.nap&&s.start&&c.start&&new Date(s.start).toDateString()===new Date(c.start).toDateString());
+    return { ...c, ...rec, sleep_ms:sleep?sleep.total_in_bed_ms:null };
+  });
+  tbody.innerHTML = rows.map(r=>
+    '<tr><td>'+dateShort(r.start)+'</td><td class="'+recoveryClass(r.recovery_score)+'"><strong>'+(r.recovery_score!=null?r.recovery_score+'%':'-')+'</strong></td><td>'+(r.hrv_rmssd!=null?Math.round(r.hrv_rmssd)+' ms':'-')+'</td><td>'+(r.resting_heart_rate||'-')+'</td><td>'+(r.spo2_pct!=null?r.spo2_pct+'%':'-')+'</td><td>'+(r.strain!=null?(Math.round(r.strain*10)/10):'-')+'</td><td>'+msToHM(r.sleep_ms)+'</td></tr>'
+  ).join('');
+}
+
+// ══════════════════════════════════════════════════════════════════════════════
+// LOAD DATA
+// ══════════════════════════════════════════════════════════════════════════════
+async function loadData() {
+  try {
+    // Load Strava data (workouts)
+    const [actRes, exRes] = await Promise.all([
+      fetch('activities.json?t=' + Date.now()),
+      fetch('strength_workouts.json?t=' + Date.now()),
+    ]);
+    if (!actRes.ok) throw new Error('HTTP ' + actRes.status);
+    const actData = await actRes.json();
+
+    allActivities = actData.activities || [];
+    strSessions = allActivities.filter(isStrength).sort((a,b) => b.date.localeCompare(a.date));
+
+    if (exRes.ok) exerciseData = await exRes.json();
+
+    // Update header
+    if (actData.last_updated) {
+      const d = new Date(actData.last_updated);
+      document.getElementById('last-updated').textContent = 'Updated ' + d.toLocaleDateString('en-GB', {day:'2-digit', month:'short', year:'numeric', hour:'2-digit', minute:'2-digit'});
+    }
+
+    // Show main content
+    document.getElementById('loading').style.display = 'none';
+    document.getElementById('app').style.display = 'block';
+
+    // Render overview and Strava sections
+    renderOverviewRow();
+    renderRunSection('all');
+    renderStrSection();
+
+    // Load Whoop data (health)
+    try {
+      const whoopRes = await fetch('whoop_data.json?t=' + Date.now());
+      if (!whoopRes.ok) throw new Error('No whoop data');
+      const whoopData = await whoopRes.json();
+      renderHealthOverview(whoopData);
+      buildWhoopSection(whoopData);
+    } catch(e) {
+      document.getElementById('whoop-content').innerHTML =
+        '<div class="empty-state"><h3>No Whoop data yet</h3><p style="margin-top:8px">Connect your Whoop account and run <code style="color:var(--green)">python whoop_fetch.py</code></p></div>';
+    }
+
+  } catch(e) {
+    document.getElementById('loading').innerHTML =
+      '<div style="text-align:center;padding:40px;max-width:500px">' +
+        '<div style="font-size:48px;margin-bottom:16px">&#127939;</div>' +
+        '<h2 style="color:var(--orange);margin-bottom:8px">No data yet</h2>' +
+        '<p style="color:var(--muted);margin-bottom:24px">Run the fetch script to download your Strava activities:</p>' +
+        '<code style="background:var(--surface2);padding:12px 20px;border-radius:8px;display:block;color:var(--text)">python strava_fetch.py</code>' +
+        '<p style="color:var(--muted);margin-top:16px;font-size:12px">Then refresh this page.</p>' +
+      '</div>';
+  }
+}
+
+// ══════════════════════════════════════════════════════════════════════════════
+// EVENT LISTENERS
+// ══════════════════════════════════════════════════════════════════════════════
+
+// Filter buttons (running section)
+document.querySelectorAll('.filter-btn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    renderRunSection(btn.dataset.range);
+  });
+});
+
+
+loadData();
+</script>
+</body>
+</html>

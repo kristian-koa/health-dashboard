@@ -125,7 +125,7 @@ def process_sleep(rec):
         "start":                 rec.get("start"),
         "end":                   rec.get("end"),
         "nap":                   rec.get("nap", False),
-        "performance_pct":       score.get("stage_summary", {}).get("total_in_bed_time_milli"),
+        "performance_pct":       score.get("sleep_performance_percentage"),
         "sleep_efficiency_pct":  score.get("sleep_efficiency_percentage"),
         "sleep_consistency_pct": score.get("sleep_consistency_percentage"),
         "respiratory_rate":      score.get("respiratory_rate"),
