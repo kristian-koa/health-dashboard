@@ -215,10 +215,10 @@
 
   /* ── Activity card body: text left, route right ── */
   .activity-body { display: flex; gap: 16px; flex: 1; min-height: 0; }
-  .activity-info { flex: 1; min-width: 0; }
+  .activity-info { flex: 0 0 auto; min-width: 0; }
   /* ── Route map ── */
-  .route-map { width: 160px; flex-shrink: 0; display: flex; align-items: center; justify-content: center; }
-  .route-map canvas { display: block; }
+  .route-map { flex: 1 1 0; min-width: 180px; display: flex; align-items: center; justify-content: center; }
+  .route-map canvas { display: block; width: 100%; height: auto; }
 
   /* ── 10-day label ── */
   .overview-sublabel {
@@ -997,7 +997,7 @@ function renderActivityCard(container) {
             '<div><div class="ov-stat-label">HR</div><div class="ov-stat-value">' + hr + '</div></div>' +
           '</div>' +
         '</div>' +
-        (hasMap ? '<div class="route-map"><canvas id="routeCanvas" width="140" height="120"></canvas></div>' : '') +
+        (hasMap ? '<div class="route-map"><canvas id="routeCanvas" width="200" height="170"></canvas></div>' : '') +
       '</div>' +
     '</div>';
   } else {
@@ -1096,8 +1096,8 @@ function drawRouteMap(polyline) {
   const points = decodePolyline(polyline);
   if (points.length < 2) return;
   const dpr = 2;
-  const w = canvas.offsetWidth || 140;
-  const h = canvas.offsetHeight || 120;
+  const w = canvas.offsetWidth || 200;
+  const h = canvas.offsetHeight || 170;
   canvas.style.width = w + 'px';
   canvas.style.height = h + 'px';
   canvas.width = w * dpr;
