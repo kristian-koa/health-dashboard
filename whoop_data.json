@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-04-11T11:44:19.255259+00:00",
+  "last_updated": "2026-04-11T13:21:27.812438+00:00",
   "profile": {
     "first_name": "Kristian Oliversson",
     "last_name": "Andreasen",
@@ -2643,10 +2643,10 @@
       "id": 1424689443,
       "start": "2026-04-10T23:52:32.580Z",
       "end": null,
-      "strain": 0.34736398,
-      "kilojoule": 3971.7488,
-      "avg_hr": 59,
-      "max_hr": 109
+      "strain": 0.48489153,
+      "kilojoule": 4539.087,
+      "avg_hr": 60,
+      "max_hr": 111
     },
     {
       "id": 1422451242,
