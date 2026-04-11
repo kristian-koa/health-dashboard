@@ -1,0 +1,93 @@
+name: Fetch Health Data
+
+on:
+  schedule:
+    # Run every hour at minute 10
+    - cron: '10 * * * *'
+  workflow_dispatch: # Allow manual trigger from GitHub UI
+
+# Prevent overlapping runs
+concurrency:
+  group: fetch-health-data
+  cancel-in-progress: false
+
+permissions:
+  contents: write
+
+jobs:
+  fetch-data:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      # ── Reconstruct config files from GitHub Secrets ──
+      - name: Write Strava config
+        run: echo '${{ secrets.STRAVA_CONFIG }}' > strava_config.json
+
+      - name: Write Whoop config
+        run: echo '${{ secrets.WHOOP_CONFIG }}' > whoop_config.json
+
+      # ── Fetch data ──
+      - name: Fetch Strava data
+        id: strava
+        run: python strava_fetch.py
+        continue-on-error: true
+
+      - name: Fetch Whoop data
+        id: whoop
+        run: python whoop_fetch.py
+        continue-on-error: true
+
+      # ── Persist refreshed tokens back to secrets ──
+      # Uses a fine-grained PAT with "Secrets" read/write permission
+      - name: Update secrets with refreshed tokens
+        if: always()
+        env:
+          GH_TOKEN: ${{ secrets.GH_PAT }}
+        run: |
+          if [ -f strava_config.json ]; then
+            gh secret set STRAVA_CONFIG < strava_config.json
+            echo "✓ Strava config secret updated"
+          fi
+          if [ -f whoop_config.json ]; then
+            gh secret set WHOOP_CONFIG < whoop_config.json
+            echo "✓ Whoop config secret updated"
+          fi
+
+      # ── Commit updated data files ──
+      - name: Commit and push data
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+
+          # Stage only data files (never config files)
+          git add -f activities.json whoop_data.json strength_workouts.json 2>/dev/null || true
+
+          if git diff --staged --quiet; then
+            echo "No data changes — skipping commit."
+          else
+            git commit -m "Auto-update health data $(date -u +%Y-%m-%dT%H:%M:%SZ)"
+            git push
+            echo "✓ Data pushed to GitHub"
+          fi
+
+      # ── Summary ──
+      - name: Job summary
+        if: always()
+        run: |
+          echo "## Health Data Fetch" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          if [ "${{ steps.strava.outcome }}" = "success" ]; then
+            echo "- ✅ Strava: success" >> $GITHUB_STEP_SUMMARY
+          else
+            echo "- ❌ Strava: failed" >> $GITHUB_STEP_SUMMARY
+          fi
+          if [ "${{ steps.whoop.outcome }}" = "success" ]; then
+            echo "- ✅ Whoop: success" >> $GITHUB_STEP_SUMMARY
+          else
+            echo "- ❌ Whoop: failed" >> $GITHUB_STEP_SUMMARY
+          fi
