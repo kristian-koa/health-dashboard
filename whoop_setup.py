@@ -66,24 +66,28 @@ class CallbackHandler(BaseHTTPRequestHandler):
 
 def exchange_code_for_tokens(config, code):
     """Exchange authorization code for access + refresh tokens."""
-    import base64
-    credentials = base64.b64encode(
-        f"{config['client_id']}:{config['client_secret']}".encode()
-    ).decode()
-
     data = urllib.parse.urlencode({
         "grant_type":    "authorization_code",
         "code":          code,
         "redirect_uri":  config["redirect_uri"],
+        "client_id":     config["client_id"],
+        "client_secret": config["client_secret"],
     }).encode()
 
     req = urllib.request.Request(TOKEN_URL, data=data, method="POST",
                                  headers={
                                      "Content-Type": "application/x-www-form-urlencoded",
-                                     "Authorization": f"Basic {credentials}",
+                                     "Accept":       "application/json",
+                                     "User-Agent":   "Mozilla/5.0 (RunningStats/1.0)",
                                  })
-    with urllib.request.urlopen(req) as resp:
-        return json.loads(resp.read())
+    try:
+        with urllib.request.urlopen(req) as resp:
+            return json.loads(resp.read())
+    except urllib.error.HTTPError as e:
+        body = e.read().decode(errors="replace")
+        print(f"\nToken exchange failed: HTTP {e.code}")
+        print(f"Response body: {body}\n")
+        raise
 
 
 def main():
