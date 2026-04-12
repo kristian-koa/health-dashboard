@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-04-12T16:56:39.651697+00:00",
+  "last_updated": "2026-04-12T17:51:39.076916+00:00",
   "profile": {
     "first_name": "Kristian Oliversson",
     "last_name": "Andreasen",
@@ -920,6 +920,23 @@
     }
   ],
   "sleeps": [
+    {
+      "id": "6f2fe6f3-ad27-4971-918d-3afa897be718",
+      "start": "2026-04-12T14:10:16.620Z",
+      "end": "2026-04-12T15:09:59.730Z",
+      "nap": true,
+      "performance_pct": 26.0,
+      "sleep_efficiency_pct": 98.323524,
+      "sleep_consistency_pct": 69.0,
+      "respiratory_rate": 15.9375,
+      "total_in_bed_ms": 3583110,
+      "total_awake_ms": 60070,
+      "total_light_ms": 1513000,
+      "total_slow_wave_ms": 2010040,
+      "total_rem_ms": 0,
+      "sleep_needed_ms": 27563638,
+      "sleep_debt_ms": null
+    },
     {
       "id": "b6661fec-d949-4845-b4a9-901494ae657e",
       "start": "2026-04-11T23:36:13.850Z",
@@ -2619,23 +2636,6 @@
       "total_rem_ms": 3695250,
       "sleep_needed_ms": 27582887,
       "sleep_debt_ms": null
-    },
-    {
-      "id": "397d4861-9d47-4477-8706-284e97def8bd",
-      "start": "2026-01-12T13:50:01.480Z",
-      "end": "2026-01-12T17:29:36.800Z",
-      "nap": true,
-      "performance_pct": 1.0,
-      "sleep_efficiency_pct": 56.736004,
-      "sleep_consistency_pct": 33.0,
-      "respiratory_rate": 13.7109375,
-      "total_in_bed_ms": 13175320,
-      "total_awake_ms": 5700170,
-      "total_light_ms": 2435040,
-      "total_slow_wave_ms": 4440100,
-      "total_rem_ms": 600010,
-      "sleep_needed_ms": 27583106,
-      "sleep_debt_ms": null
     }
   ],
   "cycles": [
@@ -2643,10 +2643,10 @@
       "id": 1426858113,
       "start": "2026-04-11T23:36:13.850Z",
       "end": null,
-      "strain": 4.2439675,
-      "kilojoule": 5769.957,
-      "avg_hr": 65,
-      "max_hr": 132
+      "strain": 4.773882,
+      "kilojoule": 6343.838,
+      "avg_hr": 66,
+      "max_hr": 138
     },
     {
       "id": 1424689443,
