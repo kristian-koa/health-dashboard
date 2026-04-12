@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-04-11T10:55:06.934663+00:00",
+  "last_updated": "2026-04-12T11:47:35.425628+00:00",
   "profile": {
     "first_name": "Kristian Oliversson",
     "last_name": "Andreasen",
@@ -7,17 +7,27 @@
   },
   "body": {
     "height_meter": 1.79,
-    "weight_kg": 87.342,
+    "weight_kg": 86.938,
     "max_heart_rate": 210
   },
   "summary": {
     "days": 91,
-    "avg_recovery": 56.5,
-    "avg_hrv": 62.1,
-    "avg_rhr": 56.8,
-    "total_workouts": 51
+    "avg_recovery": 57.1,
+    "avg_hrv": 62.3,
+    "avg_rhr": 56.6,
+    "total_workouts": 52
   },
   "recoveries": [
+    {
+      "cycle_id": 1426858113,
+      "created_at": "2026-04-12T07:33:32.678Z",
+      "updated_at": "2026-04-12T07:33:32.678Z",
+      "recovery_score": 57.0,
+      "resting_heart_rate": 55.0,
+      "hrv_rmssd": 58.934,
+      "spo2_pct": 96.84615,
+      "skin_temp_celsius": 33.93345
+    },
     {
       "cycle_id": 1424689443,
       "created_at": "2026-04-11T07:02:00.285Z",
@@ -907,19 +917,26 @@
       "hrv_rmssd": 50.96512,
       "spo2_pct": 95.0,
       "skin_temp_celsius": 34.808
-    },
-    {
-      "cycle_id": 1249749697,
-      "created_at": "2026-01-12T07:27:15.427Z",
-      "updated_at": "2026-01-12T10:27:01.989Z",
-      "recovery_score": 6.0,
-      "resting_heart_rate": 65.0,
-      "hrv_rmssd": 34.023487,
-      "spo2_pct": 94.583336,
-      "skin_temp_celsius": 34.105
     }
   ],
   "sleeps": [
+    {
+      "id": "b6661fec-d949-4845-b4a9-901494ae657e",
+      "start": "2026-04-11T23:36:13.850Z",
+      "end": "2026-04-12T07:22:58.690Z",
+      "nap": false,
+      "performance_pct": 82.0,
+      "sleep_efficiency_pct": 94.10788,
+      "sleep_consistency_pct": 78.0,
+      "respiratory_rate": 16.037598,
+      "total_in_bed_ms": 28004840,
+      "total_awake_ms": 1650080,
+      "total_light_ms": 14383910,
+      "total_slow_wave_ms": 5100360,
+      "total_rem_ms": 6870490,
+      "sleep_needed_ms": 27563852,
+      "sleep_debt_ms": null
+    },
     {
       "id": "3d4a0771-547e-4bf6-bd28-6aadc31c81c3",
       "start": "2026-04-10T23:52:32.580Z",
@@ -2619,34 +2636,26 @@
       "total_rem_ms": 600010,
       "sleep_needed_ms": 27583106,
       "sleep_debt_ms": null
-    },
-    {
-      "id": "f680e109-19b3-4395-bc49-42f6a43c906c",
-      "start": "2026-01-12T02:45:29.980Z",
-      "end": "2026-01-12T10:11:36.120Z",
-      "nap": false,
-      "performance_pct": 25.0,
-      "sleep_efficiency_pct": 61.322475,
-      "sleep_consistency_pct": 60.0,
-      "respiratory_rate": 17.8125,
-      "total_in_bed_ms": 26766140,
-      "total_awake_ms": 10352480,
-      "total_light_ms": 9783390,
-      "total_slow_wave_ms": 3000090,
-      "total_rem_ms": 3630180,
-      "sleep_needed_ms": 27583106,
-      "sleep_debt_ms": null
     }
   ],
   "cycles": [
     {
+      "id": 1426858113,
+      "start": "2026-04-11T23:36:13.850Z",
+      "end": null,
+      "strain": 4.239826,
+      "kilojoule": 4205.4897,
+      "avg_hr": 64,
+      "max_hr": 132
+    },
+    {
       "id": 1424689443,
       "start": "2026-04-10T23:52:32.580Z",
-      "end": null,
-      "strain": 0.29660922,
-      "kilojoule": 3744.1907,
-      "avg_hr": 58,
-      "max_hr": 109
+      "end": "2026-04-11T23:36:13.850Z",
+      "strain": 10.251853,
+      "kilojoule": 9635.0205,
+      "avg_hr": 66,
+      "max_hr": 179
     },
     {
       "id": 1422451242,
@@ -3448,28 +3457,32 @@
       "kilojoule": 8078.5664,
       "avg_hr": 77,
       "max_hr": 140
-    },
-    {
-      "id": 1247847926,
-      "start": "2026-01-11T00:58:56.650Z",
-      "end": "2026-01-12T02:45:29.980Z",
-      "strain": 5.3765497,
-      "kilojoule": 9214.202,
-      "avg_hr": 63,
-      "max_hr": 148
     }
   ],
   "workouts": [
     {
-      "id": "e776cf00-3c3e-4836-9550-deacf820af67",
-      "start": "2026-04-10T15:58:30.900Z",
-      "end": "2026-04-10T17:01:29.990Z",
+      "id": "70c14ae4-12e7-4640-b554-c6b5c1829131",
+      "start": "2026-04-11T17:52:44.000Z",
+      "end": "2026-04-11T18:21:46.544Z",
       "sport_id": 0,
       "sport_name": "Running",
-      "strain": 15.873849,
-      "avg_hr": 166,
+      "strain": 9.723735,
+      "avg_hr": 154,
+      "max_hr": 179,
+      "kilojoule": 1515.1073,
+      "distance_meter": null,
+      "zone_durations": {}
+    },
+    {
+      "id": "e776cf00-3c3e-4836-9550-deacf820af67",
+      "start": "2026-04-10T15:58:12.000Z",
+      "end": "2026-04-10T16:53:59.551Z",
+      "sport_id": 0,
+      "sport_name": "Running",
+      "strain": 15.736766,
+      "avg_hr": 171,
       "max_hr": 195,
-      "kilojoule": 3947.1042,
+      "kilojoule": 3705.9502,
       "distance_meter": null,
       "zone_durations": {}
     },
