@@ -69,7 +69,7 @@
     border-radius: 12px;
     padding: 24px 28px;
     position: relative;
-    overflow: hidden;
+    overflow: visible;
     display: flex;
     flex-direction: column;
   }
@@ -105,7 +105,7 @@
   .weekly-delta.up { color: var(--green); }
   .weekly-delta.down { color: var(--red); }
   .weekly-delta.flat { color: var(--muted); }
-  .weekly-chart { margin-top: auto; margin-left: -28px; margin-right: -28px; margin-bottom: -24px; position: relative; }
+  .weekly-chart { margin-top: auto; margin-left: -28px; margin-right: -28px; margin-bottom: -24px; position: relative; overflow: visible; }
   .weekly-chart canvas { width: 100%; height: 80px; display: block; border-radius: 0 0 11px 11px; }
   .weekly-legend { display: flex; gap: 16px; margin-top: 8px; font-size: 11px; }
   .weekly-legend span { display: flex; align-items: center; gap: 5px; color: var(--muted); }
@@ -123,7 +123,7 @@
     opacity: 0;
     transition: opacity 0.12s;
     white-space: nowrap;
-    z-index: 10;
+    z-index: 100;
   }
   .weekly-tooltip.visible { opacity: 1; }
 
@@ -140,7 +140,7 @@
     border-radius: 10px;
     padding: 16px 16px 0;
     position: relative;
-    overflow: hidden;
+    overflow: visible;
     display: flex;
     flex-direction: column;
   }
@@ -152,6 +152,7 @@
     background: var(--accent, var(--green));
     border-radius: 10px 10px 0 0;
   }
+  .hm-spark canvas { border-radius: 0 0 9px 9px; overflow: hidden; }
   .hm-label { color: var(--muted); font-size: 10px; text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 4px; }
   .hm-value { font-size: 24px; font-weight: 700; line-height: 1; }
   .hm-unit { color: var(--muted); font-size: 11px; }
@@ -174,7 +175,7 @@
     opacity: 0;
     transition: opacity 0.12s;
     white-space: nowrap;
-    z-index: 10;
+    z-index: 100;
   }
   .hm-tooltip.visible { opacity: 1; }
 
@@ -825,6 +826,9 @@
 Chart.defaults.color = '#8888a0';
 Chart.defaults.borderColor = '#2a2a3a';
 Chart.defaults.font.family = "'Segoe UI', system-ui, sans-serif";
+Chart.defaults.plugins.tooltip.position = 'nearest';
+Chart.defaults.layout = Chart.defaults.layout || {};
+Chart.defaults.layout.padding = { left: 0, right: 0, top: 0, bottom: 0 };
 
 const ORANGE = '#fc4c02';
 const BLUE   = '#4a9eff';
@@ -1393,7 +1397,7 @@ function drawBarChart(canvasId, values, barColor, labels, colorFn) {
         const displayVal = Number.isInteger(v) ? v : (typeof v === 'number' ? v.toFixed(1) : v);
         tooltip.textContent = lbl + displayVal;
         const tx = ((b.x + b.w/2) / w) * rect.width;
-        tooltip.style.left = Math.max(0, Math.min(tx - 20, rect.width - 60)) + 'px';
+        tooltip.style.left = (tx - 20) + 'px';
         tooltip.style.bottom = (rect.height - (b.y / h) * rect.height + 6) + 'px';
         tooltip.classList.add('visible');
         paint(canvas.getContext('2d'), hit);
@@ -1558,7 +1562,7 @@ function drawWeeklyCompare(thisWeek, lastWeek, todayIdx, dayLabels) {
     const tw = thisPoints[closest].val, lw2 = lastPoints[closest].val;
     tooltip.innerHTML = '<strong>' + dayLabels[closest] + '</strong>: ' + tw.toFixed(1) + ' km <span style="color:' + MUTED + '">vs ' + lw2.toFixed(1) + ' km</span>';
     const tx = (thisPoints[closest].x / w) * rect.width;
-    tooltip.style.left = Math.max(0, Math.min(tx - 40, rect.width - 100)) + 'px';
+    tooltip.style.left = (tx - 40) + 'px';
     tooltip.style.bottom = (rect.height - Math.min(thisPoints[closest].y, lastPoints[closest].y) / h * rect.height + 10) + 'px';
     tooltip.classList.add('visible');
   });
