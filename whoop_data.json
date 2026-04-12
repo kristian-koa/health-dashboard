@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-04-12T06:02:20.938723+00:00",
+  "last_updated": "2026-04-12T07:43:22.940619+00:00",
   "profile": {
     "first_name": "Kristian Oliversson",
     "last_name": "Andreasen",
@@ -11,13 +11,23 @@
     "max_heart_rate": 210
   },
   "summary": {
-    "days": 90,
+    "days": 91,
     "avg_recovery": 56.5,
-    "avg_hrv": 62.1,
-    "avg_rhr": 56.8,
+    "avg_hrv": 62.0,
+    "avg_rhr": 56.7,
     "total_workouts": 52
   },
   "recoveries": [
+    {
+      "cycle_id": 1426858113,
+      "created_at": "2026-04-12T07:33:32.678Z",
+      "updated_at": "2026-04-12T07:33:32.678Z",
+      "recovery_score": 57.0,
+      "resting_heart_rate": 55.0,
+      "hrv_rmssd": 58.934,
+      "spo2_pct": 96.84615,
+      "skin_temp_celsius": 33.93345
+    },
     {
       "cycle_id": 1424689443,
       "created_at": "2026-04-11T07:02:00.285Z",
@@ -920,6 +930,23 @@
     }
   ],
   "sleeps": [
+    {
+      "id": "b6661fec-d949-4845-b4a9-901494ae657e",
+      "start": "2026-04-11T23:36:13.850Z",
+      "end": "2026-04-12T07:22:58.690Z",
+      "nap": false,
+      "performance_pct": 82.0,
+      "sleep_efficiency_pct": 94.10788,
+      "sleep_consistency_pct": 78.0,
+      "respiratory_rate": 16.037598,
+      "total_in_bed_ms": 28004840,
+      "total_awake_ms": 1650080,
+      "total_light_ms": 14383910,
+      "total_slow_wave_ms": 5100360,
+      "total_rem_ms": 6870490,
+      "sleep_needed_ms": 27563852,
+      "sleep_debt_ms": null
+    },
     {
       "id": "3d4a0771-547e-4bf6-bd28-6aadc31c81c3",
       "start": "2026-04-10T23:52:32.580Z",
@@ -2640,12 +2667,21 @@
   ],
   "cycles": [
     {
+      "id": 1426858113,
+      "start": "2026-04-11T23:36:13.850Z",
+      "end": null,
+      "strain": 0.06083053,
+      "kilojoule": 2723.2466,
+      "avg_hr": 54,
+      "max_hr": 89
+    },
+    {
       "id": 1424689443,
       "start": "2026-04-10T23:52:32.580Z",
-      "end": null,
-      "strain": 10.252554,
-      "kilojoule": 11734.235,
-      "avg_hr": 64,
+      "end": "2026-04-11T23:36:13.850Z",
+      "strain": 10.251853,
+      "kilojoule": 9635.0205,
+      "avg_hr": 66,
       "max_hr": 179
     },
     {
