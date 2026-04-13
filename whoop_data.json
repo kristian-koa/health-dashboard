@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-04-13T06:26:10.935449+00:00",
+  "last_updated": "2026-04-13T09:09:11.435029+00:00",
   "profile": {
     "first_name": "Kristian Oliversson",
     "last_name": "Andreasen",
@@ -12,8 +12,8 @@
   },
   "summary": {
     "days": 91,
-    "avg_recovery": 57.3,
-    "avg_hrv": 62.4,
+    "avg_recovery": 57.8,
+    "avg_hrv": 62.5,
     "avg_rhr": 56.6,
     "total_workouts": 54
   },
@@ -21,12 +21,12 @@
     {
       "cycle_id": 1428895709,
       "created_at": "2026-04-13T06:05:14.462Z",
-      "updated_at": "2026-04-13T06:05:14.462Z",
-      "recovery_score": 78.0,
+      "updated_at": "2026-04-13T06:43:59.865Z",
+      "recovery_score": 80.0,
       "resting_heart_rate": 56.0,
-      "hrv_rmssd": 66.58297,
+      "hrv_rmssd": 66.788704,
       "spo2_pct": 97.888885,
-      "skin_temp_celsius": 34.2465
+      "skin_temp_celsius": 34.249332
     },
     {
       "cycle_id": 1426858113,
@@ -917,33 +917,23 @@
       "hrv_rmssd": 87.36523,
       "spo2_pct": 96.6,
       "skin_temp_celsius": 33.256
-    },
-    {
-      "cycle_id": 1251511331,
-      "created_at": "2026-01-13T07:07:28.600Z",
-      "updated_at": "2026-01-13T13:29:26.114Z",
-      "recovery_score": 17.0,
-      "resting_heart_rate": 63.0,
-      "hrv_rmssd": 50.96512,
-      "spo2_pct": 95.0,
-      "skin_temp_celsius": 34.808
     }
   ],
   "sleeps": [
     {
       "id": "2eba12e7-7ec5-4f1e-aed4-1813a0c064aa",
       "start": "2026-04-12T23:08:11.480Z",
-      "end": "2026-04-13T05:43:09.920Z",
+      "end": "2026-04-13T06:22:40.030Z",
       "nap": false,
-      "performance_pct": 80.0,
-      "sleep_efficiency_pct": 97.45204,
-      "sleep_consistency_pct": 68.0,
-      "respiratory_rate": 16.09375,
-      "total_in_bed_ms": 23698440,
-      "total_awake_ms": 747070,
-      "total_light_ms": 10380640,
-      "total_slow_wave_ms": 6360310,
-      "total_rem_ms": 6210420,
+      "performance_pct": 81.0,
+      "sleep_efficiency_pct": 94.32835,
+      "sleep_consistency_pct": 71.0,
+      "respiratory_rate": 16.054688,
+      "total_in_bed_ms": 26068550,
+      "total_awake_ms": 1617170,
+      "total_light_ms": 11700640,
+      "total_slow_wave_ms": 6630320,
+      "total_rem_ms": 6120420,
       "sleep_needed_ms": 27563638,
       "sleep_debt_ms": null
     },
@@ -2646,23 +2636,6 @@
       "total_rem_ms": 2250160,
       "sleep_needed_ms": 27582887,
       "sleep_debt_ms": null
-    },
-    {
-      "id": "a473320f-c832-41d8-b3fd-d2f7a39d4161",
-      "start": "2026-01-13T01:01:32.450Z",
-      "end": "2026-01-13T08:00:34.000Z",
-      "nap": false,
-      "performance_pct": 71.0,
-      "sleep_efficiency_pct": 89.22819,
-      "sleep_consistency_pct": 39.0,
-      "respiratory_rate": 19.160156,
-      "total_in_bed_ms": 25141550,
-      "total_awake_ms": 2708200,
-      "total_light_ms": 10847710,
-      "total_slow_wave_ms": 7890390,
-      "total_rem_ms": 3695250,
-      "sleep_needed_ms": 27582887,
-      "sleep_debt_ms": null
     }
   ],
   "cycles": [
@@ -2670,10 +2643,10 @@
       "id": 1428895709,
       "start": "2026-04-12T23:08:11.480Z",
       "end": null,
-      "strain": 0.085698165,
-      "kilojoule": 2489.4702,
-      "avg_hr": 55,
-      "max_hr": 89
+      "strain": 0.21318577,
+      "kilojoule": 3394.721,
+      "avg_hr": 58,
+      "max_hr": 104
     },
     {
       "id": 1426858113,
