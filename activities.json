@@ -1,12 +1,12 @@
 {
-  "last_updated": "2026-04-14T21:06:30.889309+00:00",
+  "last_updated": "2026-04-14T22:04:39.747239+00:00",
   "athlete_name": "Kristian",
   "total_runs": 285,
   "total_km": 2051.4,
   "activities": [
     {
       "id": 18110174286,
-      "name": "Night Run",
+      "name": "Bob",
       "type": "Run",
       "sport_type": "Run",
       "date": "2026-04-14",
@@ -23,7 +23,7 @@
       "avg_cadence": 82.5,
       "suffer_score": null,
       "calories": null,
-      "kudos_count": 4,
+      "kudos_count": 6,
       "map_polyline": "k`nyJ|ghh@B@@ABI?ONsAGe@@KHi@Ky@Bk@?eCK_Ag@cBOSk@cC_AyBEUe@wAq@uAKOOI]KCBKGYAK@CCO?CBk@E]@YEC@KACBKEC@UGSA[GC@ICS?KEC@KGi@GKEC@KCYCq@QEAE@KESEq@g@e@i@u@}AYc@_@aAs@iAiCaDCAaAuAi@c@ME]K_@GC@IESAKEc@AKCYBUACBKCC@Y@CBK?OBCBYDODCBYDCD[HQJKBCDcA`@CDUHWPE@e@TUFa@VSFeAh@SLI@mA|@_@^OFC?OHCDw@j@mBpAKBSPUFCBe@Pk@\\s@XWNEDUH]Xe@Vq@l@w@pAc@lA_@zA{AbJMbAUbAStAMv@GdACx@?fABv@PrAF\\\\dAT`@r@`Ar@v@PPFJd@dANn@h@`D\\dCb@zBXvBLtC@bAPvGV`ERxEJbATlAb@bBJPNDHAPSJDHZFd@CrBDpABR?|@?vBG`BIpAMt@k@xCE`@Kj@YhDDl@Ab@Kd@C^?dBMbFAbDGtACxB@dACj@@x@HlAF\\HFZWPUNANHDHVTRXl@f@B@LCHIbCmLv@_Dp@gAHSDUL[Tu@fAqEx@{DVaAJm@DI`@qBb@sCD_A?yA]{EGsA@WDEJAb@TXDPHt@ID@DALB\\PPTf@bAX^h@ZPFJ@\\CJCZOf@a@NQJEJId@q@p@mAv@mAZo@NUJCXDJ?LClBHPEN?r@R\\U^a@JGVWPg@NaBR}@Pc@dAsAJIRGPUh@w@RK\\e@fB}CRe@\\kAd@}@J_@@WCc@PaBRcAj@kATo@jAkCHa@F}AbCgSDi@"
     },
     {

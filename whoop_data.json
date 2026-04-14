@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-04-14T21:06:38.605266+00:00",
+  "last_updated": "2026-04-14T22:04:49.005790+00:00",
   "profile": {
     "first_name": "Kristian Oliversson",
     "last_name": "Andreasen",
@@ -2626,9 +2626,9 @@
       "id": 1431110783,
       "start": "2026-04-13T22:04:08.440Z",
       "end": null,
-      "strain": 14.490429,
-      "kilojoule": 10575.861,
-      "avg_hr": 68,
+      "strain": 16.240866,
+      "kilojoule": 10943.605,
+      "avg_hr": 69,
       "max_hr": 191
     },
     {
@@ -3445,27 +3445,27 @@
   "workouts": [
     {
       "id": "11a1c0c7-39b4-41c6-bd58-7efd4898fcc6",
-      "start": "2026-04-14T20:10:30.100Z",
-      "end": "2026-04-14T20:43:29.150Z",
+      "start": "2026-04-14T20:12:39.000Z",
+      "end": "2026-04-14T20:42:37.052Z",
       "sport_id": 0,
       "sport_name": "Running",
-      "strain": 13.796389,
-      "avg_hr": 175,
+      "strain": 13.666381,
+      "avg_hr": 178,
       "max_hr": 191,
-      "kilojoule": 2307.5771,
+      "kilojoule": 2190.0078,
       "distance_meter": null,
       "zone_durations": {}
     },
     {
       "id": "d4296a00-9a59-4d2c-b6cd-d05c6718dfea",
-      "start": "2026-04-14T11:13:30.350Z",
-      "end": "2026-04-14T11:28:29.380Z",
-      "sport_id": 59,
-      "sport_name": "Paddleboarding",
-      "strain": 4.460045,
-      "avg_hr": 110,
+      "start": "2026-04-14T10:34:17.000Z",
+      "end": "2026-04-14T11:29:22.824Z",
+      "sport_id": 45,
+      "sport_name": "Weightlifting",
+      "strain": 11.052237,
+      "avg_hr": 103,
       "max_hr": 141,
-      "kilojoule": 194.83946,
+      "kilojoule": 557.3613,
       "distance_meter": null,
       "zone_durations": {}
     },
