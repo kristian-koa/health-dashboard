@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-04-18T07:34:20.487051+00:00",
+  "last_updated": "2026-04-18T09:04:00.604829+00:00",
   "profile": {
     "first_name": "Kristian Oliversson",
     "last_name": "Andreasen",
@@ -12,8 +12,8 @@
   },
   "summary": {
     "days": 91,
-    "avg_recovery": 58.7,
-    "avg_hrv": 62.9,
+    "avg_recovery": 58.5,
+    "avg_hrv": 62.8,
     "avg_rhr": 56.4,
     "total_workouts": 56
   },
@@ -917,16 +917,6 @@
       "hrv_rmssd": 72.860275,
       "spo2_pct": 97.0,
       "skin_temp_celsius": 33.69533
-    },
-    {
-      "cycle_id": 1260642403,
-      "created_at": "2026-01-18T09:13:33.409Z",
-      "updated_at": "2026-01-18T10:32:11.876Z",
-      "recovery_score": 75.0,
-      "resting_heart_rate": 52.0,
-      "hrv_rmssd": 74.81752,
-      "spo2_pct": 98.10714,
-      "skin_temp_celsius": 33.77283
     }
   ],
   "sleeps": [
@@ -2629,23 +2619,6 @@
       "total_rem_ms": 3360310,
       "sleep_needed_ms": 27581575,
       "sleep_debt_ms": null
-    },
-    {
-      "id": "7b8bd0c9-e528-4460-b5ec-997437109462",
-      "start": "2026-01-18T01:00:49.000Z",
-      "end": "2026-01-18T09:03:41.500Z",
-      "nap": false,
-      "performance_pct": 77.0,
-      "sleep_efficiency_pct": 93.8457,
-      "sleep_consistency_pct": 47.0,
-      "respiratory_rate": 15.644531,
-      "total_in_bed_ms": 28972500,
-      "total_awake_ms": 1980890,
-      "total_light_ms": 15885900,
-      "total_slow_wave_ms": 4590350,
-      "total_rem_ms": 6515360,
-      "sleep_needed_ms": 27581793,
-      "sleep_debt_ms": null
     }
   ],
   "cycles": [
@@ -2653,10 +2626,10 @@
       "id": 1439679633,
       "start": "2026-04-18T01:24:54.990Z",
       "end": null,
-      "strain": 0.03766726,
-      "kilojoule": 2091.5623,
-      "avg_hr": 52,
-      "max_hr": 97
+      "strain": 0.0861733,
+      "kilojoule": 2544.1667,
+      "avg_hr": 54,
+      "max_hr": 111
     },
     {
       "id": 1437556996,
