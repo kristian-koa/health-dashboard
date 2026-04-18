@@ -1,12 +1,12 @@
 {
-  "last_updated": "2026-04-18T19:08:46.994267+00:00",
+  "last_updated": "2026-04-18T19:53:29.487446+00:00",
   "athlete_name": "Kristian",
   "total_runs": 286,
   "total_km": 2061.5,
   "activities": [
     {
       "id": 18158903082,
-      "name": "Afternoon Run",
+      "name": "10 km",
       "type": "Run",
       "sport_type": "Run",
       "date": "2026-04-18",
