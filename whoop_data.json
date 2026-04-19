@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-04-18T23:50:55.040650+00:00",
+  "last_updated": "2026-04-19T03:49:00.787108+00:00",
   "profile": {
     "first_name": "Kristian Oliversson",
     "last_name": "Andreasen",
@@ -11,7 +11,7 @@
     "max_heart_rate": 210
   },
   "summary": {
-    "days": 91,
+    "days": 90,
     "avg_recovery": 58.5,
     "avg_hrv": 62.8,
     "avg_rhr": 56.4,
@@ -2626,9 +2626,9 @@
       "id": 1439679633,
       "start": "2026-04-18T01:24:54.990Z",
       "end": null,
-      "strain": 14.62224,
-      "kilojoule": 11010.358,
-      "avg_hr": 68,
+      "strain": 14.622256,
+      "kilojoule": 12369.92,
+      "avg_hr": 66,
       "max_hr": 202
     },
     {
@@ -3431,15 +3431,6 @@
       "kilojoule": 8289.214,
       "avg_hr": 59,
       "max_hr": 104
-    },
-    {
-      "id": 1260642403,
-      "start": "2026-01-18T01:00:49.000Z",
-      "end": "2026-01-19T00:09:21.670Z",
-      "strain": 4.062425,
-      "kilojoule": 8002.193,
-      "avg_hr": 63,
-      "max_hr": 127
     }
   ],
   "workouts": [
