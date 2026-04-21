@@ -1,12 +1,34 @@
 {
-  "last_updated": "2026-04-21T21:03:53.825978+00:00",
+  "last_updated": "2026-04-21T21:57:35.690008+00:00",
   "athlete_name": "Kristian",
-  "total_runs": 290,
-  "total_km": 2083.6,
+  "total_runs": 291,
+  "total_km": 2084.7,
   "activities": [
     {
+      "id": 18203767707,
+      "name": "Post bob",
+      "type": "Run",
+      "sport_type": "Run",
+      "date": "2026-04-21",
+      "datetime": "2026-04-21T22:00:02Z",
+      "distance_km": 1.02,
+      "moving_time_s": 340,
+      "elapsed_time_s": 340,
+      "pace_decimal": 5.5389,
+      "pace_str": "5:32",
+      "avg_speed_mps": 3.009,
+      "avg_heartrate": 167.6,
+      "max_heartrate": 183.0,
+      "elevation_gain": 24.0,
+      "avg_cadence": 84.1,
+      "suffer_score": null,
+      "calories": null,
+      "kudos_count": 0,
+      "map_polyline": "m`nyJ~fhh@XuACg@J{@Km@?MNmADs@?}@Eq@Ga@cAuCESWw@u@sBI_@Y_A[w@]q@a@a@WO]Eg@?C@a@GU?ECU@[CU@OCC@Q?MGUAQGOAUM{@Ai@MI?MEK?OGC@i@K[M]We@i@_@o@{AcDkAyAQ[e@k@Q[ECCBANDb@?NStADRFNNN?RDZ@XFP"
+    },
+    {
       "id": 18203509893,
-      "name": "Night Run",
+      "name": "Bob ❤️",
       "type": "Run",
       "sport_type": "Run",
       "date": "2026-04-21",
@@ -23,7 +45,7 @@
       "avg_cadence": 81.5,
       "suffer_score": null,
       "calories": null,
-      "kudos_count": 0,
+      "kudos_count": 4,
       "map_polyline": "k`nyJhhhh@@HCd@G`ACHEj@UjBMvAYzBGr@k@hEA`@Gb@KVOXIHITK~@k@|AK\\Wh@UfAGlALdABt@d@dB\\bAJTLARQNDJJPj@v@rAlAlEPTnAzBx@d@D?NHLPFPDb@EbCBPHJND\\Md@{@LKNGT?BA~@DTE\\Ct@NH?DBDLGW@I?HFPBDHB\\MHBDAD@PEp@C\\Fd@TZJPLj@PHNZ^VNTDb@XTBDN@JE|@KjAMnCGp@EnAShAUr@CBYr@Wd@g@~A_BdE]p@g@tA_AxBw@tBQVAF[b@E@ADw@t@e@d@GLIFKDIH_@n@MLQTSN[\\OEI[_A_Es@uDEEKm@a@cBQ_AUw@W{Aa@eBK]]g@[eAMg@Go@kAiFa@wBm@iCAKGMAK{@wAk@iAY}@Q{@Ge@_@}BOq@[yBK[ECCBMNIDIJI@_@T_A~@a@r@GPOr@KpAM`@]j@}@x@MBKE_@DYMC@IIOCu@C_@@CCW@UIM?WXmBxCo@nA[\\u@b@m@d@OBKASDIESCUIa@c@MQ_@_AWWOKYEC@g@@QDICC@[ESMQe@MQCG@w@T_DBGJMr@k@NEBBH?DDL@DDVGD@NCBE`@ID?BEJ?BEd@Qn@a@nAoARWbA_A^u@f@k@d@a@f@s@VULWJIHSNi@HGTI\\Yj@Wv@g@PCv@_A`@[FKBAFM@SHKVGVWz@}@VSd@o@|BeFB_AAqANcANk@r@mATk@\\m@`@{@\\m@r@{Ab@u@`@cA\\g@hBwDz@}BJOFCLHN`@FXBl@ERIHKZElBEh@_@dCDPB?BGHe@Fo@Aa@"
     },
     {
