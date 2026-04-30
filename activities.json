@@ -1,9 +1,31 @@
 {
-  "last_updated": "2026-04-30T20:18:41.900969+00:00",
+  "last_updated": "2026-04-30T22:07:52.703390+00:00",
   "athlete_name": "Kristian",
   "total_runs": 297,
   "total_km": 2134.1,
   "activities": [
+    {
+      "id": 18323810996,
+      "name": "Evening Walk",
+      "type": "Walk",
+      "sport_type": "Walk",
+      "date": "2026-04-30",
+      "datetime": "2026-04-30T20:24:36Z",
+      "distance_km": 5.16,
+      "moving_time_s": 3567,
+      "elapsed_time_s": 3567,
+      "pace_decimal": 11.526,
+      "pace_str": "11:32",
+      "avg_speed_mps": 1.446,
+      "avg_heartrate": 99.5,
+      "max_heartrate": 140.0,
+      "elevation_gain": 93.0,
+      "avg_cadence": 57.0,
+      "suffer_score": null,
+      "calories": null,
+      "kudos_count": 0,
+      "map_polyline": "}`oyJxyfh@DAtBbEX`@XVp@Zh@Hf@LlAJXJZFFAXFN?VHZBlA?h@Df@Cz@LPJ`@d@Xf@rBdG`@`BLZLR`@lAHXBp@@~@Ij@HXC|@Nd@@HIZE`@Dd@AV]`Cm@~F[~ACdAm@|EOz@I`AAz@CJQ\\On@B^Jj@@bATzB?dBDPD@NALMD?Jl@OfAs@|@G\\f@xAJTb@p@z@zCRn@\\f@rAzBPBTNFT\\VDHBZEvA@v@BRBD^DPITa@XILSNIT@RBTAXDLENQHEb@HP@HDLXE[J`@Zm@TWFJ@d@BBJ?FC^ET?l@^h@P`@RPBj@ZhAZLNLd@FLC`Ae@rIK~@Y|@Wl@{@~BeAhCYx@Wh@w@zBw@jBi@xAeAfBwAzA_@h@G@[WE@G~@KVi@h@UZOBCAo@wCc@yAa@_CeAiEg@qCcAmEc@aCUw@Km@WgAIESCCG[aBK]Ec@Qs@Oe@Wk@?s@CKUi@m@}@y@kBe@cBGa@?_@]iBOwAc@eBAMDUXm@He@Tk@PQLS\\a@X{@\\i@Lm@d@w@FQBUAk@JyAJe@J]LIFKbAoDPGJOPc@NwA?a@Be@x@sFHyANw@`@eDHmA^sCH_AGq@@MPc@EUESC_@RkBBg@ImB]_A}@yCyAyD_@wAQa@MUq@q@MIm@IuDEuAS[Qg@@mCc@q@W]Wo@{@kAeCMKQAc@a@q@cAUWk@u@GTMp@E^Xf@HhADL@A@@AR"
+    },
     {
       "id": 18311478602,
       "name": "Threshold á bandinum",
