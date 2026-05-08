@@ -1,9 +1,31 @@
 {
-  "last_updated": "2026-05-08T14:14:53.780009+00:00",
+  "last_updated": "2026-05-08T16:43:18.630101+00:00",
   "athlete_name": "Kristian",
   "total_runs": 303,
   "total_km": 2182.3,
   "activities": [
+    {
+      "id": 18426627409,
+      "name": "SMJ túr upp á Tind ✈️",
+      "type": "Hike",
+      "sport_type": "Hike",
+      "date": "2026-05-08",
+      "datetime": "2026-05-08T14:45:52Z",
+      "distance_km": 5.06,
+      "moving_time_s": 4518,
+      "elapsed_time_s": 5419,
+      "pace_decimal": 14.881,
+      "pace_str": "14:53",
+      "avg_speed_mps": 1.12,
+      "avg_heartrate": 133.9,
+      "max_heartrate": 180.0,
+      "elevation_gain": 424.0,
+      "avg_cadence": 55.7,
+      "suffer_score": null,
+      "calories": null,
+      "kudos_count": 1,
+      "map_polyline": "}_kxJvlgh@C[MGQ]IGGUMSMu@Qk@ISEAKQK_@KgACGKGKSGQIEIOIWECGOG_@GGIYGIKAQ_@SaAM}AC?GGCM@m@C@CQEJG@Ek@MCQWSm@S_@AIi@aAWq@e@w@G?MCEGWm@GYY[GWCAKMKYQMGKK_@_@c@UUM?EK_@[g@OG@KAUKi@g@QIWg@a@m@{@s@c@UGg@MQM_@Ei@G[Wa@GUm@_@SAGUQIKe@a@m@AY@qACWGUEa@AUDQ@UASOq@KSSOCIA_BEMc@o@W?QEUMSWASEGGBECE?CEIDCCAWBC?EKFMLK?IDCAEQDOBm@I?AAACBGA@EGKE@WIK?GIC@c@Ji@CCUDGI@KHm@KCUIEEYAKMM?[{@MOSKYSIAUHQAm@MWCIEICMQIAc@Se@g@SEWKM@OCYMQCQEEFMDi@?e@GK@ED[AIGCKIFOCOm@WMEMKKKPE@QCOM[PQWKCE@MI?HCCINECKBSOSEq@{@MBUEG@OGMOQKa@GK?C]Kg@E?McAM?CSENK@GE?HAAO_@CBCC?@Gi@CFG@EIIo@Ag@GAAEIcAAAIFOn@OZC?Cm@C?EDACIIB@?AAD@ZKFEBIQAAGBACCRGJ?JGJUhAUn@Wj@_@h@CRMTCDMFGTg@z@GZCFODQLQj@KPKb@BCBYNa@?EDE?@R[NCPBDANYFJb@IJIJJHRBEHEHVTOFb@HMFCFj@J`@@?FMPIB?JTH\\D?FWHQDELGJDFTB`@FN@AHBRPTDXNJGLDV@LIZ@^FXCDBl@CFDJ@n@@F?LILCJEJSLTDTRTFVJNXMXWH?NMV?FFL?PDFERB@GXIHAj@LRONHV@R?NFRALDj@@XM^Hr@b@R\\^Lj@d@X`@TzAFfAPh@H`@BFDABDDL@ZJ?JJDJBpAACDGF?GJB??EGDBND?@ZFR@b@FMH@HTDAf@Xd@l@HVLJf@VTXLNVh@z@h@Vx@@AF?NGTFN?VDLV`@j@LB?CN?FFT~@HR^\\FRHJR@NALDJRBABGHIr@p@LHRHLX\\RNDT?b@JLRLDd@\\PHRBRN\\@\\HRP^J^RXHTLBHLB`@?FBNCb@RPv@Ht@Bn@JPFhAXdCHzAT`BLd@B~@TLB?NLNd@R`A@v@FhALt@Tt@Nt@HNRbAXbBr@`B^bA^l@Px@NRJZD`@?P"
+    },
     {
       "id": 18421663667,
       "name": "Intervaller á bandinum",
