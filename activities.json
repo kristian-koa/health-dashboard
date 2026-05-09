@@ -1,9 +1,31 @@
 {
-  "last_updated": "2026-05-09T11:59:04.025885+00:00",
+  "last_updated": "2026-05-09T13:50:28.733945+00:00",
   "athlete_name": "Kristian",
   "total_runs": 303,
   "total_km": 2182.3,
   "activities": [
+    {
+      "id": 18439018989,
+      "name": "Afternoon Weight Training",
+      "type": "WeightTraining",
+      "sport_type": "WeightTraining",
+      "date": "2026-05-09",
+      "datetime": "2026-05-09T14:16:21Z",
+      "distance_km": 0.0,
+      "moving_time_s": 1609,
+      "elapsed_time_s": 1609,
+      "pace_decimal": null,
+      "pace_str": null,
+      "avg_speed_mps": 0.0,
+      "avg_heartrate": 100.1,
+      "max_heartrate": 135.0,
+      "elevation_gain": 0,
+      "avg_cadence": null,
+      "suffer_score": null,
+      "calories": null,
+      "kudos_count": 0,
+      "map_polyline": ""
+    },
     {
       "id": 18426627409,
       "name": "SMJ túr upp á Tind ✈️",
