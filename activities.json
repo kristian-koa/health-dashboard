@@ -1,9 +1,31 @@
 {
-  "last_updated": "2026-05-13T18:12:43.620033+00:00",
+  "last_updated": "2026-05-13T20:53:30.423125+00:00",
   "athlete_name": "Kristian",
   "total_runs": 307,
   "total_km": 2210.8,
   "activities": [
+    {
+      "id": 18495093394,
+      "name": "Evening Walk",
+      "type": "Walk",
+      "sport_type": "Walk",
+      "date": "2026-05-13",
+      "datetime": "2026-05-13T19:03:28Z",
+      "distance_km": 4.81,
+      "moving_time_s": 3119,
+      "elapsed_time_s": 3232,
+      "pace_decimal": 10.8155,
+      "pace_str": "10:49",
+      "avg_speed_mps": 1.541,
+      "avg_heartrate": 104.9,
+      "max_heartrate": 142.0,
+      "elevation_gain": 94.0,
+      "avg_cadence": 60.0,
+      "suffer_score": null,
+      "calories": null,
+      "kudos_count": 0,
+      "map_polyline": "gdoyJhufh@LFn@~@`@l@Ph@NRJBNIB@JLz@dBTXj@h@RLn@P~@LPFf@FPCP?t@RhANjB@pADPDf@Vh@n@NZx@zBH`@f@lAvB~GHjAA|@ShB?b@J^?PMZANBt@Gv@k@zEEl@Ih@KdAMr@IvAc@rDS~@OzCCJ_@l@Ov@eAbCIX[lBA`@JnBF^Vv@LC^SB?GDET@l@FPPHRIPFZbAJXd@x@`@dAr@bCZp@r@`AZl@h@Tb@b@HFNOHOGWJUJKJr@Lf@VbBDRBBd@Ux@NV?PKNAlANDFBTC_@HRFH\\u@LEFb@JPx@ILBtAj@b@TPDTNj@PLF?C?D@C?@CDD\\\\R\\HJLk@fKEd@WlAi@jAgE~K_AxB[z@u@hBu@nAsAvA[d@MDOGQOAFAf@I^cAhAOHICK[mBgJQm@u@oDYkAu@wDo@mCUmAi@}BEOAi@GIGEWaAg@mCq@yCK]Yi@U[s@}AYeAa@iCQy@SyBI_@Ku@Wg@EUSeBIgB_@eBg@kEIOAMMIQT[T]Z_@b@E@KGg@_DQsACs@MmBQsE@i@Ec@Q]OICII_BI_@CWAeBEiAEqCRaEAEk@IISII]MQEGMGa@?MNuEs@mDg@cBG_@?e@RoB?_@NuBRmAAIU{@Ww@EY?WL_ADIIDCK@[DWXd@ER@H?EID"
+    },
     {
       "id": 18482675507,
       "name": "Bob Run 😍",
