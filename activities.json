@@ -1,12 +1,12 @@
 {
-  "last_updated": "2026-05-21T16:48:08.701682+00:00",
+  "last_updated": "2026-05-21T19:15:24.430651+00:00",
   "athlete_name": "Kristian",
   "total_runs": 312,
   "total_km": 2252.1,
   "activities": [
     {
       "id": 18597503627,
-      "name": "Afternoon Run",
+      "name": "Stille og roligt",
       "type": "Run",
       "sport_type": "Run",
       "date": "2026-05-21",
@@ -23,7 +23,7 @@
       "avg_cadence": 80.9,
       "suffer_score": null,
       "calories": null,
-      "kudos_count": 0,
+      "kudos_count": 4,
       "map_polyline": "_foyJ~wfh@EAGKAM@c@RgA@UIm@S[Y[QWQSa@_@QGCEYKSGMCC@IAC@SGC?]GW?C@WEg@DSAWBCB_@BCBG?y@Ro@XQD{@f@_@Jq@^SFe@TQF[Rm@TAD_@PUNONy@d@AD]TYV_@RADk@^e@^_@Pe@XWJe@V_@NAD}@\\ABm@XIFGBWMWLGAOFY?gAFCC]HI?k@Pc@FKAA@MIIMKKSJG?KKGMMKIBMXKJQHOBOFe@Zm@Ra@ZKNOb@_@fB[b@Qj@At@YtAIj@G|CI`AIzAKr@GTi@r@g@zAUR_@RMPSHKNU`@AD_@v@[h@KVQRYh@_@^IRCV?\\FrAT|@FNVXPXZZNV^f@TRFBV?`@PZ?RDBCRBPAf@BPJBAPLPBZRl@Xb@DVANEP?t@KR@P?^FPATBNJLVLAh@_@HARSb@STGPMJML[A[Ok@Ug@[]kBqCO]WaAOq@MeAGwAAkALaCp@oEPy@Dc@T}@@Yr@oEZ{ALg@ZcAP_@v@uAj@m@b@]RIBELI^Oh@]D?\\SPEPKt@[\\Ur@[bAs@LO^SNO\\SfBqA|CeB^MRKBAf@W^M~@a@ZIHGDARMNC\\QRC\\MPAPEdAAHAPDh@?PBHADBn@Fp@XTN^b@dBbCB?^b@v@jAZ\\n@fApApC^n@JJx@d@THj@Fr@JDBF?ZH`@ALBb@R^DDBf@Db@Ex@FPCv@DRAL@RFB?ZP^f@^p@Vv@DB^xAt@jBd@rALl@Z~@Vn@HfBEtAOjAATJ^?VETATBj@A`@SxAM~AKh@MrAw@~Gq@hFEZ?L@D@?HwADSJWTWFOXyBNqBB_ANkBToBX_BC}A@c@Gc@Hc@@UGm@?U@[T{A?s@C]Ms@y@qCIc@_AgCe@{AUg@Uy@[m@c@g@UOSC]KMAGBQCQBk@EC@e@AABKCC@ICG@OEqASYKQAMBECO?s@KQGi@EQGEASKGAa@[_@c@_@o@uAyCu@gAg@m@MU]]"
     },
     {
