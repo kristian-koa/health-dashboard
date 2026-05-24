@@ -1,9 +1,31 @@
 {
-  "last_updated": "2026-05-24T17:14:58.877175+00:00",
+  "last_updated": "2026-05-24T19:38:27.163621+00:00",
   "athlete_name": "Kristian",
-  "total_runs": 314,
-  "total_km": 2278.1,
+  "total_runs": 315,
+  "total_km": 2282.1,
   "activities": [
+    {
+      "id": 18638334117,
+      "name": "Ein lítlan túr á bandi",
+      "type": "Run",
+      "sport_type": "Run",
+      "date": "2026-05-24",
+      "datetime": "2026-05-24T17:48:38Z",
+      "distance_km": 4.0,
+      "moving_time_s": 1691,
+      "elapsed_time_s": 1691,
+      "pace_decimal": 7.0472,
+      "pace_str": "7:03",
+      "avg_speed_mps": 2.365,
+      "avg_heartrate": 121.2,
+      "max_heartrate": 128.0,
+      "elevation_gain": 0,
+      "avg_cadence": 80.4,
+      "suffer_score": null,
+      "calories": null,
+      "kudos_count": 3,
+      "map_polyline": ""
+    },
     {
       "id": 18622396056,
       "name": "Sandoy half við REL ❤️",
@@ -23,7 +45,7 @@
       "avg_cadence": 85.7,
       "suffer_score": null,
       "calories": null,
-      "kudos_count": 21,
+      "kudos_count": 22,
       "map_polyline": "k}kxJbnrh@RV`@M\\oCf@mHnA}D`AcFVa@lCuBtAqBdAaAlFsEP@d@~AL@hAoCjA}BNKj@hA`@H^j@T|@LtBf@tAVPVWhCaGTwAsB}FsB}AGWJST?vAd@X^|BxGXfB?v@WbCyAnIqAnKSn@Q?MUoA{Dq@}CoAqC{CgC_@VaB~BcB~CgApCeIlUoC`H{GxRsCzFTxF}@pIb@tDUxC_@`Bi@vAy@d@kANSPOj@Br@`AHn@bAHrEKtJ_@lAiA`AIVJ^|A^hBhALb@IT{@\\GXd@ZL^tBlWl@vRd@bDLzFGlJe@xB?rBKhA}@rDEdCUpCyAtHSzGFnFa@fEmAtIqAtFk@`EuAfGyAfMi@dNOp@w@rBsAxMy@zDsA`JeAlJb@zLDtEjAtFLtAD|COdM_@fAuFjHm@vAkAnE}BnG_B|CeBlBuG~EqBtBmB`CmBxAm@v@_@z@{@hDuAbHO`AGjDm@|BAd@ZO`B{CrBcBf@Y~Cc@dA]JQEOeAv@sEfAcBpAmBhDMHC[`@cBH}@BkCLw@hAmGbBaGZc@rBaBjCcDzFkFrCqBlAuAx@qAnAwCjAcDlAqEr@kBrFiHTe@Nw@LcMEcCMeBmAiGIqH[aH@m@z@wIxCiQfAgLNw@t@wBp@mOnAgKbBaITsB`@sBl@{B|AgK`@yEGsERyGH{@rAaHNqBFyC`AwDHmDb@gCHkKMgE_@mCUuE]wMoB{VQe@_@IGUJ[|@WDc@[e@aAs@mB[M]JYbAgA\\aBHiIImFk@_Ag@DWOEo@He@NUbCs@`@_Ap@mCLqA@kAWqBCcAv@mG?iCi@iIwB{CeAk@e@wCUKkF`C{EnD_GTeGtJkKnKQ\\qHdCkIfFa@Hi@g@[eBCcEJ{HIcA[u@cAaAmBg@eCDuBh@cMdGgFxDoAvAgBjCyJdRgEjGeCjCcLbKmGdF[b@GGx@aAhEyDlAy@bNkMDWEg@kC_KsCqMEgAXu@tAyBvBeBdAqC`@m@rB_BVy@\\qCPs@`AwAjAqCpAaBzCsBjBeB|AqCr@qBz@gBtDmDvAKvAyA`AwAv@i@|Bw@lAMx@m@|@O`BgAbEuAbAu@~AmBzAq@tBo@l@wAdB{Hr@cBvC}CbEmCz@SbGXlAk@b@\\lDvPpG`XBrAQjE\\zEZrKXj@V@hD_BrDYvDsAdBoBbAyAXy@d@sEE[k@_ASmBOw@YJKf@Bh@LBK_ADS`@]IC[`@Ez@"
     },
     {
