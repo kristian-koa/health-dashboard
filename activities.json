@@ -1,9 +1,31 @@
 {
-  "last_updated": "2026-05-27T19:32:04.678395+00:00",
+  "last_updated": "2026-05-27T22:06:27.835717+00:00",
   "athlete_name": "Kristian",
-  "total_runs": 318,
-  "total_km": 2303.4,
+  "total_runs": 319,
+  "total_km": 2311.2,
   "activities": [
+    {
+      "id": 18680637408,
+      "name": "Base",
+      "type": "Run",
+      "sport_type": "Run",
+      "date": "2026-05-27",
+      "datetime": "2026-05-27T20:48:39Z",
+      "distance_km": 7.78,
+      "moving_time_s": 2627,
+      "elapsed_time_s": 2676,
+      "pace_decimal": 5.6306,
+      "pace_str": "5:38",
+      "avg_speed_mps": 2.96,
+      "avg_heartrate": 157.2,
+      "max_heartrate": 172.0,
+      "elevation_gain": 106.0,
+      "avg_cadence": 83.5,
+      "suffer_score": null,
+      "calories": null,
+      "kudos_count": 3,
+      "map_polyline": "weoyJdxfh@KKGi@PiAJMb@?LFVXlAbBT`@Vp@PVp@`Bj@r@`@Xd@NbAJ`ATh@@NDNHf@FnALfACZBn@?X@b@Rl@f@^n@v@rBH^nAlDlAtDFl@D|@C|@UvAC\\Jf@Et@Bn@CXs@zGQ|BG`@QnAId@}@xHI~AM`@i@x@_@f@_@r@IJSf@UlAGzAGb@?TBRAJM\\QXGNQdAc@t@Yp@k@b@e@z@KXR|@Bp@@lAZ|AJdAJh@F?PODEBKLSb@a@JGDBTlAN\\BFPJj@t@DBN@JA\\ILADBVl@f@zBNPD?RLTFHHTj@DRNZPj@BVBBPKf@g@HEJAf@DTHT?b@GTKNM~As@pAgA^OHGX[Ze@RM\\Id@EBCh@Cr@RDB\\N^T\\JPN^NVDDBhAXVLt@TbCdAVRVDfAf@ZPT^Vx@Jt@Fx@ExEEfADXPJAZKn@KXIFQ?c@DSRIBe@r@{@fAWV]d@[b@iAnBYb@WRKP_@rAKh@CVBxAEt@@vBCl@FjAAr@HlBBfAF~@?TG^WN_AX{Cr@e@Dy@T_@Dk@TKAEEGMK[WOMSYu@Ka@_@cCOqAe@uFIMOEIDSTo@VOAGKc@sBo@eCuAyGa@eBi@gCs@aB{@mDSuAc@cBuAqGO[Cm@ESSi@MOMUMiAOe@a@u@K_@[mBm@wCK}@C{AGq@BWRc@X]vA_CbAcC^c@DQIw@Ae@Hy@Nw@BSRw@bAaC^o@Ls@FQTmCJg@TiB@m@NaBb@mCBg@XaCBi@V{BBi@G_@Hu@G{@?UTcB?U?_@EmAMk@Q[I]O]i@uBsB{F[u@U]e@a@UAOIKAUBECUAOCU@OCYAE@UCO@Q?MEI@[K]GSO[CUD_@KYCI?[Gc@EYGa@Wa@]g@w@kB}DkAwAgDuEq@m@e@Ue@ISAeAOK?]FIAE@SAY?e@DYHi@P_@J}@\\SL{D`BSNcBx@c@Z_@\\OFe@b@uBrA]X{@b@STKZ@NbBw@f@_@r@o@^OPSh@Yt@o@t@c@XKRSlAk@PERQb@UrBw@d@Yp@Ub@KD@RId@EL@^Ev@@l@JTANDT@ZLn@b@Z\\pA|ADH?J"
+    },
     {
       "id": 18666592327,
       "name": "Bob ❤️",
@@ -45,7 +67,7 @@
       "avg_cadence": 83.2,
       "suffer_score": null,
       "calories": null,
-      "kudos_count": 6,
+      "kudos_count": 7,
       "map_polyline": ""
     },
     {
@@ -67,7 +89,7 @@
       "avg_cadence": 82.2,
       "suffer_score": null,
       "calories": null,
-      "kudos_count": 6,
+      "kudos_count": 7,
       "map_polyline": ""
     },
     {
@@ -111,7 +133,7 @@
       "avg_cadence": 85.7,
       "suffer_score": null,
       "calories": null,
-      "kudos_count": 25,
+      "kudos_count": 26,
       "map_polyline": "k}kxJbnrh@RV`@M\\oCf@mHnA}D`AcFVa@lCuBtAqBdAaAlFsEP@d@~AL@hAoCjA}BNKj@hA`@H^j@T|@LtBf@tAVPVWhCaGTwAsB}FsB}AGWJST?vAd@X^|BxGXfB?v@WbCyAnIqAnKSn@Q?MUoA{Dq@}CoAqC{CgC_@VaB~BcB~CgApCeIlUoC`H{GxRsCzFTxF}@pIb@tDUxC_@`Bi@vAy@d@kANSPOj@Br@`AHn@bAHrEKtJ_@lAiA`AIVJ^|A^hBhALb@IT{@\\GXd@ZL^tBlWl@vRd@bDLzFGlJe@xB?rBKhA}@rDEdCUpCyAtHSzGFnFa@fEmAtIqAtFk@`EuAfGyAfMi@dNOp@w@rBsAxMy@zDsA`JeAlJb@zLDtEjAtFLtAD|COdM_@fAuFjHm@vAkAnE}BnG_B|CeBlBuG~EqBtBmB`CmBxAm@v@_@z@{@hDuAbHO`AGjDm@|BAd@ZO`B{CrBcBf@Y~Cc@dA]JQEOeAv@sEfAcBpAmBhDMHC[`@cBH}@BkCLw@hAmGbBaGZc@rBaBjCcDzFkFrCqBlAuAx@qAnAwCjAcDlAqEr@kBrFiHTe@Nw@LcMEcCMeBmAiGIqH[aH@m@z@wIxCiQfAgLNw@t@wBp@mOnAgKbBaITsB`@sBl@{B|AgK`@yEGsERyGH{@rAaHNqBFyC`AwDHmDb@gCHkKMgE_@mCUuE]wMoB{VQe@_@IGUJ[|@WDc@[e@aAs@mB[M]JYbAgA\\aBHiIImFk@_Ag@DWOEo@He@NUbCs@`@_Ap@mCLqA@kAWqBCcAv@mG?iCi@iIwB{CeAk@e@wCUKkF`C{EnD_GTeGtJkKnKQ\\qHdCkIfFa@Hi@g@[eBCcEJ{HIcA[u@cAaAmBg@eCDuBh@cMdGgFxDoAvAgBjCyJdRgEjGeCjCcLbKmGdF[b@GGx@aAhEyDlAy@bNkMDWEg@kC_KsCqMEgAXu@tAyBvBeBdAqC`@m@rB_BVy@\\qCPs@`AwAjAqCpAaBzCsBjBeB|AqCr@qBz@gBtDmDvAKvAyA`AwAv@i@|Bw@lAMx@m@|@O`BgAbEuAbAu@~AmBzAq@tBo@l@wAdB{Hr@cBvC}CbEmCz@SbGXlAk@b@\\lDvPpG`XBrAQjE\\zEZrKXj@V@hD_BrDYvDsAdBoBbAyAXy@d@sEE[k@_ASmBOw@YJKf@Bh@LBK_ADS`@]IC[`@Ez@"
     },
     {
