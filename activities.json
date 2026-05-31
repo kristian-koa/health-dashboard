@@ -1,9 +1,31 @@
 {
-  "last_updated": "2026-05-31T05:44:47.068494+00:00",
+  "last_updated": "2026-05-31T09:22:16.185647+00:00",
   "athlete_name": "Kristian",
-  "total_runs": 322,
-  "total_km": 2340.1,
+  "total_runs": 323,
+  "total_km": 2345.4,
   "activities": [
+    {
+      "id": 18724546570,
+      "name": "Recovery run ❤️",
+      "type": "Run",
+      "sport_type": "Run",
+      "date": "2026-05-31",
+      "datetime": "2026-05-31T08:29:50Z",
+      "distance_km": 5.26,
+      "moving_time_s": 2103,
+      "elapsed_time_s": 2115,
+      "pace_decimal": 6.6693,
+      "pace_str": "6:40",
+      "avg_speed_mps": 2.499,
+      "avg_heartrate": 126.3,
+      "max_heartrate": 143.0,
+      "elevation_gain": 40.0,
+      "avg_cadence": 81.8,
+      "suffer_score": null,
+      "calories": null,
+      "kudos_count": 4,
+      "map_polyline": "weoyJ~wfh@E?KQCK@YZqALIHAJFTVLRFBbApAv@|A`A~BNLLTh@X@DLH`@LN@VHT@|@RFAD@LEZDNL~@L\\HV@HETAr@Fh@Ct@Fh@J^`@RXfAlCZhAJVJ^N\\h@`BJf@h@jAJf@DnA?|@Ej@Oz@?\\Hd@Gr@@~@O~AY|BM`BSbBI^e@rE_@vCOfBGdAORWh@E@AFSVYt@GFa@hAm@|D?^BLCVYbA_@~@W\\MTKJMZa@j@ENc@n@Uh@@ZXfB@NCd@@LXz@Nz@?LERGDe@cCk@{BCUDS~@_C`@s@Z_@r@yAb@q@La@Vg@PS@SGq@A]LkA\\gBJ_@`@o@Ri@R[FWNUL[LEB@FVJLF@^ULCJAHEPCLENQ`@UFAFBH?LAFGRGJODMACIDWd@KH]BYTm@XMD]Fe@`@GIUsA?gAD]FSPOPUNIRkBh@yCBERGPOh@eANSDMj@{@z@eB`B}BVe@`@k@`@aAn@qBVyAD]GUGAM@WLYPk@l@i@ZYZQ?KFm@p@QJEFi@XMNWPMLQFKOWw@Mc@CQ@c@Lo@Fm@?mAImAo@}AYgAWy@Wm@U_AYw@Se@[aAYm@g@i@SKQAIEOACCa@EC?]A]Bg@ACBU?_@GGBg@OGAGBMIC?GGUGKAODCAO@c@MOACCo@MYCg@Sa@[g@k@[m@[y@Yg@Qe@o@aAa@a@Ye@gAuAa@q@i@q@SQKOUOUIMIw@Oe@AIEc@EOBIAs@HCAK@SDYCYFULi@PCBKDGEa@\\OBYRq@RYTg@TKDG?q@d@i@Pe@ZOD[TWHKJAFBJH@LC|@o@x@]NKPGTQlAg@DEnAg@^WNEJIdA]rB]H?DBTENBT?NBV@PDb@B`@HZPZ\\HBFHXb@PNf@v@FDFN"
+    },
     {
       "id": 18712946142,
       "name": "Leygardags túr ❤️",
@@ -23,7 +45,7 @@
       "avg_cadence": 84.7,
       "suffer_score": null,
       "calories": null,
-      "kudos_count": 7,
+      "kudos_count": 8,
       "map_polyline": "weoyJhxfh@KKG]Bc@Pu@AWeAuAk@k@a@a@q@QsDU_BRqCdAaDvA}BnAaAj@cA|@wAbAq@CuFjCoBfAw@n@aAvAYp@s@dCwC~PQzAK|A?dBLxBVvA^lAhBlCZ\\\\t@Rz@B`@j@|AbAvFV`BRjCLpDDbDp@dNLlAV`B`@~AD~ADTXb@b@dBD^BzCQrCIr@c@rB]tBYvCSf@STERBZTl@BpBKhHQvG?tAHjD\\dDt@dD~@|BPT^v@X`@^\\vA^t@Gl@YhB_B`@Sv@o@dDgBfCw@nBYpCE|BN~Bz@pAdAvBdCbAvBpBnG`@dBTl@|@fDn@lBXhANPb@nAr@dBbC`Fj@xAPRj@vAvAfFj@dCd@zAF^n@xBRbAx@dBVt@Z`@n@XTVxAj@XPNRHFnA^h@^bGjBv@J^XXF`@Tr@JjAl@r@Dn@QPQjAyDHi@f@kBNy@JUHBb@hCv@pCx@fDnCfJp@rBd@~DLhCFTLBd@uADWFcAFuLEuJEgAI}FKyEg@mJY}A_@w@CSPsB@q@Xm@NQxAUd@WxA_AjAoAf@{@~@_C~EyORu@Vs@Rc@RU^BJSDU@y@Jk@JwAh@kEj@_HHwBNiBJeDRoDx@iLpAuNj@wEf@_D^aBVeAb@s@DS?c@l@cBJ{@Pi@hAmFZu@b@[R@DBFZLJH?VYHY@WE]Qi@Y?Uf@k@To@bAcA|C]pB{ArF_@|AYbBe@hBaA~IcAdLWlBIrBk@fJm@dMc@~Eo@jFEdAMp@GJQ?OLGRGr@Wl@cGvRkAxC{@tAg@p@{@r@q@b@sB\\KCKYOMWJMl@?VLp@EbAIfA[hBs@hAQl@c@`AmAzBuBnEMLGAMWi@wDo@kBUqASgCmAcI]uCMe@W_C]iBCa@y@{DeAoDiAmE{BoGqAcEi@uA_@wA[sBg@cFMcBIMKC{@x@[COKGOUsAcAaEg@uCcB_HUwAq@oCUuA_AsD?]DOU[KWk@cC}@iE}A_DYu@e@gCo@wCAcAKuBBU\\o@Vw@^c@p@kAJ[zAeC@OMw@@g@`@{CHS\\a@^{@Lm@r@qBPyCTsBXeBFy@z@oGPcCPkBGi@Hc@?YGg@?SXuB?k@IyAiBuF}ByGOYg@m@YOmAOeC@eBSOK[GSDwCg@y@a@_@]]k@eBsDiBeCs@KO^Ed@"
     },
     {
