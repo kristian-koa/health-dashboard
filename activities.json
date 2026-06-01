@@ -1,9 +1,31 @@
 {
-  "last_updated": "2026-06-01T18:15:34.636078+00:00",
+  "last_updated": "2026-06-01T22:15:51.854199+00:00",
   "athlete_name": "Kristian",
   "total_runs": 323,
   "total_km": 2345.4,
   "activities": [
+    {
+      "id": 18746060138,
+      "name": "Evening Weight Training",
+      "type": "WeightTraining",
+      "sport_type": "WeightTraining",
+      "date": "2026-06-01",
+      "datetime": "2026-06-01T19:10:21Z",
+      "distance_km": 0.0,
+      "moving_time_s": 2892,
+      "elapsed_time_s": 2892,
+      "pace_decimal": null,
+      "pace_str": null,
+      "avg_speed_mps": 0.0,
+      "avg_heartrate": 100.8,
+      "max_heartrate": 137.0,
+      "elevation_gain": 0,
+      "avg_cadence": null,
+      "suffer_score": null,
+      "calories": null,
+      "kudos_count": 3,
+      "map_polyline": ""
+    },
     {
       "id": 18724546570,
       "name": "Recovery run ❤️",
