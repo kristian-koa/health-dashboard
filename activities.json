@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-06-07T00:16:00.607090+00:00",
+  "last_updated": "2026-06-07T09:33:45.785253+00:00",
   "athlete_name": "Kristian",
   "total_runs": 330,
   "total_km": 2404.8,
@@ -23,7 +23,7 @@
       "avg_cadence": 84.1,
       "suffer_score": 22.0,
       "calories": null,
-      "kudos_count": 6,
+      "kudos_count": 7,
       "map_polyline": ""
     },
     {
@@ -89,7 +89,7 @@
       "avg_cadence": 82.9,
       "suffer_score": 51.0,
       "calories": null,
-      "kudos_count": 5,
+      "kudos_count": 6,
       "map_polyline": ""
     },
     {
