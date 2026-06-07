@@ -1,9 +1,31 @@
 {
-  "last_updated": "2026-06-07T18:18:19.865186+00:00",
+  "last_updated": "2026-06-07T20:36:33.326497+00:00",
   "athlete_name": "Kristian",
-  "total_runs": 330,
-  "total_km": 2404.8,
+  "total_runs": 331,
+  "total_km": 2409.2,
   "activities": [
+    {
+      "id": 18828562459,
+      "name": "Recovery run",
+      "type": "Run",
+      "sport_type": "Run",
+      "date": "2026-06-07",
+      "datetime": "2026-06-07T19:06:07Z",
+      "distance_km": 4.4,
+      "moving_time_s": 1806,
+      "elapsed_time_s": 1806,
+      "pace_decimal": 6.8418,
+      "pace_str": "6:51",
+      "avg_speed_mps": 2.436,
+      "avg_heartrate": 126.6,
+      "max_heartrate": 133.0,
+      "elevation_gain": 0,
+      "avg_cadence": 79.7,
+      "suffer_score": 6.0,
+      "calories": null,
+      "kudos_count": 7,
+      "map_polyline": ""
+    },
     {
       "id": 18812165155,
       "name": "Leygardags túrur 2 av 2",
@@ -67,7 +89,7 @@
       "avg_cadence": 84.3,
       "suffer_score": 88.0,
       "calories": null,
-      "kudos_count": 7,
+      "kudos_count": 8,
       "map_polyline": "keoyJjyfh@@O_@q@@_@ReA?WcCoCmAi@}CS}ARqBl@wFpCk@Qk@R_H`FoEpBqC`B}AbBq@~Au@rCiCpOW`CGdBBpBJ|APdAf@zAzCnEPv@HhAd@~@lA~G^zCj@vQf@jI`A~EFvAZx@ZnAJx@BdDSrC_AhF]tDGPa@f@GZZpA@b@ChFYxKDnFBl@t@`Ft@`CXd@DPAd@RA|@vA^Z`@Xr@NxAUfAaAl@UvAwAnBgAhBu@rD}@|DCfBRzBv@zBhBfAnApAnCz@hCLp@\\nAr@vBZtAx@`ANXf@lB`ChGl@tAh@x@bBpDv@vBx@xCdArEt@|B\\|AbBrCf@`AlC~Bv@TPjAhAr@rIrCzF`Bl@K`@U|@_DrAqFJSH@n@rDbBtGl@pBXb@~B|Hd@tFB`AHn@J?b@aAL}@HZ`CfEdE|GfAvBh@vAXBFg@CgBIkBM_@Cs@v@cAdAMLON_@D{APaA?aAL{ABeA]oELoCVkAFiBMoADaACmBQ{@@wDDy@Te@HChDRLHJT?hBBHn@aBRf@ZBbAuBLo@@o@CgHFy@Je@^{CByACk@aAaI@qAM_EMwAA}AOmAGmCk@eHD[PKBKQeDYmCAePNuDvCuYRe@\\QTaAFaGF}CPaEMaBp@sBLy@hAiF^iAZa@VONBTd@ZIL[Ba@K{@@a@ZcB@_@MmAQk@UoADg@z@mArCyCz@kAH@?HZo@~IuJ\\Sr@I`@\\b@|@VzBE~AEPOF_AIk@PgFtGe@dAy@jCcGbI_Ah@UMSi@QAWb@i@RMN]j@c@fAi@fB_@vBqBjHa@`CUv@Mr@aA|IaAbLWnBIrBy@dN[dH[~De@dESlASdCGPa@HOpAa@t@}FhRuAlD}AvBg@f@o@\\oCj@]m@OgB[oBe@_Oy@sLDyATiCr@uNBuAIoDW}FUaDsAaICeAUkAFaHSsBa@gASYyC{AcDkAgDaAiCoAYA}AJa@NkDrCwBtAm@JkBI}@r@s@^_@DO\\e@^Wf@_AjASBm@kCeAeFq@{Ag@w@c@mAe@{Cg@}BG{@?w@GeAZm@Rm@nAoBZw@pAyBDa@Gy@@_AHw@`@yAz@}AJY?Ql@oBRyCtBmPd@{EIs@Jc@?a@Gg@TaC?u@GkAoCcJuAmDk@{@y@a@kFMoHqAg@_@c@k@qBcEsBuCk@CIR"
     },
     {
