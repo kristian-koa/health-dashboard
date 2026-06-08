@@ -1,9 +1,31 @@
 {
-  "last_updated": "2026-06-08T19:34:30.266268+00:00",
+  "last_updated": "2026-06-08T22:00:20.239286+00:00",
   "athlete_name": "Kristian",
-  "total_runs": 331,
-  "total_km": 2409.2,
+  "total_runs": 332,
+  "total_km": 2416.7,
   "activities": [
+    {
+      "id": 18842202095,
+      "name": "Threshold",
+      "type": "Run",
+      "sport_type": "Run",
+      "date": "2026-06-08",
+      "datetime": "2026-06-08T21:12:30Z",
+      "distance_km": 7.5,
+      "moving_time_s": 2281,
+      "elapsed_time_s": 2281,
+      "pace_decimal": 5.0689,
+      "pace_str": "5:04",
+      "avg_speed_mps": 3.288,
+      "avg_heartrate": 170.2,
+      "max_heartrate": 192.0,
+      "elevation_gain": 69.0,
+      "avg_cadence": 86.7,
+      "suffer_score": 82.0,
+      "calories": null,
+      "kudos_count": 5,
+      "map_polyline": "yeoyJbufh@DODc@Kc@K[q@gAg@k@WMo@[_@IMGU?[GUAOEwAD_AJUJ]D_@NwAr@ODSNOBc@Pu@\\]Ts@VIHsAr@eAx@y@h@MLm@^}AnAc@XUH_@HcChAUNYLm@^g@l@YV_@j@Yl@g@vA_@`BeBnKy@tEKbBCt@BjBHdAJp@Pv@BF`@^b@p@nBzBVb@Rh@T~@J`Ah@xCL~@h@pCLhAHlAEGOuBc@_CSwASeAYqBUo@g@s@w@oAw@cAy@qASi@Ok@SeAKaAGsA?w@FoBDYdAkGz@}Fr@wDh@{A\\u@r@aAnAmAf@YRGp@c@l@ShB{@BEhAo@jByA\\S\\Y~@o@RIj@_@bAi@TI\\UfFyBhA[~@OR?RCXARDrAFJDXBf@Lp@d@zAjBxArBPRv@dAz@`Bd@jA^r@RXb@^p@Z`@BlBXNAfB\\`A@`@DnA?bAF`@Tb@b@JL^t@f@pAXbAhA|CVlAr@bBJt@Bx@AZGt@Q|@?\\Dn@Ch@BjA]hDQjAGdAUrBOl@Kn@?f@KbAq@pECZ?ZDJFM@i@FYZk@RQHS`@mD`@oCFSj@}@NYHa@FcAFUR]VW\\w@Hc@FoAFSfA_CLKJBJHVZr@dABBF?HGHMRu@b@oC?YCUECM?MFYXYNw@r@[b@SRk@t@_@\\_Al@SJy@p@OTUbA]bCe@vESrCa@pC?LBFBBL@DCBGb@yCDsA?{ABoADw@Hg@AUJq@FSN_BFSPYDUEk@Ea@EEOk@Ga@Bi@NeABy@AYMwAu@iBe@qB_@mA]q@i@kB]{@]i@YWIGaAUw@ASCU@iAAOEC?w@OC@k@OU@OEI?QES?_@K[Ck@KYKc@Y[a@Wa@iAgCi@_AmA_BSSqAgBKUaAiAa@[o@SU?QGUA[Ie@Cw@?KBEAYDIBO?]Lk@JUJYHcAj@e@PQDIFODUL[Jm@^y@`@E?e@X]XqAz@k@d@uBrAQNc@XSFKL]J"
+    },
     {
       "id": 18828562459,
       "name": "Recovery run",
@@ -23,7 +45,7 @@
       "avg_cadence": 79.7,
       "suffer_score": 6.0,
       "calories": null,
-      "kudos_count": 9,
+      "kudos_count": 10,
       "map_polyline": ""
     },
     {
